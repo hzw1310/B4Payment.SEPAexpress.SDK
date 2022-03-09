@@ -10782,16 +10782,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         public string PaymentPreNotificationHandling { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("mandateReviewEnabled")]
-        public bool MandateReviewEnabled { get; set; }
+        public bool? MandateReviewEnabled { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentReviewEnabled")]
-        public bool PaymentReviewEnabled { get; set; }
+        public bool? PaymentReviewEnabled { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("payoutReviewEnabled")]
-        public bool PayoutReviewEnabled { get; set; }
+        public bool? PayoutReviewEnabled { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("refundReviewEnabled")]
-        public bool RefundReviewEnabled { get; set; }
+        public bool? RefundReviewEnabled { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
@@ -10832,10 +10832,10 @@ namespace B4Payment.SEPAexpress.Client.Demo
         public string RefundProcessorName { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("refundQueuingDays")]
-        public int RefundQueuingDays { get; set; }
+        public int? RefundQueuingDays { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("debtCollection")]
-        public bool DebtCollection { get; set; }
+        public bool? DebtCollection { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("emailConfig")]
         public EmailConfig EmailConfig { get; set; }
@@ -10853,10 +10853,10 @@ namespace B4Payment.SEPAexpress.Client.Demo
         public string B4PId { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("isCompanyDirectDebit")]
-        public bool IsCompanyDirectDebit { get; set; }
+        public bool? IsCompanyDirectDebit { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("enforceAis")]
-        public bool EnforceAis { get; set; }
+        public bool? EnforceAis { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("aisConfiguration")]
         public AisConfiguration AisConfiguration { get; set; }
@@ -10931,19 +10931,19 @@ namespace B4Payment.SEPAexpress.Client.Demo
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("mandateMinAmount")]
-        public int MandateMinAmount { get; set; }
+        public int? MandateMinAmount { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("mandateMaxAmount")]
-        public int MandateMaxAmount { get; set; }
+        public int? MandateMaxAmount { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentMinAmount")]
-        public int PaymentMinAmount { get; set; }
+        public int? PaymentMinAmount { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentMaxAmount")]
-        public int PaymentMaxAmount { get; set; }
+        public int? PaymentMaxAmount { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("historicalBalanceCheckTimeSpan")]
         public TimeSpan HistoricalBalanceCheckTimeSpan { get; set; }
@@ -10967,37 +10967,37 @@ namespace B4Payment.SEPAexpress.Client.Demo
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("ticks")]
-        public long Ticks { get; set; }
+        public long? Ticks { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("days")]
-        public int Days { get; set; }
+        public int? Days { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("hours")]
-        public int Hours { get; set; }
+        public int? Hours { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("milliseconds")]
-        public int Milliseconds { get; set; }
+        public int? Milliseconds { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("minutes")]
-        public int Minutes { get; set; }
+        public int? Minutes { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("seconds")]
-        public int Seconds { get; set; }
+        public int? Seconds { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("totalDays")]
-        public double TotalDays { get; set; }
+        public double? TotalDays { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("totalHours")]
-        public double TotalHours { get; set; }
+        public double? TotalHours { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("totalMilliseconds")]
-        public double TotalMilliseconds { get; set; }
+        public double? TotalMilliseconds { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("totalMinutes")]
-        public double TotalMinutes { get; set; }
+        public double? TotalMinutes { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("totalSeconds")]
-        public double TotalSeconds { get; set; }
+        public double? TotalSeconds { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -11015,7 +11015,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("timeSpan")]
         public TimeSpan TimeSpan { get; set; }
@@ -11093,7 +11093,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
         public string RequiredNameField { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("hideAllInputs")]
-        public bool HideAllInputs { get; set; }
+        public bool? HideAllInputs { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -12559,7 +12559,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
         [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue)]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         /// <summary>
         /// The unique reference of this payout. This id is used for matching
@@ -12904,7 +12904,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         /// <summary>
         /// The unique reference of this transaction. This id is used for matching
@@ -12931,7 +12931,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("bookingDate")]
-        public System.DateTimeOffset BookingDate { get; set; }
+        public System.DateTimeOffset? BookingDate { get; set; }
 
         /// <summary>
         /// What triggered this reconciliation entry. Optional. Only
@@ -13101,7 +13101,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
         [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue)]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         /// <summary>
         /// The unique reference of this refund. This id is used for matching
@@ -13834,34 +13834,34 @@ namespace B4Payment.SEPAexpress.Client.Demo
         public System.Collections.Generic.ICollection<string> EventTypes { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includeMerchant")]
-        public bool IncludeMerchant { get; set; }
+        public bool? IncludeMerchant { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includeConnector")]
-        public bool IncludeConnector { get; set; }
+        public bool? IncludeConnector { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includeCustomer")]
-        public bool IncludeCustomer { get; set; }
+        public bool? IncludeCustomer { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includeBankAccount")]
-        public bool IncludeBankAccount { get; set; }
+        public bool? IncludeBankAccount { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includeMandate")]
-        public bool IncludeMandate { get; set; }
+        public bool? IncludeMandate { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includePayment")]
-        public bool IncludePayment { get; set; }
+        public bool? IncludePayment { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includePayout")]
-        public bool IncludePayout { get; set; }
+        public bool? IncludePayout { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includeProcess")]
-        public bool IncludeProcess { get; set; }
+        public bool? IncludeProcess { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includeReconciliation")]
-        public bool IncludeReconciliation { get; set; }
+        public bool? IncludeReconciliation { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("includeRefund")]
-        public bool IncludeRefund { get; set; }
+        public bool? IncludeRefund { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -13953,14 +13953,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("isSuccessfullyTransmitted")]
-        public bool IsSuccessfullyTransmitted { get; set; }
+        public bool? IsSuccessfullyTransmitted { get; set; }
 
         /// <summary>
         /// count of transmission
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("transmissionCount")]
-        public int TransmissionCount { get; set; }
+        public int? TransmissionCount { get; set; }
 
         /// <summary>
         /// The unique identifier of the merchant this webhookEvent object
@@ -14195,7 +14195,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("statusCode")]
-        public int StatusCode { get; set; }
+        public int? StatusCode { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
         public Data Data { get; set; }

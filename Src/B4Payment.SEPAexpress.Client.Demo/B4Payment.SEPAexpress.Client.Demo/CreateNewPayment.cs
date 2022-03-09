@@ -15,6 +15,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             var createPaymentResponse = await CreatePaymentAsync();
 
             // TODO: display result
+            Console.WriteLine(createPaymentResponse.Payment.SoftDescriptor);
         }
 
         private async Task<CreatePaymentHttpResponse> CreatePaymentAsync()
@@ -24,6 +25,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
                 Amount = 10002,
                 MandateId = "3b8a541fffc0177e32a099d63227cb79",
                 CurrencyCode = "EUR",
+                Mandate = null // TODO: as about "required" on that
             };
 
             var client = new Client(Globals.BaseUrl, Globals.HttpClient);
