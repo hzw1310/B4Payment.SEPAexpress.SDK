@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using B4Payment.SEPAexpress.Client.Demo.Identity;
 
 namespace B4Payment.SEPAexpress.Client.Demo
 {
@@ -10,9 +6,19 @@ namespace B4Payment.SEPAexpress.Client.Demo
     {
         public async Task ExecuteAsync()
         {
-            var baseUrl = "https://sepaexpress-prod-fx.azurewebsites.net";
-            using var httpClient = new HttpClient();
+            var authenticationAction = new AuthenticationAction();
+            var accessToken = await authenticationAction.GetAccessTokenAsync();
 
+            Globals.HttpClient.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            var createPaymentResponse = await CreatePaymentAsync();
+
+            // TODO: display result
+        }
+
+        private async Task<CreatePaymentHttpResponse> CreatePaymentAsync()
+        {
             var createPaymentRequest = new CreatePaymentHttpRequest
             {
                 Amount = 10002,
@@ -20,12 +26,11 @@ namespace B4Payment.SEPAexpress.Client.Demo
                 CurrencyCode = "EUR",
             };
 
-
-            var client = new Client(baseUrl, httpClient);
-
+            var client = new Client(Globals.BaseUrl, Globals.HttpClient);
+            
             var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
 
-
+            return createPaymentResponse;
         }
     }
 }
