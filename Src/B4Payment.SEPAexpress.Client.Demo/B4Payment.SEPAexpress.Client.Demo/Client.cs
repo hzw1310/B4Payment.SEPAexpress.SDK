@@ -22,18 +22,18 @@ namespace B4Payment.SEPAexpress.Client.Demo
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
-        private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
+        private System.Lazy<System.Text.Json.JsonSerializerOptions> _settings;
 
         public Client(string baseUrl, System.Net.Http.HttpClient httpClient)
         {
             BaseUrl = baseUrl;
             _httpClient = httpClient;
-            _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
+            _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings);
         }
 
-        private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
+        private System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new Newtonsoft.Json.JsonSerializerSettings();
+            var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -44,9 +44,9 @@ namespace B4Payment.SEPAexpress.Client.Demo
             set { _baseUrl = value; }
         }
 
-        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
-        partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
+        partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
@@ -79,7 +79,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -968,7 +968,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -1431,7 +1431,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -2247,7 +2247,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -2810,7 +2810,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -2957,7 +2957,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -3104,7 +3104,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -3251,7 +3251,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -3398,7 +3398,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -3852,7 +3852,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -4415,7 +4415,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -4558,7 +4558,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -5091,7 +5091,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -5738,7 +5738,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -6307,7 +6307,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -8680,10 +8680,10 @@ namespace B4Payment.SEPAexpress.Client.Demo
                 var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
+                    var typedBody = System.Text.Json.JsonSerializer.Deserialize<T>(responseText, JsonSerializerSettings);
                     return new ObjectResponseResult<T>(typedBody, responseText);
                 }
-                catch (Newtonsoft.Json.JsonException exception)
+                catch (System.Text.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
                     throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
@@ -8694,15 +8694,12 @@ namespace B4Payment.SEPAexpress.Client.Demo
                 try
                 {
                     using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                    using (var streamReader = new System.IO.StreamReader(responseStream))
-                    using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
                     {
-                        var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
-                        var typedBody = serializer.Deserialize<T>(jsonTextReader);
+                        var typedBody = await System.Text.Json.JsonSerializer.DeserializeAsync<T>(responseStream, JsonSerializerSettings, cancellationToken).ConfigureAwait(false);
                         return new ObjectResponseResult<T>(typedBody, string.Empty);
                     }
                 }
-                catch (Newtonsoft.Json.JsonException exception)
+                catch (System.Text.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
                     throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
@@ -8763,12 +8760,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The unique identifier of the customer this bank account object belongs to.
         /// <br/>Mandatory, unless a new customer to create is given.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         [System.ComponentModel.DataAnnotations.Required]
         public CreateCustomerHttpRequest Customer { get; set; } = new CreateCustomerHttpRequest();
 
@@ -8776,7 +8774,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// Account holder’s given name. Optional. Will be derived from
         /// <br/>customer's given name, when not filled.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("accountHolder", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("accountHolder")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string AccountHolder { get; set; }
 
@@ -8786,7 +8785,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>the preferred way to specify a bank account. Alternatively the
         /// <br/>country code and the national fields can be used.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("iban", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("iban")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(34, MinimumLength = 15)]
         public string Iban { get; set; }
@@ -8794,7 +8794,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The ISO 9362 business identifier code. Optional
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bic", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bic")]
         [System.ComponentModel.DataAnnotations.StringLength(11, MinimumLength = 8)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"^([a-zA-Z]{4}[a-zA-Z]{2}[a-zA-Z0-9]{2}([a-zA-Z0-9]{3})?)$")]
         public string Bic { get; set; }
@@ -8803,7 +8804,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The ISO 4217 currency code. Optional. Will be derived from the
         /// <br/>bank account iban when not filled and iban is present.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
 
@@ -8812,7 +8814,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>from the bank account iban when not filled and iban is present.
         /// <br/>Otherwise mandatory to define the national fields to use.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("countryCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("countryCode")]
         [System.ComponentModel.DataAnnotations.StringLength(2, MinimumLength = 2)]
         public string CountryCode { get; set; }
 
@@ -8822,7 +8825,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Optional. Mandatory when iban is empty and national
         /// <br/>regulations require the field.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankCode")]
         [System.ComponentModel.DataAnnotations.StringLength(8, MinimumLength = 1)]
         public string BankCode { get; set; }
 
@@ -8832,7 +8836,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Optional. Mandatory when iban is empty and national
         /// <br/>regulations require the field.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("branchCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("branchCode")]
         [System.ComponentModel.DataAnnotations.StringLength(8, MinimumLength = 1)]
         public string BranchCode { get; set; }
 
@@ -8842,7 +8847,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Optional. Mandatory when iban is empty and national
         /// <br/>regulations require the field.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("accountNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("accountNumber")]
         [System.ComponentModel.DataAnnotations.StringLength(14, MinimumLength = 1)]
         public string AccountNumber { get; set; }
 
@@ -8854,20 +8860,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -8885,7 +8893,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this customer object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
@@ -8893,77 +8902,88 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Customer’s salutation
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("salutation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("salutation")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Salutation { get; set; }
 
         /// <summary>
         /// Customer’s given name. Required unless a company name is provided
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("givenName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("givenName")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string GivenName { get; set; }
 
         /// <summary>
         /// Customer’s family name. Required unless a company name is provided
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("familyName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("familyName")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string FamilyName { get; set; }
 
         /// <summary>
         /// Customer’s company name. Required unless a given name and family name are provided
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("companyName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("companyName")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string CompanyName { get; set; }
 
         /// <summary>
         /// The first line of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("addressLine1", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("addressLine1")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string AddressLine1 { get; set; }
 
         /// <summary>
         /// The second line of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("addressLine2", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("addressLine2")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
         /// The third line of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("addressLine3", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("addressLine3")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string AddressLine3 { get; set; }
 
         /// <summary>
         /// The postal code of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("postalCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("postalCode")]
         [System.ComponentModel.DataAnnotations.StringLength(16)]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// The city of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("city", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("city")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string City { get; set; }
 
         /// <summary>
         /// The address region, county or department of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("region", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("region")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Region { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 alpha-2 country code of the customer’s address.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("countryCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("countryCode")]
         [System.ComponentModel.DataAnnotations.StringLength(2, MinimumLength = 2)]
         public string CountryCode { get; set; }
 
@@ -8973,14 +8993,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>only “en”, “fr”, “de” are supported.
         /// <br/>Defaults to the country code of the address or "en" if not supported
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("languageCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("languageCode")]
         [System.ComponentModel.DataAnnotations.StringLength(2, MinimumLength = 2)]
         public string LanguageCode { get; set; }
 
         /// <summary>
         /// Customer’s email address.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("emailAddress", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("emailAddress")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"\A(?:[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)\Z")]
         public string EmailAddress { get; set; }
@@ -8988,7 +9010,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Customer’s telephone number. ITU-T E.164 formatted.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("telephone", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("telephone")]
         [System.ComponentModel.DataAnnotations.StringLength(16)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"^\+?[1-9]\d{1,14}$")]
         public string Telephone { get; set; }
@@ -8996,7 +9019,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Customer’s cellphone number. ITU-T E.164 formatted.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("cellphone", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("cellphone")]
         [System.ComponentModel.DataAnnotations.StringLength(16)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"^\+?[1-9]\d{1,14}$")]
         public string Cellphone { get; set; }
@@ -9009,20 +9033,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9037,7 +9063,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateHostedPageHttpRequest
     {
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public CreateMandateHttpRequest Mandate { get; set; } = new CreateMandateHttpRequest();
 
@@ -9045,19 +9072,21 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The type of this hosted page. One of:
         /// <br/>* createMandate -     The hosted page is used to create a mandate.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("type")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string Type { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9074,7 +9103,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Optional. Mandatory if the associated merchant has more than
         /// <br/>one matching connector configured for the determined payment scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
@@ -9082,12 +9112,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The unique identifier of the bank account this mandate object belongs to.
         /// <br/>Mandatory, unless a new bank account to create is given.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         [System.ComponentModel.DataAnnotations.Required]
         public CreateBankAccountHttpRequest BankAccount { get; set; } = new CreateBankAccountHttpRequest();
 
@@ -9098,7 +9129,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* sepa - Single Euro Payments Area
         /// <br/>* bacs - Bankers Automated Clearing Services
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("scheme", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("scheme")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string Scheme { get; set; }
 
@@ -9108,7 +9140,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>SEPAexpress will generate a unique reference satisfying the
         /// <br/>different scheme requirements if this field is not filled.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reference")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Reference { get; set; }
 
@@ -9119,7 +9152,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* recurring - The mandate can be used for an unlimited number of payments. It will expire after a period of
         /// <br/>dormancy as defined by the payment scheme. This is the default.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("type")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string Type { get; set; }
 
@@ -9136,7 +9170,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>is executed.
         /// <br/>* dynamic - Dynamic mandate management. The mandate type is managed by SEPA.express based on configured parameters.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("approvalBy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("approvalBy")]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"(?i)^(click|sms|email|ais|dynamic)$")]
         public string ApprovalBy { get; set; }
 
@@ -9148,20 +9183,23 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// ApprovalDate is an optional field that indicates when the mandate was signed.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("approvalDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("approvalDate")]
         public System.DateTimeOffset? ApprovalDate { get; set; }
 
         /// <summary>
         /// The ISO 4217 currency code. used mainly for AIS mandate with Balance Check
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
@@ -9170,20 +9208,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The max allowable amount to collect from the customer's bank account for this mandate.
         /// <br/>Specified in the smallest subunit of the used currency, e.g. cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(0, int.MaxValue)]
         public int? Amount { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9198,27 +9238,30 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The Id
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
 
         /// <summary>
         /// The approval Tan
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("tan", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("tan")]
         [System.ComponentModel.DataAnnotations.StringLength(6, MinimumLength = 6)]
         public string Tan { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9233,7 +9276,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The Id
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -9241,13 +9285,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9262,7 +9307,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the mandate object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -9272,20 +9318,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* accept - Accept the creation of this mandate
         /// <br/>* reject - Reject the creation of this mandate
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("action")]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"(?i)^(accept|reject)$")]
         public string Action { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9300,7 +9348,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The Id
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -9308,13 +9357,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9329,7 +9379,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The Id
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -9337,13 +9388,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9359,19 +9411,21 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The unique identifier of the mandate this payment object belongs to.
         /// <br/>Mandatory, unless a new mandate to create is given.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MandateId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public CreateMandateHttpRequest Mandate { get; set; } = new CreateMandateHttpRequest();
 
         /// <summary>
         /// The ISO 4217 currency code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
@@ -9381,7 +9435,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Specified in the smallest subunit of the used currency, e.g.
         /// <br/>cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue)]
         public int Amount { get; set; }
 
@@ -9391,7 +9446,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>format and content are dependent on the regulations defined by
         /// <br/>the used payment scheme. Often called End2EndId in the SEPA scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reference")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Reference { get; set; }
 
@@ -9401,7 +9457,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if supported in the used payment scheme. Optional. SEPAexpress will
         /// <br/>generate a scheme compliant soft descriptor, when left empty.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("softDescriptor", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("softDescriptor")]
         [System.ComponentModel.DataAnnotations.StringLength(140)]
         public string SoftDescriptor { get; set; }
 
@@ -9410,7 +9467,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>to the customer's bank account. Optional. Payments will
         /// <br/>be submitted as soon as possible, when not specified.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("submitAfter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("submitAfter")]
         public System.DateTimeOffset? SubmitAfter { get; set; }
 
         /// <summary>
@@ -9421,45 +9479,52 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding iban from the stored mandate.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationIban", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationIban")]
         public string ValidationIban { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored customer.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationCustomerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationCustomerId")]
         public string ValidationCustomerId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored bank account.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationBankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationBankAccountId")]
         public string ValidationBankAccountId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationConnectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationConnectorId")]
         public string ValidationConnectorId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored merchant.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationMerchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationMerchantId")]
         public string ValidationMerchantId { get; set; }
 
         /// <summary>
@@ -9467,13 +9532,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>SEPAexpress will initiate the approval process. One of:
         /// <br/>* ais - Account Information Dienste (kontoinformationsdienste - KID) mandate. The customer is redirected to his selected bank login and after successful authorization he gets redirected back to merchant site.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("approvalBy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("approvalBy")]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"(?i)^(ais)$")]
         public string ApprovalBy { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9488,7 +9554,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the payment object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -9498,20 +9565,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* accept - Accept the creation of this payment
         /// <br/>* reject - Reject the creation of this payment
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("action")]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"(?i)^(accept|reject)$")]
         public string Action { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9528,7 +9597,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Optional. Mandatory if the associated merchant has more than
         /// <br/>one matching connector configured for the determined payout scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
@@ -9536,12 +9606,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The unique identifier of the bank account this payout object belongs to.
         /// <br/>Mandatory, unless a new bank account to create is given.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         [System.ComponentModel.DataAnnotations.Required]
         public CreateBankAccountHttpRequest BankAccount { get; set; } = new CreateBankAccountHttpRequest();
 
@@ -9552,13 +9623,15 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* sepa - Single Euro Payments Area
         /// <br/>* bacs - Bankers Automated Clearing Services
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("scheme", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("scheme")]
         public string Scheme { get; set; }
 
         /// <summary>
         /// The ISO 4217 currency code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
@@ -9568,7 +9641,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Specified in the smallest subunit of the used currency, e.g.
         /// <br/>cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue)]
         public int? Amount { get; set; }
 
@@ -9578,7 +9652,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>format and content are dependent on the regulations defined by
         /// <br/>the used payment scheme. Often called End2EndId in the SEPA scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reference")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Reference { get; set; }
 
@@ -9588,7 +9663,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if supported in the used payout scheme. Optional. SEPAexpress will
         /// <br/>generate a scheme compliant soft descriptor, when left empty.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("softDescriptor", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("softDescriptor")]
         [System.ComponentModel.DataAnnotations.StringLength(140)]
         public string SoftDescriptor { get; set; }
 
@@ -9597,7 +9673,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>to the customer's bank account. Optional. Payouts will
         /// <br/>be submitted as soon as possible, when not specified.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("submitAfter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("submitAfter")]
         public System.DateTimeOffset? SubmitAfter { get; set; }
 
         /// <summary>
@@ -9608,44 +9685,50 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding iban from the stored mandate.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationIban", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationIban")]
         public string ValidationIban { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored customer.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationCustomerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationCustomerId")]
         public string ValidationCustomerId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationConnectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationConnectorId")]
         public string ValidationConnectorId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored merchant.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationMerchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationMerchantId")]
         public string ValidationMerchantId { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9660,7 +9743,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The Id
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -9670,20 +9754,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* accept - Accept the creation of this payout
         /// <br/>* reject - Reject the creation of this payout
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("action")]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"(?i)^(accept|reject)$")]
         public string Action { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9698,7 +9784,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the payment this refund object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PaymentId { get; set; }
@@ -9706,7 +9793,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The ISO 4217 currency code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
 
@@ -9716,7 +9804,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>cents for EUR. Optional. The entire remaining refundable
         /// <br/>amount of the associated payment will be refunded, if empty.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue)]
         public int? Amount { get; set; }
 
@@ -9726,7 +9815,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if supported in the used payment scheme. Optional. SEPAexpress will
         /// <br/>generate a scheme compliant soft descriptor, when left empty.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("softDescriptor", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("softDescriptor")]
         [System.ComponentModel.DataAnnotations.StringLength(140)]
         public string SoftDescriptor { get; set; }
 
@@ -9735,7 +9825,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>to the customer's bank account. Optional. Refunds will
         /// <br/>be submitted as soon as possible, when not specified.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("submitAfter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("submitAfter")]
         public System.DateTimeOffset? SubmitAfter { get; set; }
 
         /// <summary>
@@ -9746,44 +9837,50 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored customer.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationCustomerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationCustomerId")]
         public string ValidationCustomerId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored bank account.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationBankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationBankAccountId")]
         public string ValidationBankAccountId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationConnectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationConnectorId")]
         public string ValidationConnectorId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored merchant.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationMerchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationMerchantId")]
         public string ValidationMerchantId { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9798,7 +9895,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the payment object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
 
@@ -9807,20 +9905,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* accept - Accept the creation of this refund
         /// <br/>* reject - Reject the creation of this refund
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("action")]
         [System.ComponentModel.DataAnnotations.StringLength(140)]
         public string Action { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9832,12 +9932,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateBankAccountHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -9855,7 +9956,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this bank account object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -9863,29 +9965,32 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this bank account object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this bank account object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this bank account object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -9898,28 +10003,32 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* discarded - The bank account has been discarded.
         /// <br/>* expired - The bank account has expired due to dormancy.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string State { get; set; }
 
         /// <summary>
         /// Account holder’s company name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("accountHolder", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("accountHolder")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string AccountHolder { get; set; }
 
         /// <summary>
         /// The ISO 13616 international bank account number
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("iban", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("iban")]
         [System.ComponentModel.DataAnnotations.StringLength(34, MinimumLength = 15)]
         public string Iban { get; set; }
 
         /// <summary>
         /// The ISO 9362 business identifier code
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bic", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bic")]
         [System.ComponentModel.DataAnnotations.StringLength(11, MinimumLength = 8)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"^([a-zA-Z]{4}[a-zA-Z]{2}[a-zA-Z0-9]{2}([a-zA-Z0-9]{3})?)$")]
         public string Bic { get; set; }
@@ -9927,14 +10036,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The ISO 4217 currency code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 alpha-2 country code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("countryCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("countryCode")]
         [System.ComponentModel.DataAnnotations.StringLength(2, MinimumLength = 2)]
         public string CountryCode { get; set; }
 
@@ -9942,7 +10053,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The national bank code. Length and format dependent
         /// <br/>on national regulations defined by the country code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankCode")]
         [System.ComponentModel.DataAnnotations.StringLength(8, MinimumLength = 1)]
         public string BankCode { get; set; }
 
@@ -9950,7 +10062,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The national branch code. Length and format dependent
         /// <br/>on national regulations defined by the country code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("branchCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("branchCode")]
         [System.ComponentModel.DataAnnotations.StringLength(8, MinimumLength = 1)]
         public string BranchCode { get; set; }
 
@@ -9958,7 +10071,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The national account number. Length and format dependent
         /// <br/>on national regulations defined by the country code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("accountNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("accountNumber")]
         [System.ComponentModel.DataAnnotations.StringLength(14, MinimumLength = 1)]
         public string AccountNumber { get; set; }
 
@@ -9970,20 +10084,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10001,7 +10117,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this merchant object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -10009,7 +10126,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Fixed timestamp, recording when this merchant object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -10024,7 +10142,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* discarded - The merchant has been discarded.
         /// <br/>* expired - The merchant has expired due to dormancy.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string State { get; set; }
@@ -10032,7 +10151,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Merchant's name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(70, MinimumLength = 1)]
         public string Name { get; set; }
@@ -10040,19 +10160,21 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         /// <summary>
         /// Configuration for the merchant
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("configuration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("configuration")]
         public string Configuration { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10070,7 +10192,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this customer object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -10078,18 +10201,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this customer object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this customer object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -10102,7 +10227,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* discarded - The customer has been discarded.
         /// <br/>* expired - The customer has expired due to dormancy.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string State { get; set; }
@@ -10110,77 +10236,88 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Customer’s salutation
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("salutation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("salutation")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Salutation { get; set; }
 
         /// <summary>
         /// Customer’s given name. Required unless a company name is provided
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("givenName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("givenName")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string GivenName { get; set; }
 
         /// <summary>
         /// Customer’s family name. Required unless a company name is provided
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("familyName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("familyName")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string FamilyName { get; set; }
 
         /// <summary>
         /// Customer’s company name. Required unless a given name and family name are provided
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("companyName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("companyName")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string CompanyName { get; set; }
 
         /// <summary>
         /// The first line of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("addressLine1", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("addressLine1")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string AddressLine1 { get; set; }
 
         /// <summary>
         /// The second line of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("addressLine2", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("addressLine2")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
         /// The third line of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("addressLine3", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("addressLine3")]
         [System.ComponentModel.DataAnnotations.StringLength(70)]
         public string AddressLine3 { get; set; }
 
         /// <summary>
         /// The postal code of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("postalCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("postalCode")]
         [System.ComponentModel.DataAnnotations.StringLength(16)]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// The city of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("city", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("city")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string City { get; set; }
 
         /// <summary>
         /// The address region, county or department of the customer’s address
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("region", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("region")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Region { get; set; }
 
         /// <summary>
         /// The ISO 3166-1 alpha-2 country code of the customer’s address.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("countryCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("countryCode")]
         [System.ComponentModel.DataAnnotations.StringLength(2, MinimumLength = 2)]
         public string CountryCode { get; set; }
 
@@ -10190,7 +10327,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>only “en”, “fr”, “de” are supported.
         /// <br/>Defaults to the country code of the address or "en" if not supported
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("languageCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("languageCode")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2, MinimumLength = 2)]
         public string LanguageCode { get; set; }
@@ -10198,7 +10336,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Customer’s email address.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("emailAddress", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("emailAddress")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"\A(?:[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)\Z")]
         public string EmailAddress { get; set; }
@@ -10206,7 +10345,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Customer’s telephone number. ITU-T E.164 formatted.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("telephone", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("telephone")]
         [System.ComponentModel.DataAnnotations.StringLength(16)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"^\+?[1-9]\d{1,14}$")]
         public string Telephone { get; set; }
@@ -10214,7 +10354,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Customer’s cellphone number. ITU-T E.164 formatted.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("cellphone", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("cellphone")]
         [System.ComponentModel.DataAnnotations.StringLength(16)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"^\+?[1-9]\d{1,14}$")]
         public string Cellphone { get; set; }
@@ -10227,20 +10368,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10255,13 +10398,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ErrorResponse
     {
-        [Newtonsoft.Json.JsonProperty("error", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("error")]
         [System.ComponentModel.DataAnnotations.Required]
         public Error Error { get; set; } = new Error();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10279,7 +10423,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -10287,13 +10432,15 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The status code of this error.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("code")]
         public int Code { get; set; }
 
         /// <summary>
         /// The error message.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("message")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(255, MinimumLength = 1)]
         public string Message { get; set; }
@@ -10301,54 +10448,62 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The reason code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reasonCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reasonCode")]
         public string ReasonCode { get; set; }
 
         /// <summary>
         /// The cause.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("cause", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("cause")]
         public string Cause { get; set; }
 
         /// <summary>
         /// The trigger.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("trigger", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("trigger")]
         public string Trigger { get; set; }
 
         /// <summary>
         /// The token.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("token", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("token")]
         public string Token { get; set; }
 
         /// <summary>
         /// The description.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The action.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("action")]
         public string Action { get; set; }
 
         /// <summary>
         /// The best practice.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bestPractice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bestPractice")]
         public string BestPractice { get; set; }
 
         /// <summary>
         /// List of error details.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("details", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("details")]
         public System.Collections.Generic.ICollection<ErrorDetail> Details { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10366,7 +10521,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The error detail message.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("message")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(255, MinimumLength = 1)]
         public string Message { get; set; }
@@ -10374,12 +10530,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// List of fields.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("fields", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("fields")]
         public System.Collections.Generic.ICollection<string> Fields { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10394,18 +10551,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetBankAccountsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of bank accounts.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccounts", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccounts")]
         public System.Collections.Generic.ICollection<BankAccount> BankAccounts { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10423,14 +10582,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the first item that has been returned.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("before", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("before")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Before { get; set; }
 
         /// <summary>
         /// The unique identifier of the last item that has been returned.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("after", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("after")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string After { get; set; }
 
@@ -10438,18 +10599,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The upper bound placed on the number of items returned. If there were not enough 
         /// <br/>remaining items in the list of data then fewer than this number will have been returned.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("limit")]
         public int Limit { get; set; }
 
         /// <summary>
         /// The number of items returned.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("count", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("count")]
         public int Count { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10464,13 +10627,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetBankAccountHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         [System.ComponentModel.DataAnnotations.Required]
         public BankAccount BankAccount { get; set; } = new BankAccount();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10485,13 +10649,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetConnectorHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         [System.ComponentModel.DataAnnotations.Required]
         public Connector Connector { get; set; } = new Connector();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10509,7 +10674,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this connector object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -10517,18 +10683,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this connector object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this connector object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -10542,7 +10710,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* discarded - The connector has been discarded.
         /// <br/>* expired - The connector has expired due to dormancy.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string State { get; set; }
@@ -10550,7 +10719,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The name of this connector object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -10560,7 +10730,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* sepa - Single Euro Payments Area
         /// <br/>* bacs - Bankers Automated Clearing Services
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("scheme", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("scheme")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string Scheme { get; set; }
@@ -10570,7 +10741,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* payment - The connector is used to collect payments from customers.
         /// <br/>* payout - The connector is used to payout money to customers.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("type")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string Type { get; set; }
@@ -10581,7 +10753,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* archive - mandate documents will be generated and archived for newly created payment mandates.
         /// <br/>* send - mandate documents will be generated, archived and sent to the customer for newly created payment mandates.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateHandling", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateHandling")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string MandateHandling { get; set; }
 
@@ -10591,7 +10764,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* archive - mandate setup confirmation documents will be generated and archived for newly created payment mandates.
         /// <br/>created payment mandates.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateSetupConfirmationHandling", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateSetupConfirmationHandling")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string MandateSetupConfirmationHandling { get; set; }
 
@@ -10602,35 +10776,37 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* send - payment pre notification documents will be generated, archived and sent to the customer for newly created
         /// <br/>payments.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentPreNotificationHandling", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentPreNotificationHandling")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string PaymentPreNotificationHandling { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandateReviewEnabled", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandateReviewEnabled")]
         public bool MandateReviewEnabled { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("paymentReviewEnabled", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("paymentReviewEnabled")]
         public bool PaymentReviewEnabled { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("payoutReviewEnabled", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("payoutReviewEnabled")]
         public bool PayoutReviewEnabled { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("refundReviewEnabled", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("refundReviewEnabled")]
         public bool RefundReviewEnabled { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("schemaConfiguration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("schemaConfiguration")]
         public SepaConfiguration SchemaConfiguration { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10642,66 +10818,67 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class SepaConfiguration
     {
-        [Newtonsoft.Json.JsonProperty("creditorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("creditorId")]
         public string CreditorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("paymentProcessorName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("paymentProcessorName")]
         public string PaymentProcessorName { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("payoutProcessorName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("payoutProcessorName")]
         public string PayoutProcessorName { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("refundProcessorName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("refundProcessorName")]
         public string RefundProcessorName { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("refundQueuingDays", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("refundQueuingDays")]
         public int RefundQueuingDays { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("debtCollection", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("debtCollection")]
         public bool DebtCollection { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("emailConfig", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("emailConfig")]
         public EmailConfig EmailConfig { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("smsConfig", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("smsConfig")]
         public SmsConfig SmsConfig { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("riskCheckConfiguration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("riskCheckConfiguration")]
         public RiskCheckConfiguration RiskCheckConfiguration { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("pspName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("pspName")]
         public string PspName { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("b4PId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("b4PId")]
         public string B4PId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("isCompanyDirectDebit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("isCompanyDirectDebit")]
         public bool IsCompanyDirectDebit { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("enforceAis", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("enforceAis")]
         public bool EnforceAis { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("aisConfiguration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("aisConfiguration")]
         public AisConfiguration AisConfiguration { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("hostedPagesConfiguration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("hostedPagesConfiguration")]
         public HostedPagesConfigurationDto HostedPagesConfiguration { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("tokenIoConfig", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("tokenIoConfig")]
         public TokenIoConfig TokenIoConfig { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("finTsConfig", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("finTsConfig")]
         public FinTsConfig FinTsConfig { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("dynamicMandateConfiguration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("dynamicMandateConfiguration")]
         public DynamicMandateConfigurationDto DynamicMandateConfiguration { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("templateConfiguration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("templateConfiguration")]
         public TemplateConfiguration TemplateConfiguration { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10713,15 +10890,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class EmailConfig
     {
-        [Newtonsoft.Json.JsonProperty("fromName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("fromName")]
         public string FromName { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("fromEmail", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("fromEmail")]
         public string FromEmail { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10733,12 +10911,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class SmsConfig
     {
-        [Newtonsoft.Json.JsonProperty("fromName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("fromName")]
         public string FromName { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10750,30 +10929,31 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class RiskCheckConfiguration
     {
-        [Newtonsoft.Json.JsonProperty("enabled", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("enabled")]
         public bool Enabled { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandateMinAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandateMinAmount")]
         public int MandateMinAmount { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandateMaxAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandateMaxAmount")]
         public int MandateMaxAmount { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("paymentMinAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("paymentMinAmount")]
         public int PaymentMinAmount { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("paymentMaxAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("paymentMaxAmount")]
         public int PaymentMaxAmount { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("historicalBalanceCheckTimeSpan", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("historicalBalanceCheckTimeSpan")]
         public TimeSpan HistoricalBalanceCheckTimeSpan { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("paymentMaxCountPerPeriod", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("paymentMaxCountPerPeriod")]
         public System.Collections.Generic.ICollection<CountPerTimeSpan> PaymentMaxCountPerPeriod { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10785,42 +10965,43 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class TimeSpan
     {
-        [Newtonsoft.Json.JsonProperty("ticks", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("ticks")]
         public long Ticks { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("days", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("days")]
         public int Days { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("hours", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("hours")]
         public int Hours { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("milliseconds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("milliseconds")]
         public int Milliseconds { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("minutes", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("minutes")]
         public int Minutes { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("seconds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("seconds")]
         public int Seconds { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("totalDays", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("totalDays")]
         public double TotalDays { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("totalHours", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("totalHours")]
         public double TotalHours { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("totalMilliseconds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("totalMilliseconds")]
         public double TotalMilliseconds { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("totalMinutes", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("totalMinutes")]
         public double TotalMinutes { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("totalSeconds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("totalSeconds")]
         public double TotalSeconds { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10832,15 +11013,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CountPerTimeSpan
     {
-        [Newtonsoft.Json.JsonProperty("count", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("count")]
         public int Count { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("timeSpan", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("timeSpan")]
         public TimeSpan TimeSpan { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10852,15 +11034,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class AisConfiguration
     {
-        [Newtonsoft.Json.JsonProperty("routes", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("routes")]
         public System.Collections.Generic.ICollection<AisProviderRoute> Routes { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("lastSyncDifferenceTimeSpan", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("lastSyncDifferenceTimeSpan")]
         public TimeSpan LastSyncDifferenceTimeSpan { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10872,18 +11055,21 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class AisProviderRoute
     {
-        [Newtonsoft.Json.JsonProperty("countryCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("countryCode")]
         public string CountryCode { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bic", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bic")]
         public string Bic { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("providers", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        [System.Text.Json.Serialization.JsonPropertyName("providers")]
+
+        // TODO(system.text.json): Add string enum item converter
         public System.Collections.Generic.ICollection<Providers> Providers { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10895,21 +11081,23 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class HostedPagesConfigurationDto
     {
-        [Newtonsoft.Json.JsonProperty("styles", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("styles")]
         public HostedPagesConnectorStylesDto Styles { get; set; }
 
         /// <summary>
         /// "ACCOUNT_HOLDER" | "COMPANY_NAME" | "FIRST_AND_LAST_NAME"
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("requiredNameField", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("requiredNameField")]
         public string RequiredNameField { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("hideAllInputs", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("hideAllInputs")]
         public bool HideAllInputs { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10921,21 +11109,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class HostedPagesConnectorStylesDto
     {
-        [Newtonsoft.Json.JsonProperty("logoUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("logoUrl")]
         public string LogoUrl { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("primaryColor", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("primaryColor")]
         public string PrimaryColor { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("backgroundColor", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("backgroundColor")]
         public string BackgroundColor { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("borderRadius", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("borderRadius")]
         public string BorderRadius { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10947,33 +11136,34 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class TokenIoConfig
     {
-        [Newtonsoft.Json.JsonProperty("apiKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("apiKey")]
         public string ApiKey { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("baseApiUri", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("baseApiUri")]
         public string BaseApiUri { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("publicKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("publicKey")]
         public string PublicKey { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("webAppUriTemplate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("webAppUriTemplate")]
         public string WebAppUriTemplate { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("memberId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("memberId")]
         public string MemberId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("memberAliasType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("memberAliasType")]
         public string MemberAliasType { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customizationId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customizationId")]
         public string CustomizationId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("validateSignature", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("validateSignature")]
         public string ValidateSignature { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -10985,15 +11175,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class FinTsConfig
     {
-        [Newtonsoft.Json.JsonProperty("apiKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("apiKey")]
         public string ApiKey { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("riskApiKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("riskApiKey")]
         public string RiskApiKey { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11005,12 +11196,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class DynamicMandateConfigurationDto
     {
-        [Newtonsoft.Json.JsonProperty("amounts", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amounts")]
         public System.Collections.Generic.ICollection<DynamicMandateAmountDto> Amounts { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11022,15 +11214,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class DynamicMandateAmountDto
     {
-        [Newtonsoft.Json.JsonProperty("approvalBy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("approvalBy")]
         public string ApprovalBy { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         public int? Amount { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11042,18 +11235,19 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class TemplateConfiguration
     {
-        [Newtonsoft.Json.JsonProperty("creditorStreetNameAndNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("creditorStreetNameAndNumber")]
         public string CreditorStreetNameAndNumber { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("creditorPostalCodeCity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("creditorPostalCodeCity")]
         public string CreditorPostalCodeCity { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchantLogo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchantLogo")]
         public string MerchantLogo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11068,18 +11262,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetConnectorsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of connectors.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectors", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectors")]
         public System.Collections.Generic.ICollection<Connector> Connectors { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11094,13 +11290,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateCustomerHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         [System.ComponentModel.DataAnnotations.Required]
         public Customer Customer { get; set; } = new Customer();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11115,18 +11312,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetCustomersHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of customers.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customers", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customers")]
         public System.Collections.Generic.ICollection<Customer> Customers { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11141,13 +11340,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetCustomerHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         [System.ComponentModel.DataAnnotations.Required]
         public Customer Customer { get; set; } = new Customer();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11162,12 +11362,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateHostedPageHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("hostedPage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("hostedPage")]
         public HostedPage HostedPage { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11185,7 +11386,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this hosted page object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -11193,66 +11395,73 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this hosted page object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the connector this hosted page object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         public Connector Connector { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this hosted page object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// The unique identifier of the bank account this hosted page object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
         /// The unique identifier of the mandate this hosted page object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MandateId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         public Mandate Mandate { get; set; }
 
         /// <summary>
         /// The unique identifier of the payment this hosted page object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentId")]
         public string PaymentId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("payment")]
         public Payment Payment { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this hosted page object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -11263,7 +11472,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* success - The hosted page workflow finished successfully.
         /// <br/>* failed - The hosted page workflow failed.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string State { get; set; }
 
@@ -11271,43 +11481,49 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// One of:
         /// <br/> * CreateMandate
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// When the hosted page has failed this contains the cause for failure.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("cause", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("cause")]
         public string Cause { get; set; }
 
         /// <summary>
         /// When the hosted page has failed this contains the reason code for failure.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reasonCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reasonCode")]
         public string ReasonCode { get; set; }
 
         /// <summary>
         /// When the hosted page has failed this contains the trigger for failure.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("trigger", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("trigger")]
         public string Trigger { get; set; }
 
         /// <summary>
         /// When the hosted page has failed this contains the token for failure.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("token", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("token")]
         public string Token { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11325,7 +11541,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this mandate object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -11333,62 +11550,68 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this mandate object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the connector this mandate object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         public Connector Connector { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this mandate object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// The unique identifier of the bank account this mandate object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
         /// The unique identifier of the mandate object replacing this mandate object.
         /// <br/>Optional. Only filled, when this mandate has been replaced by another mandate.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("replacedByMandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("replacedByMandateId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ReplacedByMandateId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("replacedByMandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("replacedByMandate")]
         public Mandate ReplacedByMandate { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this mandate object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -11409,7 +11632,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* expired - The mandate has expired due to dormancy.
         /// <br/>* replaced - The mandate has been replaced by a new mandate.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string State { get; set; }
@@ -11420,7 +11644,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* sepa - Single Euro Payments Area
         /// <br/>* bacs - Bankers Automated Clearing Services
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("scheme", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("scheme")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Scheme { get; set; }
 
@@ -11428,7 +11653,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The unique reference of this mandate. Length and format dependent
         /// <br/>on regulations defined by the determined payment scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reference")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Reference { get; set; }
 
@@ -11439,7 +11665,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* recurring - The mandate can be used for an unlimited number of payments. It will expire after a period of
         /// <br/>dormancy as defined by the payment scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("type")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string Type { get; set; }
@@ -11448,7 +11675,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The URL of the generated mandate. This field is only filled, when the
         /// <br/>mandate generation feature is enabled in the merchant connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateUrl")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string MandateUrl { get; set; }
 
@@ -11456,7 +11684,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The URL of the generated mandate setup confirmation. This field is only filled, when the
         /// <br/>mandate setup confirmation generation feature is enabled in the merchant connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateSetupConfirmationUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateSetupConfirmationUrl")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string MandateSetupConfirmationUrl { get; set; }
 
@@ -11468,14 +11697,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
@@ -11492,19 +11723,22 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>is executed.
         /// <br/>* dynamic - Dynamic mandate management. The mandate type is managed by SEPA.express based on configured parameters.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("approvalBy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("approvalBy")]
         public string ApprovalBy { get; set; }
 
         /// <summary>
         /// ApprovalDate is an optional field that indicates when the mandate was signed.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("approvalDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("approvalDate")]
         public System.DateTimeOffset? ApprovalDate { get; set; }
 
         /// <summary>
         /// The ISO 4217 currency code. used mainly for AIS mandate with Balance Check
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         public string CurrencyCode { get; set; }
 
         /// <summary>
@@ -11512,21 +11746,23 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Specified in the smallest subunit of the used currency, e.g.
         /// <br/>cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         public int? Amount { get; set; }
 
         /// <summary>
         /// The unique identifier of the hosted page this mandate object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("hostedPageId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("hostedPageId")]
         public string HostedPageId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("hostedPage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("hostedPage")]
         public HostedPage HostedPage { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11544,7 +11780,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this payment object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -11552,62 +11789,68 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this payment object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the connector this payment object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         public Connector Connector { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this payment object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// The unique identifier of the bank account this payment object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
         /// The unique identifier of the mandate this payment object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MandateId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         public Mandate Mandate { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this payment object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -11626,14 +11869,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* discarded - The payment has been discarded.
         /// <br/>* chargedBack - The payment has been charged back by the customer’s bank.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string State { get; set; }
 
         /// <summary>
         /// The ISO 4217 currency code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
 
@@ -11642,7 +11887,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Specified in the smallest subunit of the used currency, e.g.
         /// <br/>cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue)]
         public int Amount { get; set; }
 
@@ -11652,7 +11898,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>format and content are dependent on the regulations defined by
         /// <br/>the used payment scheme. Often called End2EndId in the SEPA scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reference")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Reference { get; set; }
 
@@ -11661,14 +11908,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>printed on the bank statements of the participating bank accounts,
         /// <br/>if supported in the used payment scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("softDescriptor", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("softDescriptor")]
         [System.ComponentModel.DataAnnotations.StringLength(140)]
         public string SoftDescriptor { get; set; }
 
         /// <summary>
         /// The number of requested refunds for this payment.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("refundCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refundCount")]
         public int? RefundCount { get; set; }
 
         /// <summary>
@@ -11676,7 +11925,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Specified in the smallest subunit of the used currency, e.g.
         /// <br/>cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("refundAmount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refundAmount")]
         public int? RefundAmount { get; set; }
 
         /// <summary>
@@ -11684,14 +11934,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>to the customer's bank account. Optional. Payments will
         /// <br/>be submitted as soon as possible, when not specified.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("submitAfter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("submitAfter")]
         public System.DateTimeOffset? SubmitAfter { get; set; }
 
         /// <summary>
         /// The URL of the generated payment pre notification. This field is only filled, when the
         /// <br/>payment pre notification generation feature is enabled in the merchant connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentPreNotificationUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentPreNotificationUrl")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string PaymentPreNotificationUrl { get; set; }
 
@@ -11703,45 +11955,52 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding iban from the stored mandate.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationIban", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationIban")]
         public string ValidationIban { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored customer.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationCustomerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationCustomerId")]
         public string ValidationCustomerId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored bank account.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationBankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationBankAccountId")]
         public string ValidationBankAccountId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationConnectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationConnectorId")]
         public string ValidationConnectorId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored merchant.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationMerchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationMerchantId")]
         public string ValidationMerchantId { get; set; }
 
         /// <summary>
@@ -11750,27 +12009,30 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* ais - Account Information Service mandate. The payment is approved by using a PSD2 AIS account check via the internet
         /// <br/>banking of the customer's bank.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("approvalBy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("approvalBy")]
         public string ApprovalBy { get; set; }
 
         /// <summary>
         /// ApprovalDate is an optional field that indicates when the payment was signed.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("approvalDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("approvalDate")]
         public System.DateTimeOffset? ApprovalDate { get; set; }
 
         /// <summary>
         /// The unique identifier of the hosted page this payment object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("hostedPageId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("hostedPageId")]
         public string HostedPageId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("hostedPage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("hostedPage")]
         public HostedPage HostedPage { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11785,18 +12047,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetHostedPagesHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of HostedPages.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("hostedPages", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("hostedPages")]
         public System.Collections.Generic.ICollection<HostedPage> HostedPages { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11811,13 +12075,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetHostedPageHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("hostedPage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("hostedPage")]
         [System.ComponentModel.DataAnnotations.Required]
         public HostedPage HostedPage { get; set; } = new HostedPage();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11832,13 +12097,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetLocalizationTextHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("localizationText", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("localizationText")]
         [System.ComponentModel.DataAnnotations.Required]
         public LocalizationText LocalizationText { get; set; } = new LocalizationText();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11856,31 +12122,33 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this mandate object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("key", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
         /// The unique identifier of the merchant this mandate object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("languageCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("languageCode")]
         [System.ComponentModel.DataAnnotations.StringLength(2, MinimumLength = 2)]
         public string LanguageCode { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("countryCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("countryCode")]
         [System.ComponentModel.DataAnnotations.StringLength(2, MinimumLength = 2)]
         public string CountryCode { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("text", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("text")]
         public string Text { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11892,13 +12160,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateMandateHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public Mandate Mandate { get; set; } = new Mandate();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11913,18 +12182,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetMandatesHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of mandates.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandates", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandates")]
         public System.Collections.Generic.ICollection<Mandate> Mandates { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11939,13 +12210,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetMandateHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public Mandate Mandate { get; set; } = new Mandate();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11957,13 +12229,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ApproveMandateHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public Mandate Mandate { get; set; } = new Mandate();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11975,13 +12248,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ResendMandateHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public Mandate Mandate { get; set; } = new Mandate();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -11993,13 +12267,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ReviewMandateHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public Mandate Mandate { get; set; } = new Mandate();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12011,13 +12286,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class DiscardMandateHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public Mandate Mandate { get; set; } = new Mandate();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12029,13 +12305,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ReinstateMandateHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         [System.ComponentModel.DataAnnotations.Required]
         public Mandate Mandate { get; set; } = new Mandate();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12050,13 +12327,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetMerchantHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         [System.ComponentModel.DataAnnotations.Required]
         public Merchant Merchant { get; set; } = new Merchant();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12068,16 +12346,17 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreatePaymentHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payment")]
         [System.ComponentModel.DataAnnotations.Required]
         public Payment Payment { get; set; } = new Payment();
 
-        [Newtonsoft.Json.JsonProperty("error", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("error")]
         public Error Error { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12092,18 +12371,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetPaymentsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of payments.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("payments", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payments")]
         public System.Collections.Generic.ICollection<Payment> Payments { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12118,13 +12399,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetPaymentHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payment")]
         [System.ComponentModel.DataAnnotations.Required]
         public Payment Payment { get; set; } = new Payment();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12136,13 +12418,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ReviewPaymentHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payment")]
         [System.ComponentModel.DataAnnotations.Required]
         public Payment Payment { get; set; } = new Payment();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12154,13 +12437,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreatePayoutHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("payout", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payout")]
         [System.ComponentModel.DataAnnotations.Required]
         public Payout Payout { get; set; } = new Payout();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12178,7 +12462,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this payout object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -12186,51 +12471,56 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this payout object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the connector this payout object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         public Connector Connector { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this payout object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// The unique identifier of the bank account this payout object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this payout object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -12247,7 +12537,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* failed - The payout could not be set up.
         /// <br/>* discarded - The payout has been discarded.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string State { get; set; }
@@ -12255,7 +12546,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The ISO 4217 currency code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
 
@@ -12264,7 +12556,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Specified in the smallest subunit of the used currency, e.g.
         /// <br/>cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue)]
         public int Amount { get; set; }
 
@@ -12274,7 +12567,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>format and content are dependent on the regulations defined by
         /// <br/>the used payout scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reference")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Reference { get; set; }
 
@@ -12283,7 +12577,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>printed on the bank statements of the participating bank accounts,
         /// <br/>if supported in the used payout scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("softDescriptor", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("softDescriptor")]
         [System.ComponentModel.DataAnnotations.StringLength(140)]
         public string SoftDescriptor { get; set; }
 
@@ -12292,7 +12587,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>to the customer's bank account. Optional. Payouts will
         /// <br/>be submitted as soon as possible, when not specified.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("submitAfter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("submitAfter")]
         public System.DateTimeOffset? SubmitAfter { get; set; }
 
         /// <summary>
@@ -12303,44 +12599,50 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding iban from the stored mandate.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationIban", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationIban")]
         public string ValidationIban { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored customer.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationCustomerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationCustomerId")]
         public string ValidationCustomerId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationConnectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationConnectorId")]
         public string ValidationConnectorId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored merchant.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationMerchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationMerchantId")]
         public string ValidationMerchantId { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12355,18 +12657,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetPayoutsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of payouts.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("payouts", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payouts")]
         public System.Collections.Generic.ICollection<Payout> Payouts { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12381,13 +12685,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetPayoutHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("payout", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payout")]
         [System.ComponentModel.DataAnnotations.Required]
         public Payout Payout { get; set; } = new Payout();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12399,13 +12704,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ReviewPayoutHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("payout", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payout")]
         [System.ComponentModel.DataAnnotations.Required]
         public Payout Payout { get; set; } = new Payout();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12420,13 +12726,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetReconciliationHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("reconciliation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reconciliation")]
         [System.ComponentModel.DataAnnotations.Required]
         public Reconciliation Reconciliation { get; set; } = new Reconciliation();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12444,7 +12751,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this reconciliation object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -12453,94 +12761,103 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The unique identifier of the merchant this reconciliation object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the connector this reconciliation object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         public Connector Connector { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this reconciliation object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// The unique identifier of the bank account this reconciliation object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
         /// The unique identifier of the mandate this reconciliation object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MandateId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         public Mandate Mandate { get; set; }
 
         /// <summary>
         /// The unique identifier of the payment this reconciliation object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PaymentId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("Payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("Payment")]
         public Payment Payment { get; set; }
 
         /// <summary>
         /// The unique identifier of the refund this reconciliation object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("refundId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refundId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string RefundId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("refund", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("refund")]
         public Refund Refund { get; set; }
 
         /// <summary>
         /// The unique identifier of the payout this reconciliation object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("payoutId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payoutId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PayoutId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("payout", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("payout")]
         public Payout Payout { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this reconciliation object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -12550,7 +12867,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* payout
         /// <br/>* refund
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("entity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("entity")]
         public string Entity { get; set; }
 
         /// <summary>
@@ -12560,20 +12878,23 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* discarded
         /// <br/>* chargedBack
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string State { get; set; }
 
         /// <summary>
         /// The ISO 13616 international bank account number
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("iban", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("iban")]
         public string Iban { get; set; }
 
         /// <summary>
         /// The ISO 4217 currency code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         public string CurrencyCode { get; set; }
 
         /// <summary>
@@ -12581,7 +12902,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Specified in the smallest subunit of the used currency, e.g.
         /// <br/>cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         public int Amount { get; set; }
 
         /// <summary>
@@ -12590,14 +12912,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>format and content are dependent on the regulations defined by
         /// <br/>the used payment scheme. Often called End2EndId in the SEPA scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reference")]
         public string Reference { get; set; }
 
         /// <summary>
         /// The unique transaction id of this transaction defined by the PSP.
         /// <br/>Optional, but highly recommended to use.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
@@ -12605,7 +12929,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>is important for accounting and reconciliation. The value date can
         /// <br/>be one day later.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bookingDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bookingDate")]
         public System.DateTimeOffset BookingDate { get; set; }
 
         /// <summary>
@@ -12613,7 +12938,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>filled when a bank report is the origin of this reconciliation
         /// <br/>entry.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("cause", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("cause")]
         public string Cause { get; set; }
 
         /// <summary>
@@ -12623,36 +12949,41 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* sepa - Single Euro Payments Area
         /// <br/>* bacs - Bankers Automated Clearing Services
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("scheme", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("scheme")]
         public string Scheme { get; set; }
 
         /// <summary>
         /// The reason code. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reasonCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reasonCode")]
         public string ReasonCode { get; set; }
 
         /// <summary>
         /// The trigger. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("trigger", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("trigger")]
         public string Trigger { get; set; }
 
         /// <summary>
         /// The token. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("token", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("token")]
         public string Token { get; set; }
 
         /// <summary>
         /// The info for this reconciliation. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("info", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("info")]
         public string Info { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12670,7 +13001,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this refund object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -12678,7 +13010,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the merchant this refund object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
@@ -12686,7 +13019,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the connector this refund object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
@@ -12694,7 +13028,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the customer this refund object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
@@ -12702,7 +13037,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the bank account this refund object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
@@ -12710,13 +13046,15 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of the mandate this refund object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateId")]
         public string MandateId { get; set; }
 
         /// <summary>
         /// The unique identifier of the payment this refund object belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentId")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PaymentId { get; set; }
@@ -12724,7 +13062,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Fixed timestamp, recording when this refund object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -12741,14 +13080,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* failed - The refund could not be set up.
         /// <br/>* discarded - The refund has been discarded.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string State { get; set; }
 
         /// <summary>
         /// The ISO 4217 currency code.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
         public string CurrencyCode { get; set; }
 
@@ -12757,7 +13098,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>Specified in the smallest subunit of the used currency, e.g.
         /// <br/>cents for EUR.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue)]
         public int Amount { get; set; }
 
@@ -12767,7 +13109,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>format and content are dependent on the regulations defined by
         /// <br/>the used payment scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reference")]
         [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Reference { get; set; }
 
@@ -12776,7 +13119,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>printed on the bank statements of the participating bank accounts,
         /// <br/>if supported in the used refund scheme.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("softDescriptor", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("softDescriptor")]
         [System.ComponentModel.DataAnnotations.StringLength(140)]
         public string SoftDescriptor { get; set; }
 
@@ -12785,7 +13129,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>to the customer's bank account. Optional. Refunds will
         /// <br/>be submitted as soon as possible, when not specified.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("submitAfter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("submitAfter")]
         public System.DateTimeOffset? SubmitAfter { get; set; }
 
         /// <summary>
@@ -12796,44 +13141,50 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>if a duplicate entity is found. The error message will contain
         /// <br/>the id of the conflicting entity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("idempotencyKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Memo { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored customer.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationCustomerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationCustomerId")]
         public string ValidationCustomerId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored bank account.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationBankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationBankAccountId")]
         public string ValidationBankAccountId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored connector.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationConnectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationConnectorId")]
         public string ValidationConnectorId { get; set; }
 
         /// <summary>
         /// If provided, it will result in an validation error if the content is different to the corresponding id from the stored merchant.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("validationMerchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("validationMerchantId")]
         public string ValidationMerchantId { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12848,18 +13199,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetReconciliationsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of reconciliations.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reconciliations", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reconciliations")]
         public System.Collections.Generic.ICollection<Reconciliation> Reconciliations { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12871,13 +13224,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateRefundHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("refund", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refund")]
         [System.ComponentModel.DataAnnotations.Required]
         public Refund Refund { get; set; } = new Refund();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12892,18 +13246,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetRefundsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of refunds.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("refunds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refunds")]
         public System.Collections.Generic.ICollection<Refund> Refunds { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12918,13 +13274,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetRefundHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("refund", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refund")]
         [System.ComponentModel.DataAnnotations.Required]
         public Refund Refund { get; set; } = new Refund();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12936,13 +13293,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ReviewRefundHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("refund", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refund")]
         [System.ComponentModel.DataAnnotations.Required]
         public Refund Refund { get; set; } = new Refund();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12957,13 +13315,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetProcessHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("process", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("process")]
         [System.ComponentModel.DataAnnotations.Required]
         public Process Process { get; set; } = new Process();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -12981,7 +13340,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this process object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -12989,14 +13349,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Fixed timestamp, recording when this process object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
         /// Process’s type
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("type")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string Type { get; set; }
@@ -13009,7 +13371,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* Internal 
         /// <br/>* User
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("origin", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("origin")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 1)]
         public string Origin { get; set; }
@@ -13021,13 +13384,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* Queue
         /// <br/>* Timer
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Name { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13042,18 +13406,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetProcessesHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of processes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("processes", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("processes")]
         public System.Collections.Generic.ICollection<Process> Processes { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13068,13 +13434,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetProcessEventHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("processEvent", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("processEvent")]
         [System.ComponentModel.DataAnnotations.Required]
         public ProcessEvent ProcessEvent { get; set; } = new ProcessEvent();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13092,7 +13459,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this process event object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -13101,165 +13469,183 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// The unique identifier of the merchant this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the connector this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         public Connector Connector { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// The unique identifier of the bank account this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
         /// The unique identifier of the mandate this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MandateId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         public Mandate Mandate { get; set; }
 
         /// <summary>
         /// The unique identifier of the payment this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PaymentId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("payment")]
         public Payment Payment { get; set; }
 
         /// <summary>
         /// The unique identifier of the refund this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("refundId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refundId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string RefundId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("refund", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("refund")]
         public Refund Refund { get; set; }
 
         /// <summary>
         /// The unique identifier of the payout this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("payoutId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payoutId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PayoutId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("payout", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("payout")]
         public Payout Payout { get; set; }
 
         /// <summary>
         /// The unique identifier of the process this process event object
         /// <br/>belongs to.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("processId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("processId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ProcessId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("process", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("process")]
         public Process Process { get; set; }
 
         /// <summary>
         /// The unique identifier of the reconciliation this process event object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reconciliationId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reconciliationId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ReconciliationId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("reconciliation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("reconciliation")]
         public Reconciliation Reconciliation { get; set; }
 
         /// <summary>
         /// Fixed timestamp, recording when this process event object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
         /// The type of this process event object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("type")]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string Type { get; set; }
 
         /// <summary>
         /// What triggered this process event. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("cause", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("cause")]
         public string Cause { get; set; }
 
         /// <summary>
         /// The reason code. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reasonCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reasonCode")]
         public string ReasonCode { get; set; }
 
         /// <summary>
         /// The description. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The recommended action. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("action")]
         public string Action { get; set; }
 
         /// <summary>
         /// The best practice to follow. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bestPractice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bestPractice")]
         public string BestPractice { get; set; }
 
         /// <summary>
         /// The data of this process event. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("data")]
         public System.Collections.Generic.ICollection<object> Data { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13274,18 +13660,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetProcessEventsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of processEvents.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("processEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("processEvents")]
         public System.Collections.Generic.ICollection<ProcessEvent> ProcessEvents { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13300,13 +13688,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetWebhookHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("webhook", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhook")]
         [System.ComponentModel.DataAnnotations.Required]
         public Webhook Webhook { get; set; } = new Webhook();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13324,7 +13713,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this web hook object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -13332,7 +13722,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Fixed timestamp, recording when this web hook object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
@@ -13344,14 +13735,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>* failed - The web hook could not be set up.
         /// <br/>* discarded - The web hook has been discarded.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
         public string State { get; set; }
 
         /// <summary>
         /// The URL of the server that will receive the web hook POST requests.
         /// <br/>Only HTTPS endpoints supporting TLS 1.2 are supported.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("url")]
         public string Url { get; set; }
 
         /// <summary>
@@ -13360,27 +13753,30 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <br/>secret, you'll receive the X-Hub-Signature header in the web hook
         /// <br/>POST request.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("secret", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("secret")]
         public string Secret { get; set; }
 
         /// <summary>
         /// Set additional HTTP headers in the web hook request.  Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("additionalHeaders", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("additionalHeaders")]
         public System.Collections.Generic.ICollection<Header> AdditionalHeaders { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("configuration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("configuration")]
         public WebhookConfiguration Configuration { get; set; }
 
         /// <summary>
         /// Memo for free use by the PSP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("memo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("memo")]
         public string Memo { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13395,7 +13791,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The header name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [System.ComponentModel.DataAnnotations.StringLength(32)]
         public string Name { get; set; }
@@ -13403,14 +13800,15 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The header name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("value")]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [System.ComponentModel.DataAnnotations.StringLength(255)]
         public string Value { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13425,48 +13823,49 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class WebhookConfiguration
     {
-        [Newtonsoft.Json.JsonProperty("merchants", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchants")]
         public System.Collections.Generic.ICollection<string> Merchants { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connectors", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connectors")]
         public System.Collections.Generic.ICollection<string> Connectors { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("eventTypes", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("eventTypes")]
         public System.Collections.Generic.ICollection<string> EventTypes { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includeMerchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includeMerchant")]
         public bool IncludeMerchant { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includeConnector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includeConnector")]
         public bool IncludeConnector { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includeCustomer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includeCustomer")]
         public bool IncludeCustomer { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includeBankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includeBankAccount")]
         public bool IncludeBankAccount { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includeMandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includeMandate")]
         public bool IncludeMandate { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includePayment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includePayment")]
         public bool IncludePayment { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includePayout", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includePayout")]
         public bool IncludePayout { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includeProcess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includeProcess")]
         public bool IncludeProcess { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includeReconciliation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includeReconciliation")]
         public bool IncludeReconciliation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("includeRefund", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("includeRefund")]
         public bool IncludeRefund { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13481,19 +13880,21 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetWebhooksHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of web hooks.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("webhooks", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhooks")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.Collections.Generic.ICollection<Webhook> Webhooks { get; set; } = new System.Collections.ObjectModel.Collection<Webhook>();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13508,13 +13909,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetWebhookEventHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("webhookEvent", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhookEvent")]
         [System.ComponentModel.DataAnnotations.Required]
         public WebhookEvent WebhookEvent { get; set; } = new WebhookEvent();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13532,7 +13934,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this webhookEvent object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -13540,157 +13943,172 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Fixed timestamp, recording when this webhookEvent object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
         /// Is Webhook event Successfully Transmitted
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("isSuccessfullyTransmitted", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("isSuccessfullyTransmitted")]
         public bool IsSuccessfullyTransmitted { get; set; }
 
         /// <summary>
         /// count of transmission
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("transmissionCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("transmissionCount")]
         public int TransmissionCount { get; set; }
 
         /// <summary>
         /// The unique identifier of the merchant this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the connector this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         public Connector Connector { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// The unique identifier of the bank account this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
         /// The unique identifier of the mandate this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MandateId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         public Mandate Mandate { get; set; }
 
         /// <summary>
         /// The unique identifier of the payment this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PaymentId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("Payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("Payment")]
         public Payment Payment { get; set; }
 
         /// <summary>
         /// The unique identifier of the refund this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("refundId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refundId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string RefundId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("refund", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("refund")]
         public Refund Refund { get; set; }
 
         /// <summary>
         /// The unique identifier of the payout this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("payoutId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payoutId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PayoutId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("payout", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("payout")]
         public Payout Payout { get; set; }
 
         /// <summary>
         /// The unique identifier of the process this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("processId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("processId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ProcessId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("process", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("process")]
         public Process Process { get; set; }
 
         /// <summary>
         /// The unique identifier of the processEvent this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("processEventId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("processEventId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ProcessEventId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("processEvent", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("processEvent")]
         public ProcessEvent ProcessEvent { get; set; }
 
         /// <summary>
         /// The unique identifier of the reconciliation this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reconciliationId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reconciliationId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ReconciliationId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("reconciliation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("reconciliation")]
         public Reconciliation Reconciliation { get; set; }
 
         /// <summary>
         /// The unique identifier of the webhook this webhookEvent object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("webhookId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhookId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string WebhookId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("webhook", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("webhook")]
         public Webhook Webhook { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13705,18 +14123,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetWebhookEventsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of webhookEvents.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("webhookEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhookEvents")]
         public System.Collections.Generic.ICollection<WebhookEvent> WebhookEvents { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13731,13 +14151,14 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetWebhookEventTransmissionHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("webhookEventTransmission", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhookEventTransmission")]
         [System.ComponentModel.DataAnnotations.Required]
         public WebhookEventTransmission WebhookEventTransmission { get; set; } = new WebhookEventTransmission();
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13755,7 +14176,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// The unique identifier of this webhookEventTransmission object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string Id { get; set; }
@@ -13763,165 +14185,180 @@ namespace B4Payment.SEPAexpress.Client.Demo
         /// <summary>
         /// Fixed timestamp, recording when this webhookEventTransmission object was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
         /// Http status code
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("statusCode")]
         public int StatusCode { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("data")]
         public Data Data { get; set; }
 
         /// <summary>
         /// The unique identifier of the merchant this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("merchantId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchantId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MerchantId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("merchant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         public Merchant Merchant { get; set; }
 
         /// <summary>
         /// The unique identifier of the connector this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("connectorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("connectorId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ConnectorId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("connector", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("connector")]
         public Connector Connector { get; set; }
 
         /// <summary>
         /// The unique identifier of the customer this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("customerId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string CustomerId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// The unique identifier of the bank account this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("bankAccountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccountId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string BankAccountId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("bankAccount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("bankAccount")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
         /// The unique identifier of the mandate this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("mandateId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("mandateId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string MandateId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("mandate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("mandate")]
         public Mandate Mandate { get; set; }
 
         /// <summary>
         /// The unique identifier of the payment this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("paymentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("paymentId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PaymentId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("Payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("Payment")]
         public Payment Payment { get; set; }
 
         /// <summary>
         /// The unique identifier of the refund this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("refundId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("refundId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string RefundId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("refund", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("refund")]
         public Refund Refund { get; set; }
 
         /// <summary>
         /// The unique identifier of the payout this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("payoutId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("payoutId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string PayoutId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("payout", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("payout")]
         public Payout Payout { get; set; }
 
         /// <summary>
         /// The unique identifier of the process this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("processId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("processId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ProcessId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("process", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("process")]
         public Process Process { get; set; }
 
         /// <summary>
         /// The unique identifier of the webhookEvent this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("processEventId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("processEventId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ProcessEventId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("processEvent", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("processEvent")]
         public ProcessEvent ProcessEvent { get; set; }
 
         /// <summary>
         /// The unique identifier of the reconciliation this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("reconciliationId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("reconciliationId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string ReconciliationId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("reconciliationEvent", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("reconciliationEvent")]
         public Reconciliation ReconciliationEvent { get; set; }
 
         /// <summary>
         /// The unique identifier of the webhook this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("webhookId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhookId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string WebhookId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("webhook", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("webhook")]
         public Webhook Webhook { get; set; }
 
         /// <summary>
         /// The unique identifier of the webhook event this webhookEventTransmission object
         /// <br/>belongs to. Optional.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("webhookEventId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhookEventId")]
         [System.ComponentModel.DataAnnotations.StringLength(32, MinimumLength = 32)]
         public string WebhookEventId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("webhookEvent", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("webhookEvent")]
         public Webhook WebhookEvent { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13933,15 +14370,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class Data
     {
-        [Newtonsoft.Json.JsonProperty("httpRequest", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("httpRequest")]
         public HttpRequest HttpRequest { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("httpResponse", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("httpResponse")]
         public HttpResponse HttpResponse { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13953,24 +14391,25 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class HttpRequest
     {
-        [Newtonsoft.Json.JsonProperty("requestUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("requestUrl")]
         public string RequestUrl { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("headers", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("headers")]
         public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<string>> Headers { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("cookies", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("cookies")]
         public System.Collections.Generic.IDictionary<string, string> Cookies { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("httpMethod", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("httpMethod")]
         public string HttpMethod { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("body", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("body")]
         public object Body { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -13982,15 +14421,16 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class HttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("statusCode")]
         public int? StatusCode { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("body", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Text.Json.Serialization.JsonPropertyName("body")]
         public object Body { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
@@ -14005,18 +14445,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GetWebhookEventTransmissionsHttpResponse
     {
-        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
         public CursorPagedMeta Meta { get; set; }
 
         /// <summary>
         /// List of webHookEventTransmissions.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("webhookEventTransmissions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+
+        [System.Text.Json.Serialization.JsonPropertyName("webhookEventTransmissions")]
         public System.Collections.Generic.ICollection<WebhookEventTransmission> WebhookEventTransmissions { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
-        [Newtonsoft.Json.JsonExtensionData]
+        [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
         {
             get { return _additionalProperties; }
