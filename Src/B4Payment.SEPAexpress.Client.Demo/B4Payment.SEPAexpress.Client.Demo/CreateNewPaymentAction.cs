@@ -1,6 +1,6 @@
 ﻿namespace B4Payment.SEPAexpress.Client.Demo
 {
-    internal class CreateNewPayment
+    internal class CreateNewPaymentAction
     {
         /// <summary>
         /// Scenario: 

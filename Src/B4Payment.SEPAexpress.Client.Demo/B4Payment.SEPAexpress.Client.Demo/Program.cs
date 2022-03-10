@@ -25,8 +25,8 @@ var createMandate = new CreateNewManadateAction();
 await createMandate.ExecuteAsync(bankAccountId);
 
 /// 1.5 create a new payment referencing on this mandate
-//var createNewPayment = new CreateNewPayment();
-//await createNewPayment.ExecuteAsync();
+var createNewPayment = new CreateNewPaymentAction();
+await createNewPayment.ExecuteAsync();
 
 
 
