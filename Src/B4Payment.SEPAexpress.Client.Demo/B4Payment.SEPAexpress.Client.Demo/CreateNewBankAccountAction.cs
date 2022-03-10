@@ -2,23 +2,31 @@
 {
     internal class CreateNewBankAccountAction
     {
-        public async Task ExecuteAsync(string customerId)
+        /// <summary>
+        /// Creates new bank account
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns>New created bank ID</returns>
+        public async Task<string> ExecuteAsync(string customerId)
         {
             try
             {
                 Globals.DisplayActionStart("Creating bank account");
 
-                // create customer
+                // create bank account
                 var createNewBankAccountRequest = CreateBankAccountRequest(customerId);
                 var client = new Client(Globals.BaseUrl, Globals.HttpClient);
                 var createBankAccountResponse = await client.BankAccountsPOSTAsync(createNewBankAccountRequest);
 
                 // display result
                 Globals.DisplayResponseObject("Bank account created", createBankAccountResponse);
+
+                return createBankAccountResponse.BankAccount.Id;
             }
             catch (ApiException apiex)
             {
                 Globals.DisplayException(apiex);
+                throw;
             }
         }
 
