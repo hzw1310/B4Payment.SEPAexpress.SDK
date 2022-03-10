@@ -1,6 +1,4 @@
-﻿using B4Payment.SEPAexpress.Client.Demo.Identity;
-
-namespace B4Payment.SEPAexpress.Client.Demo
+﻿namespace B4Payment.SEPAexpress.Client.Demo
 {
     internal class CreateNewPayment
     {
@@ -15,22 +13,17 @@ namespace B4Payment.SEPAexpress.Client.Demo
             try
             {
                 // create payment
-                var createPaymentResponse = await CreatePaymentAsync();
+                var createPaymentRequest = CreatePaymentRequest();
+                var client = new Client(Globals.BaseUrl, Globals.HttpClient);
+                var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
 
                 // display result
                 DisplayResult(createPaymentResponse);
             }
             catch (ApiException apiex)
             {
-                DisplayException(apiex);
+                Globals.DisplayException(apiex);
             }
-        }
-
-        private async Task<CreatePaymentHttpResponse> CreatePaymentAsync()
-        {
-            var createPaymentRequest = CreatePaymentRequest();
-            var client = new Client(Globals.BaseUrl, Globals.HttpClient);
-            return await client.PaymentsPOSTAsync(createPaymentRequest);
         }
 
         private static CreatePaymentHttpRequest CreatePaymentRequest()
@@ -63,11 +56,5 @@ namespace B4Payment.SEPAexpress.Client.Demo
             var json = System.Text.Json.JsonSerializer.Serialize(response);
             Console.WriteLine(json);
         }
-
-        private void DisplayException(ApiException apiex)
-        {
-            Console.WriteLine(apiex.Message);
-        }
-
     }
 }

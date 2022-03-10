@@ -9,9 +9,9 @@
 
             var authenticateRequest = new AuthenticateHttpRequest
             {
-                TenantName = Globals.UserAuthorizationData.Tenant,
-                UserName = Globals.UserAuthorizationData.UserName,
-                Password = Globals.UserAuthorizationData.Password,
+                TenantName = Globals.Tenant,
+                UserName = Globals.UserName,
+                Password = Globals.Password,
                 ExpireInSeconds = 1000
             };
 

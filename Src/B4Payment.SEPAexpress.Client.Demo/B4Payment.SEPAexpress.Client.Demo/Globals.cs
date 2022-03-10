@@ -1,4 +1,6 @@
-﻿namespace B4Payment.SEPAexpress.Client.Demo
+﻿using System.Text.Json;
+
+namespace B4Payment.SEPAexpress.Client.Demo
 {
     internal static class Globals
     {
@@ -13,18 +15,32 @@
         /// </summary>
         public const string BaseUrl = "https://sepaexpress-sand-fx.azurewebsites.net";
 
-        public static UserAuthorizationData UserAuthorizationData { get; set; } = new UserAuthorizationData
-        {
-            Tenant = "QuickStartTenant",
-            UserName = "admin",
-            Password = "password"
-        };
-    }
+        public const string Tenant = "QuickStartTenant";
 
-    internal class UserAuthorizationData
-    {
-        public string Tenant { get; set; } = string.Empty;
-        public string UserName { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
+        public const string UserName = "admin";
+
+        public const string Password = "password";
+
+        public const string MerchandId = "ed2a8e8a87f2e7a6093a8969b3874d65";
+
+        public const string ConnectorId = "6f1cebbb863ffe22d4f73ac2aebedaf3";
+
+        public static void DisplayException(ApiException apiex)
+        {
+            Console.WriteLine(apiex.Message);
+        }
+
+        public static void DisplayActionStart(string action) => Console.WriteLine($"--- {action} ---");
+
+        public static void DisplayResponseObject(string title, object responseObject)
+        {
+            var json = JsonSerializer.Serialize(responseObject, new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                WriteIndented = true
+            });
+            Console.WriteLine($"    {title}:");
+            Console.WriteLine(json);
+        }
     }
 }

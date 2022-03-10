@@ -13,15 +13,16 @@ var authenticationAction = new AuthenticationAction();
 await authenticationAction.GetAccessTokenAsync();
 
 /// 1.2 create a new customer
-
+var createNewCustomerAction = new CreateNewCustomerAction();
+await createNewCustomerAction.ExecuteAsync();
 
 /// 1.3 create a new bank account for this customer
 
 /// 1.4 create a new mandate for this bank account
 
 /// 1.5 create a new payment referencing on this mandate
-var createNewPayment = new CreateNewPayment();
-await createNewPayment.ExecuteAsync();
+//var createNewPayment = new CreateNewPayment();
+//await createNewPayment.ExecuteAsync();
 
 
 
