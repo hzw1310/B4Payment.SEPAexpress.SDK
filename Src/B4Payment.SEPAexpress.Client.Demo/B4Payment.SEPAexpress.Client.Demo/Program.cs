@@ -22,11 +22,11 @@ var bankAccountId = await createNewBankAccount.ExecuteAsync(customerId);
 
 /// 1.4 create a new mandate for this bank account
 var createMandate = new CreateNewManadateAction();
-await createMandate.ExecuteAsync(bankAccountId);
+var mandateId = await createMandate.ExecuteAsync(bankAccountId);
 
 /// 1.5 create a new payment referencing on this mandate
 var createNewPayment = new CreateNewPaymentAction();
-await createNewPayment.ExecuteAsync();
+await createNewPayment.ExecuteAsync(mandateId);
 
 
 

@@ -8,17 +8,19 @@
         ///     - display result of the operation
         /// </summary>
         /// <returns></returns>
-        public async Task ExecuteAsync()
+        public async Task ExecuteAsync(string mandateId)
         {
             try
             {
+                Globals.DisplayActionStart("Creating payment");
+
                 // create payment
-                var createPaymentRequest = CreatePaymentRequest();
+                var createPaymentRequest = CreatePaymentRequest(mandateId);
                 var client = new Client(Globals.BaseUrl, Globals.HttpClient);
                 var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
 
                 // display result
-                DisplayResult(createPaymentResponse);
+                Globals.DisplayResponseObject("Payment created", createPaymentResponse);
             }
             catch (ApiException apiex)
             {
@@ -26,35 +28,15 @@
             }
         }
 
-        private static CreatePaymentHttpRequest CreatePaymentRequest()
+        private static CreatePaymentHttpRequest CreatePaymentRequest(string mandateId)
         {
             return new CreatePaymentHttpRequest
             {
                 Amount = 10002,
-                MandateId = "3b8a541fffc0177e32a099d63227cb79",
+                MandateId = mandateId,
                 CurrencyCode = "EUR",
-                Mandate = new CreateMandateHttpRequest
-                {
-                    BankAccountId = "xxxxxxxx",
-                    BankAccount = new CreateBankAccountHttpRequest
-                    {
-                        CustomerId = "ddddddddd",
-                        Customer = new CreateCustomerHttpRequest
-                        {
-                            MerchantId = "xxxxxx"
-                        },
-                        Iban = ""
-                    },
-                    CurrencyCode = "EUR",
-                    Amount = 10002,
-                }
+                Mandate = null
             };
-        }
-
-        private void DisplayResult(CreatePaymentHttpResponse response)
-        {
-            var json = System.Text.Json.JsonSerializer.Serialize(response);
-            Console.WriteLine(json);
         }
     }
 }
