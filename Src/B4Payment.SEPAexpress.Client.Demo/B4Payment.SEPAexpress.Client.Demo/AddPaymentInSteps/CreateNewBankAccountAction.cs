@@ -1,4 +1,4 @@
-﻿namespace B4Payment.SEPAexpress.Client.Demo
+﻿namespace B4Payment.SEPAexpress.Client.Demo.AddPaymentInSteps
 {
     internal class CreateNewBankAccountAction
     {
@@ -33,10 +33,10 @@
         private CreateBankAccountHttpRequest CreateBankAccountRequest(string customerId) =>
             new CreateBankAccountHttpRequest
             {
-               Memo = "test999",
-               Iban = "DE86100000001234400013",
-               CustomerId = customerId,
-               Customer = null
+                Memo = "test999",
+                Iban = "DE86100000001234400013",
+                CustomerId = customerId,
+                Customer = null
             };
     }
 }

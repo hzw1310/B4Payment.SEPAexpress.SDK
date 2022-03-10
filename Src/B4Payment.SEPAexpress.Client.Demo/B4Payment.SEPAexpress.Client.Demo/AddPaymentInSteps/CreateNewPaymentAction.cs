@@ -1,4 +1,4 @@
-﻿namespace B4Payment.SEPAexpress.Client.Demo
+﻿namespace B4Payment.SEPAexpress.Client.Demo.AddPaymentInSteps
 {
     internal class CreateNewPaymentAction
     {

@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace B4Payment.SEPAexpress.Client.Demo
+﻿namespace B4Payment.SEPAexpress.Client.Demo
 {
     internal static class ConsoleUtils
     {
@@ -16,6 +14,21 @@ namespace B4Payment.SEPAexpress.Client.Demo
             Console.WriteLine(@"          | |                     | |                       ");
             Console.WriteLine(@"          |_|                     |_|                       ");
             Console.WriteLine(@"                                                            ");
+        }
+
+        internal static char ReadScenarioFromUser()
+        {
+            var consoleKeyInfo = Console.ReadKey();
+            return consoleKeyInfo.KeyChar;
+        }
+
+        internal static void ShowScenarios()
+        {
+            Console.WriteLine("Select scenario:");
+            Console.WriteLine("1. Create payment in step by step");
+            Console.WriteLine("2. Create payment in one step");
+            Console.WriteLine("");
+            Console.WriteLine("X. Exit");
         }
     }
 }
