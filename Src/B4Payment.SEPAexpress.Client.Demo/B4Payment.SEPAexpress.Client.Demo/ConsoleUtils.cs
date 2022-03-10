@@ -1,4 +1,6 @@
-﻿namespace B4Payment.SEPAexpress.Client.Demo
+﻿using System.Text;
+
+namespace B4Payment.SEPAexpress.Client.Demo
 {
     internal static class ConsoleUtils
     {
@@ -20,16 +22,16 @@
         {
             Console.WriteLine("Authentication:");
             Console.Write("Tenant: ");
-            var tenant = Console.ReadLine();
+            Globals.UserAuthorizationData.Tenant = Console.ReadLine() ?? string.Empty;
             Console.Write("User name: ");
-            var userName = Console.ReadLine();
+            Globals.UserAuthorizationData.UserName = Console.ReadLine() ?? string.Empty;
             Console.Write("Password: ");
-            var password = ReadPassword();
+            Globals.UserAuthorizationData.Password = ReadPassword();
         }
 
         private static string ReadPassword()
         {
-            var pass = string.Empty;
+            var pass = new StringBuilder();
             ConsoleKey key;
             do
             {
@@ -39,16 +41,16 @@
                 if (key == ConsoleKey.Backspace && pass.Length > 0)
                 {
                     Console.Write("\b \b");
-                    pass = pass[0..^1];
+                    pass.Remove(pass.Length - 1, 1);
                 }
                 else if (!char.IsControl(keyInfo.KeyChar))
                 {
                     Console.Write("*");
-                    pass += keyInfo.KeyChar;
+                    pass.Append(keyInfo.KeyChar);
                 }
             } while (key != ConsoleKey.Enter);
 
-            return pass;
+            return pass.ToString();
         }
     }
 }

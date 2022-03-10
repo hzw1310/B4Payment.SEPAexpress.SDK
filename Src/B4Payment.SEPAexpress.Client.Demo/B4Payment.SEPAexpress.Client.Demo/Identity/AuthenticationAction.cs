@@ -2,21 +2,23 @@
 {
     internal class AuthenticationAction
     {
-        public async Task<string> GetAccessTokenAsync()
+        private const string SecurityTokenKey = "Bearer";
+        public async Task GetAccessTokenAsync()
         {
             var identityClient = new Client(Globals.BaseUrl, Globals.HttpClient);
 
             var authenticateRequest = new AuthenticateHttpRequest
             {
-                TenantName = "",
-                UserName = "",
-                Password = "",
+                TenantName = Globals.UserAuthorizationData.Tenant,
+                UserName = Globals.UserAuthorizationData.UserName,
+                Password = Globals.UserAuthorizationData.Password,
                 ExpireInSeconds = 1000
             };
 
             var authenticateResponse = await identityClient.AuthenticateAsync(authenticateRequest);
 
-            return authenticateResponse.AccessToken;
+            Globals.HttpClient.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue(SecurityTokenKey, authenticateResponse.AccessToken);
         }
     }
 }

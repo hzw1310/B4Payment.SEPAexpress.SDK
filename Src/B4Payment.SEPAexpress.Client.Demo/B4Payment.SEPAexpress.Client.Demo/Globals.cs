@@ -12,5 +12,14 @@
         /// That is for demo environment. For production read it from configuration 
         /// </summary>
         public const string BaseUrl = "https://sepaexpress-sand-fx.azurewebsites.net";
+
+        public static UserAuthorizationData UserAuthorizationData { get; set; } = new UserAuthorizationData();
+    }
+
+    internal class UserAuthorizationData
+    {
+        public string Tenant { get; set; } = string.Empty;
+        public string UserName { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
 }
