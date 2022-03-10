@@ -4,35 +4,80 @@ namespace B4Payment.SEPAexpress.Client.Demo
 {
     internal class CreateNewPayment
     {
+        /// <summary>
+        /// Scenario: 
+        ///     - authenticate user (get access to the service)
+        ///     - create payment
+        ///     - display result of the operation
+        /// </summary>
+        /// <returns></returns>
         public async Task ExecuteAsync()
         {
+            try
+            {
+                // authenticate
+                await Authenticate();
+
+                // create payment
+                var createPaymentResponse = await CreatePaymentAsync();
+
+                // display result
+                DisplayResult(createPaymentResponse);
+            }
+            catch (ApiException apiex)
+            {
+                DisplayException(apiex);
+            }
+        }
+
+        private static async Task Authenticate()
+        {
             var authenticationAction = new AuthenticationAction();
-            var accessToken = await authenticationAction.GetAccessTokenAsync();
-
-            Globals.HttpClient.DefaultRequestHeaders.Authorization =
-                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-
-            var createPaymentResponse = await CreatePaymentAsync();
-
-            // TODO: display result
-            Console.WriteLine(createPaymentResponse.Payment.SoftDescriptor);
+            await authenticationAction.GetAccessTokenAsync();
         }
 
         private async Task<CreatePaymentHttpResponse> CreatePaymentAsync()
         {
-            var createPaymentRequest = new CreatePaymentHttpRequest
+            var createPaymentRequest = CreatePaymentRequest();
+            var client = new Client(Globals.BaseUrl, Globals.HttpClient);
+            return await client.PaymentsPOSTAsync(createPaymentRequest);
+        }
+
+        private static CreatePaymentHttpRequest CreatePaymentRequest()
+        {
+            return new CreatePaymentHttpRequest
             {
                 Amount = 10002,
                 MandateId = "3b8a541fffc0177e32a099d63227cb79",
                 CurrencyCode = "EUR",
-                Mandate = null // TODO: as about "required" on that
+                Mandate = new CreateMandateHttpRequest
+                {
+                    BankAccountId = "xxxxxxxx",
+                    BankAccount = new CreateBankAccountHttpRequest
+                    {
+                        CustomerId = "ddddddddd",
+                        Customer = new CreateCustomerHttpRequest
+                        {
+                            MerchantId = "xxxxxx"
+                        },
+                        Iban = ""
+                    },
+                    CurrencyCode = "EUR",
+                    Amount = 10002,
+                }
             };
-
-            var client = new Client(Globals.BaseUrl, Globals.HttpClient);
-            
-            var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
-
-            return createPaymentResponse;
         }
+
+        private void DisplayResult(CreatePaymentHttpResponse response)
+        {
+            var json = System.Text.Json.JsonSerializer.Serialize(response);
+            Console.WriteLine(json);
+        }
+
+        private void DisplayException(ApiException apiex)
+        {
+            Console.WriteLine(apiex.Message);
+        }
+
     }
 }
