@@ -13,7 +13,12 @@
         /// </summary>
         public const string BaseUrl = "https://sepaexpress-sand-fx.azurewebsites.net";
 
-        public static UserAuthorizationData UserAuthorizationData { get; set; } = new UserAuthorizationData();
+        public static UserAuthorizationData UserAuthorizationData { get; set; } = new UserAuthorizationData
+        {
+            Tenant = "QuickStartTenant",
+            UserName = "admin",
+            Password = "password"
+        };
     }
 
     internal class UserAuthorizationData

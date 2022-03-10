@@ -6,7 +6,6 @@ namespace B4Payment.SEPAexpress.Client.Demo
     {
         /// <summary>
         /// Scenario: 
-        ///     - authenticate user (get access to the service)
         ///     - create payment
         ///     - display result of the operation
         /// </summary>
@@ -15,9 +14,6 @@ namespace B4Payment.SEPAexpress.Client.Demo
         {
             try
             {
-                // authenticate
-                await Authenticate();
-
                 // create payment
                 var createPaymentResponse = await CreatePaymentAsync();
 
@@ -28,12 +24,6 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 DisplayException(apiex);
             }
-        }
-
-        private static async Task Authenticate()
-        {
-            var authenticationAction = new AuthenticationAction();
-            await authenticationAction.GetAccessTokenAsync();
         }
 
         private async Task<CreatePaymentHttpResponse> CreatePaymentAsync()

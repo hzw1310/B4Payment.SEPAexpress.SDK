@@ -17,40 +17,5 @@ namespace B4Payment.SEPAexpress.Client.Demo
             Console.WriteLine(@"          |_|                     |_|                       ");
             Console.WriteLine(@"                                                            ");
         }
-
-        public static void ReadAuthenticationData()
-        {
-            Console.WriteLine("Authentication:");
-            Console.Write("Tenant: ");
-            Globals.UserAuthorizationData.Tenant = Console.ReadLine() ?? string.Empty;
-            Console.Write("User name: ");
-            Globals.UserAuthorizationData.UserName = Console.ReadLine() ?? string.Empty;
-            Console.Write("Password: ");
-            Globals.UserAuthorizationData.Password = ReadPassword();
-        }
-
-        private static string ReadPassword()
-        {
-            var pass = new StringBuilder();
-            ConsoleKey key;
-            do
-            {
-                var keyInfo = Console.ReadKey(intercept: true);
-                key = keyInfo.Key;
-
-                if (key == ConsoleKey.Backspace && pass.Length > 0)
-                {
-                    Console.Write("\b \b");
-                    pass.Remove(pass.Length - 1, 1);
-                }
-                else if (!char.IsControl(keyInfo.KeyChar))
-                {
-                    Console.Write("*");
-                    pass.Append(keyInfo.KeyChar);
-                }
-            } while (key != ConsoleKey.Enter);
-
-            return pass.ToString();
-        }
     }
 }
