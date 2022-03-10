@@ -34,7 +34,7 @@
             new CreateBankAccountHttpRequest
             {
                 Memo = "test999",
-                Iban = "DE86100000001234400013",
+                Iban = Globals.Iban,
                 CustomerId = customerId,
                 Customer = null
             };

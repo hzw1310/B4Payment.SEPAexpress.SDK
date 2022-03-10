@@ -1,4 +1,5 @@
 ﻿using B4Payment.SEPAexpress.Client.Demo;
+using B4Payment.SEPAexpress.Client.Demo.AddPaymentInline;
 using B4Payment.SEPAexpress.Client.Demo.AddPaymentInSteps;
 using B4Payment.SEPAexpress.Client.Demo.Identity;
 
@@ -14,6 +15,7 @@ while (true)
 {
     ConsoleUtils.ShowScenarios();
     var selectedScenario = ConsoleUtils.ReadScenarioFromUser();
+    Console.WriteLine();
 
     switch (selectedScenario)
     {
@@ -28,6 +30,11 @@ while (true)
 
         case '2':
 
+            /// <summary>
+            /// create payment in steps in-line
+            /// </summary>
+            var sampleCreatePaymentInline = new SampleCreatePaymentInline();
+            await sampleCreatePaymentInline.CreatePaymentInlineAsync();
             break;
 
         case 'X' or 'x':

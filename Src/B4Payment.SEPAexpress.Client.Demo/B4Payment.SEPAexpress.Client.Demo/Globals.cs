@@ -25,6 +25,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
         public const string ConnectorId = "6f1cebbb863ffe22d4f73ac2aebedaf3";
 
+        public const string Iban = "DE86100000001234400013";
+
         public static void DisplayException(ApiException apiex)
         {
             Console.WriteLine(apiex.Message);
