@@ -2,7 +2,11 @@
 {
     internal class CreateNewCustomerAction
     {
-        public async Task ExecuteAsync()
+        /// <summary>
+        /// Creates new customer and returns his ID.
+        /// </summary>
+        /// <returns>Created customerId</returns>
+        public async Task<string> ExecuteAsync()
         {
             try
             {
@@ -15,10 +19,13 @@
 
                 // display result
                 Globals.DisplayResponseObject("Customer created", createCustomerResponse);
+
+                return createCustomerResponse.Customer.Id;
             }
             catch (ApiException apiex)
             {
                 Globals.DisplayException(apiex);
+                throw;
             }
         }
 
