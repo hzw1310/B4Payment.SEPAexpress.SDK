@@ -74,5 +74,15 @@ namespace B4Payment.SEPAexpress.Client.Demo
             Console.WriteLine(json);
             Console.WriteLine("");
         }
+
+        internal static void StartStopScenario(string text)
+        {
+            var previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("");
+            Console.WriteLine($"== {text} ==");
+            Console.WriteLine("");
+            Console.ForegroundColor = previousColor;
+        }
     }
 }

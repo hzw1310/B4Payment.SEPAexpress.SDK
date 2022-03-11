@@ -3,12 +3,11 @@
     internal class SampleCreatePaymentInSteps
     {
         /// <summary>
-        /// Scenarios:
-        /// 1. Create a payment. <see href="https://sepaexpress-prod-fx.azurewebsites.net/redoc#tag/Quick-Start"/>
+        /// Scenario create payment <see href="https://sepaexpress-prod-fx.azurewebsites.net/redoc#tag/Quick-Start"/>
         /// </summary>
         public async Task CreatePaymentInStepsAsync()
         {
-            Console.WriteLine("== Start scenario - create payment in steps ==");
+            ConsoleUtils.StartStopScenario("Start scenario - create payment in steps");
             
             var client = new Client(Globals.BaseUrl, Globals.HttpClient);
 
@@ -32,7 +31,7 @@
             var createPaymentRequest = CreatePaymentRequest(createMandateResponse.Mandate.Id);
             var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
 
-            Console.WriteLine("== Scenario is done - payment is created ==");
+            ConsoleUtils.StartStopScenario("Scenario is done - payment is created");
         }
 
         private CreateCustomerHttpRequest CreateCustomerHttpRequest() =>

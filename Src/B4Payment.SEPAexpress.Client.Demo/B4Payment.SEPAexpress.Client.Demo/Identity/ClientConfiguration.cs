@@ -3,6 +3,9 @@ using System.Text.Json.Serialization;
 
 namespace B4Payment.SEPAexpress.Client.Demo.Identity
 {
+    /// <summary>
+    /// That class only helps with JSON formatting in requests and responses.
+    /// </summary>
     public partial class Client
     {
         partial void UpdateJsonSerializerSettings(JsonSerializerOptions settings)

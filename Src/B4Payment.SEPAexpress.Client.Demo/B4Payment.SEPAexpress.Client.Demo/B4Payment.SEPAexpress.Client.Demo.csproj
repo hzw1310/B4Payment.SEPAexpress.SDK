@@ -8,8 +8,4 @@
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="AddPaymentInSteps\" />
-  </ItemGroup>
-
 </Project>
