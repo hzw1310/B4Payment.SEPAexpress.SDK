@@ -1,6 +1,5 @@
 ﻿using B4Payment.SEPAexpress.Client.Demo.Utils;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace B4Payment.SEPAexpress.Client.Demo.ApiClient
 {
@@ -9,29 +8,10 @@ namespace B4Payment.SEPAexpress.Client.Demo.ApiClient
     /// </summary>
     public partial class SepaExpressApiClient
     {
-        partial void UpdateJsonSerializerSettings(JsonSerializerOptions settings)
-        {
-            settings.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
-        }
+        partial void UpdateJsonSerializerSettings(JsonSerializerOptions settings) => JsonClientUtil.UpdateJsonSerializerSettings(settings);
 
-        partial void PrepareRequest(HttpClient client, HttpRequestMessage request, string url)
-        {
-            var jsonBody = request.Content.ReadAsStringAsync().Result ?? "";
-            var jsonDocument = JsonDocument.Parse(jsonBody);
-            ConsoleUtils.DisplayRequestObject(url, jsonDocument);
-        }
+        partial void PrepareRequest(HttpClient client, HttpRequestMessage request, string url) => JsonClientUtil.PrepareRequest(client, request, url);
 
-        partial void ProcessResponse(HttpClient client, HttpResponseMessage response)
-        {
-            if (response != null && response.IsSuccessStatusCode)
-            {
-                var requestUri = response?.RequestMessage?.RequestUri?.ToString() ?? "";
-                var jsonBody = response.Content.ReadAsStringAsync().Result ?? "";
-
-                var jsonDocument = JsonDocument.Parse(jsonBody);
-
-                ConsoleUtils.DisplayResponseObject(requestUri, jsonDocument);
-            }
-        }
+        partial void ProcessResponse(HttpClient client, HttpResponseMessage response) => JsonClientUtil.ProcessResponse(client, response);
     }
 }
