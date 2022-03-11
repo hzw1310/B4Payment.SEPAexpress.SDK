@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace B4Payment.SEPAexpress.Client.Demo
+namespace B4Payment.SEPAexpress.Client.Demo.Utils
 {
     internal static class ConsoleUtils
     {

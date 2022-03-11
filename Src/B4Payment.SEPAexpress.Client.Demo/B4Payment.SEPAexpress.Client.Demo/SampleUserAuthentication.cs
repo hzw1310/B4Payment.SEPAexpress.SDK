@@ -1,10 +1,13 @@
 ﻿using B4Payment.SEPAexpress.Client.Demo.IdentityClient;
+using B4Payment.SEPAexpress.Client.Demo.Utils;
 
 namespace B4Payment.SEPAexpress.Client.Demo.Identity
 {
-    internal class AuthenticationAction
+    internal class SampleUserAuthentication
     {
         private const string SecurityTokenKey = "Bearer";
+        private const int TokenExpirationInSeconds = 1000;
+
         public async Task GetAccessTokenAsync()
         {
             ConsoleUtils.DisplayActionStart("User authentication");
@@ -16,7 +19,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Identity
                 TenantName = Globals.Tenant,
                 UserName = Globals.UserName,
                 Password = Globals.Password,
-                ExpireInSeconds = 1000
+                ExpireInSeconds = TokenExpirationInSeconds
             };
 
             var authenticateResponse = await sepaExpressIdentityApiClient.AuthenticateAsync(authenticateRequest);

@@ -1,4 +1,5 @@
 ﻿using B4Payment.SEPAexpress.Client.Demo.ApiClient;
+using B4Payment.SEPAexpress.Client.Demo.Utils;
 
 namespace B4Payment.SEPAexpress.Client.Demo
 {

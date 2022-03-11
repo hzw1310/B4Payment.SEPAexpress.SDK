@@ -1,5 +1,6 @@
 ﻿using B4Payment.SEPAexpress.Client.Demo;
 using B4Payment.SEPAexpress.Client.Demo.Identity;
+using B4Payment.SEPAexpress.Client.Demo.Utils;
 
 ConsoleUtils.ShowTitle();
 
@@ -12,7 +13,7 @@ while (true)
     /// <summary>
     /// authenticate user first
     /// </summary>
-    var authenticationAction = new AuthenticationAction();
+    var authenticationAction = new SampleUserAuthentication();
     await authenticationAction.GetAccessTokenAsync();
 
     switch (selectedScenario)

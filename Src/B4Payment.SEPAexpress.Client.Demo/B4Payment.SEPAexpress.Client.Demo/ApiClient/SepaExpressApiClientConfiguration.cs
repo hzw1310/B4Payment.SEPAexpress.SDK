@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using B4Payment.SEPAexpress.Client.Demo.Utils;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace B4Payment.SEPAexpress.Client.Demo.ApiClient
