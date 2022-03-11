@@ -5,6 +5,8 @@
         private const string SecurityTokenKey = "Bearer";
         public async Task GetAccessTokenAsync()
         {
+            ConsoleUtils.DisplayActionStart("User authentication");
+
             var identityClient = new Client(Globals.BaseUrl, Globals.HttpClient);
 
             var authenticateRequest = new AuthenticateHttpRequest

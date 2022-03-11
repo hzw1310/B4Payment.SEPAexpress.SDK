@@ -10,21 +10,18 @@
         {
             try
             {
-                Globals.DisplayActionStart("Creating customer");
+                ConsoleUtils.DisplayActionStart("Creating customer");
 
                 // create customer
                 var createCustomerHttpRequest = CreateCustomerHttpRequest();
                 var client = new Client(Globals.BaseUrl, Globals.HttpClient);
                 var createCustomerResponse = await client.CustomersPOSTAsync(createCustomerHttpRequest);
 
-                // display result
-                Globals.DisplayResponseObject("Customer created", createCustomerResponse);
-
                 return createCustomerResponse.Customer.Id;
             }
             catch (ApiException apiex)
             {
-                Globals.DisplayException(apiex);
+                ConsoleUtils.DisplayException(apiex);
                 throw;
             }
         }

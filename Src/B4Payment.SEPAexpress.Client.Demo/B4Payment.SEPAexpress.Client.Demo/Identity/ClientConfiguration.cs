@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace B4Payment.SEPAexpress.Client.Demo
+namespace B4Payment.SEPAexpress.Client.Demo.Identity
 {
     public partial class Client
     {

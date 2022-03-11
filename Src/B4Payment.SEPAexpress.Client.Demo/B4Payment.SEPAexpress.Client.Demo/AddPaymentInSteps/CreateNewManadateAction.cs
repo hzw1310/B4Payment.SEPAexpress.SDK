@@ -6,21 +6,18 @@
         {
             try
             {
-                Globals.DisplayActionStart("Creating mandate");
+                ConsoleUtils.DisplayActionStart("Creating mandate");
 
                 // create mandate
                 var createMandateRequest = CreateMandateRequest(bankAccountId);
                 var client = new Client(Globals.BaseUrl, Globals.HttpClient);
                 var createMandateResponse = await client.MandatesPOSTAsync(createMandateRequest);
 
-                // display result
-                Globals.DisplayResponseObject("Mandate created", createMandateResponse);
-
                 return createMandateResponse.Mandate.Id;
             }
             catch (ApiException apiex)
             {
-                Globals.DisplayException(apiex);
+                ConsoleUtils.DisplayException(apiex);
                 throw;
             }
         }

@@ -11,21 +11,18 @@
         {
             try
             {
-                Globals.DisplayActionStart("Creating bank account");
+                ConsoleUtils.DisplayActionStart("Creating bank account");
 
                 // create bank account
                 var createNewBankAccountRequest = CreateBankAccountRequest(customerId);
                 var client = new Client(Globals.BaseUrl, Globals.HttpClient);
                 var createBankAccountResponse = await client.BankAccountsPOSTAsync(createNewBankAccountRequest);
 
-                // display result
-                Globals.DisplayResponseObject("Bank account created", createBankAccountResponse);
-
                 return createBankAccountResponse.BankAccount.Id;
             }
             catch (ApiException apiex)
             {
-                Globals.DisplayException(apiex);
+                ConsoleUtils.DisplayException(apiex);
                 throw;
             }
         }

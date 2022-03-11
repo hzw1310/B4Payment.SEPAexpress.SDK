@@ -12,19 +12,16 @@
         {
             try
             {
-                Globals.DisplayActionStart("Creating payment");
+                ConsoleUtils.DisplayActionStart("Creating payment");
 
                 // create payment
                 var createPaymentRequest = CreatePaymentRequest();
                 var client = new Client(Globals.BaseUrl, Globals.HttpClient);
                 var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
-
-                // display result
-                Globals.DisplayResponseObject("Payment created", createPaymentResponse);
             }
             catch (ApiException apiex)
             {
-                Globals.DisplayException(apiex);
+                ConsoleUtils.DisplayException(apiex);
             }
         }
 

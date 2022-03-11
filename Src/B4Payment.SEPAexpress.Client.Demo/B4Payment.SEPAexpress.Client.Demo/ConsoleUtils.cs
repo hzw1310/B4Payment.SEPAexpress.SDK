@@ -1,9 +1,13 @@
-﻿namespace B4Payment.SEPAexpress.Client.Demo
+﻿using System.Text.Json;
+
+namespace B4Payment.SEPAexpress.Client.Demo
 {
     internal static class ConsoleUtils
     {
         public static void ShowTitle()
         {
+            var previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(@"                                                            ");
             Console.WriteLine(@"                       ______                               ");
             Console.WriteLine(@"                      |  ____|                              ");
@@ -14,11 +18,12 @@
             Console.WriteLine(@"          | |                     | |                       ");
             Console.WriteLine(@"          |_|                     |_|                       ");
             Console.WriteLine(@"                                                            ");
+            Console.ForegroundColor=previousColor;
         }
 
         internal static char ReadScenarioFromUser()
         {
-            var consoleKeyInfo = Console.ReadKey();
+            var consoleKeyInfo = Console.ReadKey(true);
             return consoleKeyInfo.KeyChar;
         }
 
@@ -29,6 +34,45 @@
             Console.WriteLine("2. Create payment in one step");
             Console.WriteLine("");
             Console.WriteLine("X. Exit");
+        }
+
+        public static void DisplayException(ApiException apiex)
+        {
+            Console.WriteLine(apiex.Message);
+        }
+
+        internal static void DisplayActionStart(string action)
+        {
+            var previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine($"--- {action} ---");
+            Console.WriteLine();
+            Console.ForegroundColor = previousColor;
+        }
+
+        internal static void DisplayRequestObject(string uri, object requestObject)
+        {
+            var json = JsonSerializer.Serialize(requestObject, new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                WriteIndented = true
+            });
+            Console.WriteLine($"Request to: {uri}");
+            Console.WriteLine(json);
+            Console.WriteLine("");
+        }
+
+        internal static void DisplayResponseObject(string uri, object responseObject)
+        {
+            var json = JsonSerializer.Serialize(responseObject, new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                WriteIndented = true
+            });
+            Console.WriteLine($"Response from: {uri}");
+            Console.WriteLine(json);
+            Console.WriteLine("");
         }
     }
 }

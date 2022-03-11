@@ -5,17 +5,17 @@ using B4Payment.SEPAexpress.Client.Demo.Identity;
 
 ConsoleUtils.ShowTitle();
 
-/// <summary>
-/// authenticate user first
-/// </summary>
-var authenticationAction = new AuthenticationAction();
-await authenticationAction.GetAccessTokenAsync();
-
 while (true)
 {
     ConsoleUtils.ShowScenarios();
     var selectedScenario = ConsoleUtils.ReadScenarioFromUser();
     Console.WriteLine();
+
+    /// <summary>
+    /// authenticate user first
+    /// </summary>
+    var authenticationAction = new AuthenticationAction();
+    await authenticationAction.GetAccessTokenAsync();
 
     switch (selectedScenario)
     {
