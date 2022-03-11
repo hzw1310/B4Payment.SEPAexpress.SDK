@@ -1,6 +1,5 @@
 ﻿using B4Payment.SEPAexpress.Client.Demo;
 using B4Payment.SEPAexpress.Client.Demo.AddPaymentInline;
-using B4Payment.SEPAexpress.Client.Demo.AddPaymentInSteps;
 using B4Payment.SEPAexpress.Client.Demo.Identity;
 
 ConsoleUtils.ShowTitle();
