@@ -1,12 +1,12 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace B4Payment.SEPAexpress.Client.Demo
+namespace B4Payment.SEPAexpress.Client.Demo.IdentityClient
 {
     /// <summary>
     /// That class only helps with JSON formatting in requests and responses.
     /// </summary>
-    public partial class Client
+    public partial class SepaExpressIdentityApiClient
     {
         partial void UpdateJsonSerializerSettings(JsonSerializerOptions settings)
         {
@@ -15,7 +15,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
         partial void PrepareRequest(HttpClient client, HttpRequestMessage request, string url)
         {
-            var jsonBody = request.Content.ReadAsStringAsync().Result ?? "";
+            var jsonBody = request.Content?.ReadAsStringAsync().Result ?? "";
             var jsonDocument = JsonDocument.Parse(jsonBody);
             ConsoleUtils.DisplayRequestObject(url, jsonDocument);
         }

@@ -36,7 +36,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             Console.WriteLine("X. Exit");
         }
 
-        public static void DisplayException(ApiException apiex)
+        public static void DisplayException(Exception apiex)
         {
             Console.WriteLine(apiex.Message);
         }

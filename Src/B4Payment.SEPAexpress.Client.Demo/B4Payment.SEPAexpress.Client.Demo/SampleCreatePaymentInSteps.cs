@@ -1,4 +1,6 @@
-﻿namespace B4Payment.SEPAexpress.Client.Demo
+﻿using B4Payment.SEPAexpress.Client.Demo.ApiClient;
+
+namespace B4Payment.SEPAexpress.Client.Demo
 {
     internal class SampleCreatePaymentInSteps
     {
@@ -9,7 +11,7 @@
         {
             ConsoleUtils.StartStopScenario("Start scenario - create payment in steps");
             
-            var client = new Client(Globals.BaseUrl, Globals.HttpClient);
+            var client = new SepaExpressApiClient(Globals.BaseUrl, Globals.HttpClient);
 
             ///// 1.1 create a new customer
             ConsoleUtils.DisplayActionStart("Creating customer");

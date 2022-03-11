@@ -1,4 +1,6 @@
-﻿namespace B4Payment.SEPAexpress.Client.Demo.Identity
+﻿using B4Payment.SEPAexpress.Client.Demo.IdentityClient;
+
+namespace B4Payment.SEPAexpress.Client.Demo.Identity
 {
     internal class AuthenticationAction
     {
@@ -7,7 +9,7 @@
         {
             ConsoleUtils.DisplayActionStart("User authentication");
 
-            var identityClient = new Client(Globals.BaseUrl, Globals.HttpClient);
+            var sepaExpressIdentityApiClient = new SepaExpressIdentityApiClient(Globals.BaseUrl, Globals.HttpClient);
 
             var authenticateRequest = new AuthenticateHttpRequest
             {
@@ -17,7 +19,7 @@
                 ExpireInSeconds = 1000
             };
 
-            var authenticateResponse = await identityClient.AuthenticateAsync(authenticateRequest);
+            var authenticateResponse = await sepaExpressIdentityApiClient.AuthenticateAsync(authenticateRequest);
 
             Globals.HttpClient.DefaultRequestHeaders.Authorization =
                 new System.Net.Http.Headers.AuthenticationHeaderValue(SecurityTokenKey, authenticateResponse.AccessToken);

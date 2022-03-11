@@ -1,4 +1,6 @@
-﻿namespace B4Payment.SEPAexpress.Client.Demo
+﻿using B4Payment.SEPAexpress.Client.Demo.ApiClient;
+
+namespace B4Payment.SEPAexpress.Client.Demo
 {
     /// <summary>
     /// Scenario create payment <see href="https://sepaexpress-prod-fx.azurewebsites.net/redoc#tag/Quick-Start"/>
@@ -9,12 +11,12 @@
         {
             ConsoleUtils.StartStopScenario("Start scenario - create payment in-line");
 
-            var client = new Client(Globals.BaseUrl, Globals.HttpClient);
+            var sepaExpressApiClient = new SepaExpressApiClient(Globals.BaseUrl, Globals.HttpClient);
 
             ///// 2.1 create a new payment referencing on this mandate
             ConsoleUtils.DisplayActionStart("Creating payment");
             var createPaymentRequest = CreatePaymentRequest();
-            var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
+            var createPaymentResponse = await sepaExpressApiClient.PaymentsPOSTAsync(createPaymentRequest);
 
             ConsoleUtils.StartStopScenario("Scenario is done - payment is created");
         }
