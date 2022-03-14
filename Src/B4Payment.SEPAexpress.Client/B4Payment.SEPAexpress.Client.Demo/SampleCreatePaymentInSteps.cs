@@ -14,6 +14,12 @@ namespace B4Payment.SEPAexpress.Client.Demo
             
             var client = new SepaExpressClient(Globals.BaseUrl, Globals.HttpClient);
 
+            client.PrepareRequestEvent += (object? sender, RequestEventArgs e) =>
+                JsonClientUtil.PrepareRequest(e.Client, e.Request, e.Url);
+
+            client.PrepareResponseEvent += (object? sender, ResponseEventArgs e) =>
+                JsonClientUtil.ProcessResponse(e.Client, e.Response);
+
             try
             {
                 ///// 1.1 create a new customer

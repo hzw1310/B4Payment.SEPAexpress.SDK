@@ -13,6 +13,11 @@ namespace B4Payment.SEPAexpress.Client.Demo
             ConsoleUtils.StartStopScenario("Start scenario - create payment in-line");
 
             var sepaExpressApiClient = new SepaExpressClient(Globals.BaseUrl, Globals.HttpClient);
+            sepaExpressApiClient.PrepareRequestEvent += (object? sender, RequestEventArgs e) =>
+                JsonClientUtil.PrepareRequest(e.Client, e.Request, e.Url); 
+
+            sepaExpressApiClient.PrepareResponseEvent += (object? sender, ResponseEventArgs e) =>
+                JsonClientUtil.ProcessResponse(e.Client, e.Response); 
 
             try
             {
