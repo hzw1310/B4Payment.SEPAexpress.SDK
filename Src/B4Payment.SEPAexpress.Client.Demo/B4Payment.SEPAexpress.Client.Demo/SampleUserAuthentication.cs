@@ -22,10 +22,19 @@ namespace B4Payment.SEPAexpress.Client.Demo.Identity
                 ExpireInSeconds = TokenExpirationInSeconds
             };
 
-            var authenticateResponse = await sepaExpressIdentityApiClient.AuthenticateAsync(authenticateRequest);
+            try
+            {
+                var authenticateResponse = await sepaExpressIdentityApiClient.AuthenticateAsync(authenticateRequest);
 
-            Globals.HttpClient.DefaultRequestHeaders.Authorization =
-                new System.Net.Http.Headers.AuthenticationHeaderValue(SecurityTokenKey, authenticateResponse.AccessToken);
+                Globals.HttpClient.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue(SecurityTokenKey, authenticateResponse.AccessToken);
+            }
+            catch (ApiException apix)
+            {
+                ConsoleUtils.DisplayException(apix);
+                throw;
+                throw;
+            }
         }
     }
 }

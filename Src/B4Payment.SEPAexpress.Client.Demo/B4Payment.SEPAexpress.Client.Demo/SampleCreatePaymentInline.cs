@@ -14,10 +14,19 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
             var sepaExpressApiClient = new SepaExpressApiClient(Globals.BaseUrl, Globals.HttpClient);
 
-            ///// 2.1 create a new payment referencing on this mandate
-            ConsoleUtils.DisplayActionStart("Creating payment");
-            var createPaymentRequest = CreatePaymentRequest();
-            var createPaymentResponse = await sepaExpressApiClient.PaymentsPOSTAsync(createPaymentRequest);
+            try
+            {
+                ///// 2.1 create a new payment referencing on this mandate
+                ConsoleUtils.DisplayActionStart("Creating payment");
+                var createPaymentRequest = CreatePaymentRequest();
+                var createPaymentResponse = await sepaExpressApiClient.PaymentsPOSTAsync(createPaymentRequest);
+            }
+            catch (ApiException apix)
+            {
+                ConsoleUtils.DisplayException(apix);
+                throw;
+                throw;
+            }
 
             ConsoleUtils.StartStopScenario("Scenario is done - payment is created");
         }
