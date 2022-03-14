@@ -21,6 +21,18 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.ForegroundColor=previousColor;
         }
 
+        internal static string GetPaymentId()
+        {
+            string? paymentId;
+            do
+            {
+                Console.WriteLine("Please enter payment id and press Enter:");
+                paymentId = Console.ReadLine();
+            } while (string.IsNullOrWhiteSpace(paymentId));
+
+            return paymentId;
+        }
+
         internal static char ReadScenarioFromUser()
         {
             var consoleKeyInfo = Console.ReadKey(true);
@@ -32,6 +44,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.WriteLine("Select scenario:");
             Console.WriteLine("1. Create payment in step by step");
             Console.WriteLine("2. Create payment in one step");
+            Console.WriteLine("3. Get payment data");
             Console.WriteLine("");
             Console.WriteLine("X. Exit");
         }

@@ -19,7 +19,6 @@ while (true)
     switch (selectedScenario)
     {
         case '1':
-
             /// <summary>
             /// create payment in steps one-by-one
             /// </summary>
@@ -28,12 +27,19 @@ while (true)
             break;
 
         case '2':
-
             /// <summary>
             /// create payment in steps in-line
             /// </summary>
             var sampleCreatePaymentInline = new SampleCreatePaymentInline();
             await sampleCreatePaymentInline.CreatePaymentInlineAsync();
+            break;
+
+        case '3':
+            /// <summary>
+            /// get payment data
+            /// </summary>
+            var sampleGetPaymentData = new SampleGetPaymentData();
+            await sampleGetPaymentData.GetPaymentDataAsync();
             break;
 
         case 'X' or 'x':
