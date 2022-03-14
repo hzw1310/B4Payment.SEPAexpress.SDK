@@ -56,7 +56,7 @@
       "wrapResponseMethods": [],
       "generateResponseClasses": true,
       "responseClass": "SwaggerResponse",
-      "namespace": "B4Payment.SEPAexpress.Client.Demo.Identity",
+      "namespace": "B4Payment.SEPAexpress.Client.Identity",
       "requiredPropertiesMustBeDefined": false,
       "dateType": "System.DateTimeOffset",
       "jsonConverters": null,
