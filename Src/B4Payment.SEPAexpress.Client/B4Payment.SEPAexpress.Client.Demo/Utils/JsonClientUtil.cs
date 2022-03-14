@@ -12,7 +12,13 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
 
         public static void PrepareRequest(HttpClient client, HttpRequestMessage request, string url)
         {
-            var jsonBody = request.Content?.ReadAsStringAsync().Result ?? "";
+            var jsonBody = request.Content?.ReadAsStringAsync().Result;
+            if (string.IsNullOrWhiteSpace(jsonBody))
+            {
+                ConsoleUtils.DisplayRequestObject(url, string.Empty);
+                return;
+            }
+
             var jsonDocument = JsonDocument.Parse(jsonBody);
             ConsoleUtils.DisplayRequestObject(url, jsonDocument);
         }

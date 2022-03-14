@@ -25,7 +25,6 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 ConsoleUtils.DisplayException(apix);
                 throw;
-                throw;
             }
 
             ConsoleUtils.StartStopScenario("Scenario is done - payment is created");

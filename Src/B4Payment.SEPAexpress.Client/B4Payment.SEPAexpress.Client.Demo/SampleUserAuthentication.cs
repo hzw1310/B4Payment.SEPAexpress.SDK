@@ -39,7 +39,6 @@ namespace B4Payment.SEPAexpress.Client.Demo.Identity
             {
                 ConsoleUtils.DisplayException(apix);
                 throw;
-                throw;
             }
         }
     }
