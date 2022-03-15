@@ -50,6 +50,14 @@ while (true)
             await sampleRecurringPayment.ExecuteAsync();
             break;
 
+        case '5':
+            /// <summary>
+            /// get reconciliations
+            /// </summary>
+            var sampleGetReconciliations = new SampleGetReconciliations();
+            await sampleGetReconciliations.ExecuteAsync();
+            break;
+
         case 'X' or 'x':
             return;
     }

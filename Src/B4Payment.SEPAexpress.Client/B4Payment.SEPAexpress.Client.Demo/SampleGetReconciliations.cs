@@ -1,0 +1,62 @@
+﻿using B4Payment.SEPAexpress.Client.Api;
+using B4Payment.SEPAexpress.Client.Demo.Utils;
+
+namespace B4Payment.SEPAexpress.Client.Demo
+{
+    /// <summary>
+    /// Scenario create payment <see href="https://sepaexpress-prod-fx.azurewebsites.net/redoc#tag/Quick-Start"/>
+    /// </summary>
+    internal class SampleGetReconciliations
+    {
+        internal async Task ExecuteAsync()
+        {
+            ConsoleUtils.StartStopScenario("Start scenario - get reconciliations data");
+
+            // ask user for paymentId
+            var paymentId = ConsoleUtils.GetPaymentId();
+
+            var client = new SepaExpressClient(Globals.BaseUrl, Globals.HttpClient);
+
+            client.PrepareRequestEvent += (object? sender, RequestEventArgs e) =>
+                JsonClientUtil.PrepareRequest(e.Client, e.Request, e.Url);
+
+            client.PrepareResponseEvent += (object? sender, ResponseEventArgs e) =>
+                JsonClientUtil.ProcessResponse(e.Client, e.Response);
+
+            try
+            {
+                ///// 3.1 create a new payment referencing on this mandate
+                ConsoleUtils.DisplayActionStart("Get reconciliations data");
+                var reconciliationsData = await client.ReconciliationsAsync(
+                    includeMerchant: false,
+                    includeConnector: false,
+                    includeCustomer: false,
+                    includeBankAccount: false,
+                    includeMandate: false,
+                    includePayment: false,
+                    includeRefund: false,
+                    includePayout : false, 
+                    id: paymentId
+                    );
+
+                //var reconciliationsData = await client.Reconciliations2Async(
+                //    includeMerchant: false,
+                //    includeConnector: false,
+                //    includeCustomer: false,
+                //    includeBankAccount: false,
+                //    includeMandate: false,
+                //    includePayment: false,
+                //    includeRefund: false,
+                //    includePayout : false
+                //    );
+            }
+            catch (ApiException apix)
+            {
+                ConsoleUtils.DisplayException(apix);
+                throw;
+            }
+
+            ConsoleUtils.StartStopScenario("Scenario is done - reconciliations data is displayed");
+        }
+    }
+}

@@ -46,6 +46,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.WriteLine("2. Create payment in one step");
             Console.WriteLine("3. Get payment data");
             Console.WriteLine("4. Create recurring payment");
+            Console.WriteLine("5. Get reconciliations");
             Console.WriteLine("");
             Console.WriteLine("X. Exit");
         }
