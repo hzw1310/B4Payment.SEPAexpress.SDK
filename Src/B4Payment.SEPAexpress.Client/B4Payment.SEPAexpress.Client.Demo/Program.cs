@@ -42,6 +42,14 @@ while (true)
             await sampleGetPaymentData.GetPaymentDataAsync();
             break;
 
+        case '4':
+            /// <summary>
+            /// create recurring payment
+            /// </summary>
+            var sampleRecurringPayment = new SampleCreateRecurringPayment();
+            await sampleRecurringPayment.ExecuteAsync();
+            break;
+
         case 'X' or 'x':
             return;
     }
