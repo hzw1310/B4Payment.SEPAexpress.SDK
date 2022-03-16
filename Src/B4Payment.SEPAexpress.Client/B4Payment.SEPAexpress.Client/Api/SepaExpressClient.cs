@@ -52,23 +52,13 @@ namespace B4Payment.SEPAexpress.Client.Api
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
-        /// <summary>
-        /// Creates a new bank account
-        /// </summary>
-        /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CreateBankAccountHttpResponse> BankAccountsPOSTAsync(CreateBankAccountHttpRequest body)
-        {
-            return BankAccountsPOSTAsync(body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Creates a new bank account
         /// </summary>
         /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CreateBankAccountHttpResponse> BankAccountsPOSTAsync(CreateBankAccountHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CreateBankAccountHttpResponse> BankAccountsPOSTAsync(CreateBankAccountHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/BankAccounts");
@@ -185,39 +175,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of bank accounts
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchant id. Optional</param>
-        /// <param name="customerId">Return only objects with this customer id. Optional</param>
-        /// <param name="iban">Return only objects with this IBAN. Optional</param>
-        /// <param name="bic">Return only objects with this BIC. Optional</param>
-        /// <param name="currencyCode">Return only objects with this currency code. Optional</param>
-        /// <param name="countryCode">Return only objects with this country code. Optional</param>
-        /// <param name="bankCode">Return only objects with this national bank code. Optional</param>
-        /// <param name="branchCode">Return only objects with this national branch code. Optional</param>
-        /// <param name="accountNumber">Return only objects with this national account number. Optional</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetBankAccountsHttpResponse> BankAccountsGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string customerId, string iban, string bic, string currencyCode, string countryCode, string bankCode, string branchCode, string accountNumber, bool? includeCustomer, bool? includeMerchant)
-        {
-            return BankAccountsGETAsync(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, merchantId, customerId, iban, bic, currencyCode, countryCode, bankCode, branchCode, accountNumber, includeCustomer, includeMerchant, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of bank accounts
@@ -247,7 +204,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetBankAccountsHttpResponse> BankAccountsGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string customerId, string iban, string bic, string currencyCode, string countryCode, string bankCode, string branchCode, string accountNumber, bool? includeCustomer, bool? includeMerchant, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetBankAccountsHttpResponse> BankAccountsGETAsync(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, string merchantId = null, string customerId = null, string iban = null, string bic = null, string currencyCode = null, string countryCode = null, string bankCode = null, string branchCode = null, string accountNumber = null, bool? includeCustomer = null, bool? includeMerchant = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/BankAccounts?");
@@ -428,18 +385,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific bank account
-        /// </summary>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetBankAccountHttpResponse> BankAccountsGET2Async(bool? includeCustomer, bool? includeMerchant, string id)
-        {
-            return BankAccountsGET2Async(includeCustomer, includeMerchant, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific bank account
@@ -448,7 +393,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetBankAccountHttpResponse> BankAccountsGET2Async(bool? includeCustomer, bool? includeMerchant, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetBankAccountHttpResponse> BankAccountsGET2Async(string id, bool? includeCustomer = null, bool? includeMerchant = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -575,18 +520,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific connector
-        /// </summary>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeSchemaConfiguration">Indicates whether the full SchemaConfiguration object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetConnectorHttpResponse> ConnectorsAsync(bool? includeMerchant, bool? includeSchemaConfiguration, string id)
-        {
-            return ConnectorsAsync(includeMerchant, includeSchemaConfiguration, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific connector
@@ -595,7 +528,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeSchemaConfiguration">Indicates whether the full SchemaConfiguration object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetConnectorHttpResponse> ConnectorsAsync(bool? includeMerchant, bool? includeSchemaConfiguration, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetConnectorHttpResponse> ConnectorsAsync(string id, bool? includeMerchant = null, bool? includeSchemaConfiguration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -722,35 +655,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of connectors
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchant id. Optional</param>
-        /// <param name="name">Return only objects with this name. Optional</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="mandateReviewEnabled">Return only objects if their MandateReviewEnabled is true or false . Optional</param>
-        /// <param name="paymentReviewEnabled">Return only objects if their PaymentReviewEnabled is true or false . Optional</param>
-        /// <param name="payoutReviewEnabled">Return only objects if their PayoutReviewEnabled is true or false . Optional</param>
-        /// <param name="refundReviewEnabled">Return only objects if their RefundReviewEnabled is true or false . Optional</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetConnectorsHttpResponse> Connectors2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string name, bool? includeMerchant, bool? mandateReviewEnabled, bool? paymentReviewEnabled, bool? payoutReviewEnabled, bool? refundReviewEnabled)
-        {
-            return Connectors2Async(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, merchantId, name, includeMerchant, mandateReviewEnabled, paymentReviewEnabled, payoutReviewEnabled, refundReviewEnabled, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of connectors
@@ -776,7 +680,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="refundReviewEnabled">Return only objects if their RefundReviewEnabled is true or false . Optional</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetConnectorsHttpResponse> Connectors2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string name, bool? includeMerchant, bool? mandateReviewEnabled, bool? paymentReviewEnabled, bool? payoutReviewEnabled, bool? refundReviewEnabled, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetConnectorsHttpResponse> Connectors2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, string merchantId = null, string name = null, bool? includeMerchant = null, bool? mandateReviewEnabled = null, bool? paymentReviewEnabled = null, bool? payoutReviewEnabled = null, bool? refundReviewEnabled = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Connectors?");
@@ -941,23 +845,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Creates a new customer
-        /// </summary>
-        /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CreateCustomerHttpResponse> CustomersPOSTAsync(CreateCustomerHttpRequest body)
-        {
-            return CustomersPOSTAsync(body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Creates a new customer
         /// </summary>
         /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CreateCustomerHttpResponse> CustomersPOSTAsync(CreateCustomerHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CreateCustomerHttpResponse> CustomersPOSTAsync(CreateCustomerHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Customers");
@@ -1074,30 +968,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of customers
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchant id. Optional</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetCustomersHttpResponse> CustomersGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, bool? includeMerchant)
-        {
-            return CustomersGETAsync(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, merchantId, includeMerchant, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of customers
@@ -1118,7 +988,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetCustomersHttpResponse> CustomersGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, bool? includeMerchant, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetCustomersHttpResponse> CustomersGETAsync(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, string merchantId = null, bool? includeMerchant = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Customers?");
@@ -1263,17 +1133,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific customer
-        /// </summary>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetCustomerHttpResponse> CustomersGET2Async(bool? includeMerchant, string id)
-        {
-            return CustomersGET2Async(includeMerchant, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific customer
@@ -1281,7 +1140,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetCustomerHttpResponse> CustomersGET2Async(bool? includeMerchant, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetCustomerHttpResponse> CustomersGET2Async(string id, bool? includeMerchant = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1404,23 +1263,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Creates a new hosted page
-        /// </summary>
-        /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CreateHostedPageHttpResponse> HostedPagesPOSTAsync(CreateHostedPageHttpRequest body)
-        {
-            return HostedPagesPOSTAsync(body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Creates a new hosted page
         /// </summary>
         /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CreateHostedPageHttpResponse> HostedPagesPOSTAsync(CreateHostedPageHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CreateHostedPageHttpResponse> HostedPagesPOSTAsync(CreateHostedPageHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/HostedPages");
@@ -1537,33 +1386,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of hosted pages
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchant id. Optional</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetHostedPagesHttpResponse> HostedPagesGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, string state, string merchantId, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout)
-        {
-            return HostedPagesGETAsync(after, before, limit, createdFrom, createdUntil, state, merchantId, includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of hosted pages
@@ -1587,7 +1409,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetHostedPagesHttpResponse> HostedPagesGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, string state, string merchantId, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetHostedPagesHttpResponse> HostedPagesGETAsync(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, string state = null, string merchantId = null, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/HostedPages?");
@@ -1752,24 +1574,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific hosted page
-        /// </summary>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetHostedPageHttpResponse> HostedPagesGET2Async(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, string id)
-        {
-            return HostedPagesGET2Async(includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific hosted page
@@ -1784,7 +1588,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetHostedPageHttpResponse> HostedPagesGET2Async(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetHostedPageHttpResponse> HostedPagesGET2Async(string id, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1935,18 +1739,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// View the hosted page
-        /// </summary>
-        /// <param name="successUrl">The URL to which SEPAexpress should send the customers when the hosted page successfully completed.</param>
-        /// <param name="failUrl">The URL to which SEPAexpress should send the customers when the hosted page failed.</param>
-        /// <returns>Success.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task ViewAsync(string successUrl, string failUrl, string id)
-        {
-            return ViewAsync(successUrl, failUrl, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// View the hosted page
@@ -1955,7 +1747,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="failUrl">The URL to which SEPAexpress should send the customers when the hosted page failed.</param>
         /// <returns>Success.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task ViewAsync(string successUrl, string failUrl, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task ViewAsync(string id, string successUrl = null, string failUrl = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -2073,23 +1865,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific localizationText
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetLocalizationTextHttpResponse> LocalizationTextsAsync(string merchantId, string languageCode, string countryCode, string key)
-        {
-            return LocalizationTextsAsync(merchantId, languageCode, countryCode, key, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific localizationText
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetLocalizationTextHttpResponse> LocalizationTextsAsync(string merchantId, string languageCode, string countryCode, string key, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetLocalizationTextHttpResponse> LocalizationTextsAsync(string key, string merchantId = null, string languageCode = null, string countryCode = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (key == null)
                 throw new System.ArgumentNullException("key");
@@ -2220,23 +2002,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Creates a new mandate
-        /// </summary>
-        /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CreateMandateHttpResponse> MandatesPOSTAsync(CreateMandateHttpRequest body)
-        {
-            return MandatesPOSTAsync(body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Creates a new mandate
         /// </summary>
         /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CreateMandateHttpResponse> MandatesPOSTAsync(CreateMandateHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CreateMandateHttpResponse> MandatesPOSTAsync(CreateMandateHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Mandates");
@@ -2353,41 +2125,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of mandates
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchant id. Optional</param>
-        /// <param name="connectorId">Return only objects with this connector id. Optional</param>
-        /// <param name="customerId">Return only objects with this customer id. Optional</param>
-        /// <param name="bankAccountId">Return only objects with this bank account id. Optional</param>
-        /// <param name="scheme">Return only objects with this payment scheme. Optional</param>
-        /// <param name="reference">Return only objects with this mandate reference. Optional</param>
-        /// <param name="type">Return only objects with this mandate type. Optional</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeHostedPage">Indicates whether the full hosted page object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetMandatesHttpResponse> MandatesGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string scheme, string reference, string type, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includeConnector, bool? includeMerchant, bool? includeHostedPage)
-        {
-            return MandatesGETAsync(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, merchantId, connectorId, customerId, bankAccountId, scheme, reference, type, includeCustomer, includeBankAccount, includeMandate, includeConnector, includeMerchant, includeHostedPage, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of mandates
@@ -2419,7 +2156,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeHostedPage">Indicates whether the full hosted page object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetMandatesHttpResponse> MandatesGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string scheme, string reference, string type, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includeConnector, bool? includeMerchant, bool? includeHostedPage, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetMandatesHttpResponse> MandatesGETAsync(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, string merchantId = null, string connectorId = null, string customerId = null, string bankAccountId = null, string scheme = null, string reference = null, string type = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includeConnector = null, bool? includeMerchant = null, bool? includeHostedPage = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Mandates?");
@@ -2608,22 +2345,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific mandate
-        /// </summary>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeHostedPage">Indicates whether the full hosted page object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetMandateHttpResponse> MandatesGET2Async(bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includeConnector, bool? includeMerchant, bool? includeHostedPage, string id)
-        {
-            return MandatesGET2Async(includeCustomer, includeBankAccount, includeMandate, includeConnector, includeMerchant, includeHostedPage, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific mandate
@@ -2636,7 +2357,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeHostedPage">Indicates whether the full hosted page object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetMandateHttpResponse> MandatesGET2Async(bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includeConnector, bool? includeMerchant, bool? includeHostedPage, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetMandateHttpResponse> MandatesGET2Async(string id, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includeConnector = null, bool? includeMerchant = null, bool? includeHostedPage = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -2779,23 +2500,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Approves a mandate
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ApproveMandateHttpResponse> ApproveAsync(string id, ApproveMandateHttpRequest body)
-        {
-            return ApproveAsync(id, body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Approves a mandate
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ApproveMandateHttpResponse> ApproveAsync(string id, ApproveMandateHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<ApproveMandateHttpResponse> ApproveAsync(string id, ApproveMandateHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -2926,23 +2637,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Creates a new approval Tan and re-sends it via email or sms to the customer
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ResendMandateHttpResponse> ResendAsync(string id, ResendMandateHttpRequest body)
-        {
-            return ResendAsync(id, body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Creates a new approval Tan and re-sends it via email or sms to the customer
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ResendMandateHttpResponse> ResendAsync(string id, ResendMandateHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<ResendMandateHttpResponse> ResendAsync(string id, ResendMandateHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -3073,23 +2774,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Manually accept or reject this mandate
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReviewMandateHttpResponse> ReviewAsync(string id, ReviewMandateHttpRequest body)
-        {
-            return ReviewAsync(id, body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Manually accept or reject this mandate
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReviewMandateHttpResponse> ReviewAsync(string id, ReviewMandateHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<ReviewMandateHttpResponse> ReviewAsync(string id, ReviewMandateHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -3220,23 +2911,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Discards a mandate.
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<DiscardMandateHttpResponse> DiscardAsync(string id, DiscardMandateHttpRequest body)
-        {
-            return DiscardAsync(id, body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Discards a mandate.
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<DiscardMandateHttpResponse> DiscardAsync(string id, DiscardMandateHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<DiscardMandateHttpResponse> DiscardAsync(string id, DiscardMandateHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -3367,23 +3048,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Reinstates a discarded or expired mandate
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReinstateMandateHttpResponse> ReinstateAsync(string id, ReinstateMandateHttpRequest body)
-        {
-            return ReinstateAsync(id, body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Reinstates a discarded or expired mandate
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReinstateMandateHttpResponse> ReinstateAsync(string id, ReinstateMandateHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<ReinstateMandateHttpResponse> ReinstateAsync(string id, ReinstateMandateHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -3514,23 +3185,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific merchant
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetMerchantHttpResponse> MerchantsAsync(string id)
-        {
-            return MerchantsAsync(id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific merchant
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetMerchantHttpResponse> MerchantsAsync(string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetMerchantHttpResponse> MerchantsAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -3648,28 +3309,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of merchants
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetMerchantHttpResponse> Merchants2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state)
-        {
-            return Merchants2Async(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of merchants
@@ -3688,7 +3327,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="state">Return only objects with this state. Optional</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetMerchantHttpResponse> Merchants2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetMerchantHttpResponse> Merchants2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Merchants?");
@@ -3825,23 +3464,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Creates a new payment
-        /// </summary>
-        /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CreatePaymentHttpResponse> PaymentsPOSTAsync(CreatePaymentHttpRequest body)
-        {
-            return PaymentsPOSTAsync(body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Creates a new payment
         /// </summary>
         /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CreatePaymentHttpResponse> PaymentsPOSTAsync(CreatePaymentHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CreatePaymentHttpResponse> PaymentsPOSTAsync(CreatePaymentHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Payments");
@@ -3958,41 +3587,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of payments
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchant id. Optional</param>
-        /// <param name="connectorId">Return only objects with this connector id. Optional</param>
-        /// <param name="customerId">Return only objects with this customer id. Optional</param>
-        /// <param name="bankAccountId">Return only objects with this bank account id. Optional</param>
-        /// <param name="mandateId">Return only objects with this mandate id. Optional</param>
-        /// <param name="reference">Return only objects with this payment reference. Optional</param>
-        /// <param name="currencyCode">Return only objects with this currency code. Optional</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeHostedPage">Indicates whether the full hosted page object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetPaymentsHttpResponse> PaymentsGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string reference, string currencyCode, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includeConnector, bool? includeMerchant, bool? includeHostedPage)
-        {
-            return PaymentsGETAsync(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, merchantId, connectorId, customerId, bankAccountId, mandateId, reference, currencyCode, includeCustomer, includeBankAccount, includeMandate, includeConnector, includeMerchant, includeHostedPage, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of payments
@@ -4024,7 +3618,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeHostedPage">Indicates whether the full hosted page object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetPaymentsHttpResponse> PaymentsGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string reference, string currencyCode, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includeConnector, bool? includeMerchant, bool? includeHostedPage, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetPaymentsHttpResponse> PaymentsGETAsync(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, string merchantId = null, string connectorId = null, string customerId = null, string bankAccountId = null, string mandateId = null, string reference = null, string currencyCode = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includeConnector = null, bool? includeMerchant = null, bool? includeHostedPage = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Payments?");
@@ -4213,22 +3807,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific payment
-        /// </summary>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeHostedPage">Indicates whether the full hosted page object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetPaymentHttpResponse> PaymentsGET2Async(bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includeConnector, bool? includeMerchant, bool? includeHostedPage, string id)
-        {
-            return PaymentsGET2Async(includeCustomer, includeBankAccount, includeMandate, includeConnector, includeMerchant, includeHostedPage, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific payment
@@ -4241,7 +3819,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeHostedPage">Indicates whether the full hosted page object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetPaymentHttpResponse> PaymentsGET2Async(bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includeConnector, bool? includeMerchant, bool? includeHostedPage, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetPaymentHttpResponse> PaymentsGET2Async(string id, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includeConnector = null, bool? includeMerchant = null, bool? includeHostedPage = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -4384,23 +3962,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Manually accept or reject this payment
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReviewPaymentHttpResponse> Review2Async(string id, ReviewPaymentHttpRequest body)
-        {
-            return Review2Async(id, body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Manually accept or reject this payment
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReviewPaymentHttpResponse> Review2Async(string id, ReviewPaymentHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<ReviewPaymentHttpResponse> Review2Async(string id, ReviewPaymentHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -4531,23 +4099,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Creates a new payout
-        /// </summary>
-        /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CreatePayoutHttpResponse> PayoutsPOSTAsync(CreatePayoutHttpRequest body)
-        {
-            return PayoutsPOSTAsync(body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Creates a new payout
         /// </summary>
         /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CreatePayoutHttpResponse> PayoutsPOSTAsync(CreatePayoutHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CreatePayoutHttpResponse> PayoutsPOSTAsync(CreatePayoutHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Payouts");
@@ -4664,38 +4222,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of payouts
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchant id. Optional</param>
-        /// <param name="connectorId">Return only objects with this connector id. Optional</param>
-        /// <param name="customerId">Return only objects with this customer id. Optional</param>
-        /// <param name="bankAccountId">Return only objects with this bank account id. Optional</param>
-        /// <param name="reference">Return only objects with this payout reference. Optional</param>
-        /// <param name="currencyCode">Return only objects with this currency code. Optional</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetPayoutsHttpResponse> PayoutsGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string reference, string currencyCode, bool? includeCustomer, bool? includeBankAccount, bool? includeConnector, bool? includeMerchant)
-        {
-            return PayoutsGETAsync(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, merchantId, connectorId, customerId, bankAccountId, reference, currencyCode, includeCustomer, includeBankAccount, includeConnector, includeMerchant, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of payouts
@@ -4724,7 +4250,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetPayoutsHttpResponse> PayoutsGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string reference, string currencyCode, bool? includeCustomer, bool? includeBankAccount, bool? includeConnector, bool? includeMerchant, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetPayoutsHttpResponse> PayoutsGETAsync(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, string merchantId = null, string connectorId = null, string customerId = null, string bankAccountId = null, string reference = null, string currencyCode = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeConnector = null, bool? includeMerchant = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Payouts?");
@@ -4901,20 +4427,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific payout
-        /// </summary>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetPayoutHttpResponse> PayoutsGET2Async(bool? includeCustomer, bool? includeBankAccount, bool? includeConnector, bool? includeMerchant, string id)
-        {
-            return PayoutsGET2Async(includeCustomer, includeBankAccount, includeConnector, includeMerchant, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific payout
@@ -4925,7 +4437,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetPayoutHttpResponse> PayoutsGET2Async(bool? includeCustomer, bool? includeBankAccount, bool? includeConnector, bool? includeMerchant, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetPayoutHttpResponse> PayoutsGET2Async(string id, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeConnector = null, bool? includeMerchant = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5060,23 +4572,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Manually accept or reject this payout
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReviewPayoutHttpResponse> Review3Async(string id, ReviewPayoutHttpRequest body)
-        {
-            return Review3Async(id, body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Manually accept or reject this payout
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReviewPayoutHttpResponse> Review3Async(string id, ReviewPayoutHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<ReviewPayoutHttpResponse> Review3Async(string id, ReviewPayoutHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5207,24 +4709,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific reconciliation
-        /// </summary>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetReconciliationHttpResponse> ReconciliationsAsync(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, string id)
-        {
-            return ReconciliationsAsync(includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific reconciliation
@@ -5239,7 +4723,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetReconciliationHttpResponse> ReconciliationsAsync(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetReconciliationHttpResponse> ReconciliationsAsync(string id, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5390,52 +4874,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of reconciliations
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchantId. Optional</param>
-        /// <param name="connectorId">Return only objects with this connectorId. Optional</param>
-        /// <param name="customerId">Return only objects with this customerId. Optional</param>
-        /// <param name="bankAccountId">Return only objects with this bankAccountId. Optional</param>
-        /// <param name="mandateId">Return only objects with this mandateId. Optional</param>
-        /// <param name="paymentId">Return only objects with this paymentId. Optional</param>
-        /// <param name="refundId">Return only objects with this refundId. Optional</param>
-        /// <param name="payoutId">Return only objects with this payoutId. Optional</param>
-        /// <param name="entity">Return only objects for this entity. Optional</param>
-        /// <param name="iban">Return only objects with this IBAN. Optional</param>
-        /// <param name="currencyCode">Return only objects with this currency code. Optional</param>
-        /// <param name="reference">Return only objects with this reference. Optional</param>
-        /// <param name="idempotencyKey">Return only objects with this IdempotencyKey. Optional</param>
-        /// <param name="bookingDateFrom">Return only objects which were booked from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="bookingDateUntil">Return only objects which were booked until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="cause">Return only objects with this cause. Optional</param>
-        /// <param name="scheme">Return only objects with this payment scheme. Optional</param>
-        /// <param name="reasonCode">Return only objects with this reason code. Optional</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetReconciliationsHttpResponse> Reconciliations2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string refundId, string payoutId, string entity, string iban, string currencyCode, string reference, string idempotencyKey, System.DateTimeOffset? bookingDateFrom, System.DateTimeOffset? bookingDateUntil, string cause, string scheme, string reasonCode, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout)
-        {
-            return Reconciliations2Async(after, before, limit, createdFrom, createdUntil, state, merchantId, connectorId, customerId, bankAccountId, mandateId, paymentId, refundId, payoutId, entity, iban, currencyCode, reference, idempotencyKey, bookingDateFrom, bookingDateUntil, cause, scheme, reasonCode, includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of reconciliations
@@ -5478,7 +4916,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetReconciliationsHttpResponse> Reconciliations2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string refundId, string payoutId, string entity, string iban, string currencyCode, string reference, string idempotencyKey, System.DateTimeOffset? bookingDateFrom, System.DateTimeOffset? bookingDateUntil, string cause, string scheme, string reasonCode, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetReconciliationsHttpResponse> Reconciliations2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, string state = null, string merchantId = null, string connectorId = null, string customerId = null, string bankAccountId = null, string mandateId = null, string paymentId = null, string refundId = null, string payoutId = null, string entity = null, string iban = null, string currencyCode = null, string reference = null, string idempotencyKey = null, System.DateTimeOffset? bookingDateFrom = null, System.DateTimeOffset? bookingDateUntil = null, string cause = null, string scheme = null, string reasonCode = null, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Reconciliations?");
@@ -5711,23 +5149,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Creates a new refund
-        /// </summary>
-        /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CreateRefundHttpResponse> RefundsPOSTAsync(CreateRefundHttpRequest body)
-        {
-            return RefundsPOSTAsync(body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Creates a new refund
         /// </summary>
         /// <returns>Created. The request has been fulfilled and resulted in a new resource being created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CreateRefundHttpResponse> RefundsPOSTAsync(CreateRefundHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CreateRefundHttpResponse> RefundsPOSTAsync(CreateRefundHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Refunds");
@@ -5844,42 +5272,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of refunds
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchant id. Optional</param>
-        /// <param name="connectorId">Return only objects with this connector id. Optional</param>
-        /// <param name="customerId">Return only objects with this customer id. Optional</param>
-        /// <param name="bankAccountId">Return only objects with this bank account id. Optional</param>
-        /// <param name="mandateId">Return only objects with this mandate id. Optional</param>
-        /// <param name="paymentId">Return only objects with this payment id. Optional</param>
-        /// <param name="reference">Return only objects with this Refund reference. Optional</param>
-        /// <param name="currencyCode">Return only objects with this currency code. Optional</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full payment object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetRefundsHttpResponse> RefundsGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string reference, string currencyCode, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment)
-        {
-            return RefundsGETAsync(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, merchantId, connectorId, customerId, bankAccountId, mandateId, paymentId, reference, currencyCode, includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of refunds
@@ -5912,7 +5304,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includePayment">Indicates whether the full payment object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetRefundsHttpResponse> RefundsGETAsync(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string reference, string currencyCode, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetRefundsHttpResponse> RefundsGETAsync(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, string merchantId = null, string connectorId = null, string customerId = null, string bankAccountId = null, string mandateId = null, string paymentId = null, string reference = null, string currencyCode = null, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Refunds?");
@@ -6105,22 +5497,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific refund
-        /// </summary>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full payment object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetRefundHttpResponse> RefundsGET2Async(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, string id)
-        {
-            return RefundsGET2Async(includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific refund
@@ -6133,7 +5509,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includePayment">Indicates whether the full payment object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetRefundHttpResponse> RefundsGET2Async(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetRefundHttpResponse> RefundsGET2Async(string id, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -6276,23 +5652,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Manually accept or reject this refund
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReviewRefundHttpResponse> Review4Async(string id, ReviewRefundHttpRequest body)
-        {
-            return Review4Async(id, body, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Manually accept or reject this refund
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReviewRefundHttpResponse> Review4Async(string id, ReviewRefundHttpRequest body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<ReviewRefundHttpResponse> Review4Async(string id, ReviewRefundHttpRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -6423,23 +5789,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific process
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetProcessHttpResponse> ProcessesAsync(string id)
-        {
-            return ProcessesAsync(id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific process
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetProcessHttpResponse> ProcessesAsync(string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetProcessHttpResponse> ProcessesAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -6557,31 +5913,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of processs
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="type">Return only objects with this type. Optional</param>
-        /// <param name="origin">Return only objects with this origin. Optional</param>
-        /// <param name="name">Return only objects with this name. Optional</param>
-        /// <param name="className">Return only objects with this classname. Optional</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetProcessesHttpResponse> Processes2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string type, string origin, string name, string className)
-        {
-            return Processes2Async(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, type, origin, name, className, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of processs
@@ -6603,7 +5934,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="className">Return only objects with this classname. Optional</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetProcessesHttpResponse> Processes2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string type, string origin, string name, string className, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetProcessesHttpResponse> Processes2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string type = null, string origin = null, string name = null, string className = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Processes?");
@@ -6752,26 +6083,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific ProcessEvent
-        /// </summary>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <param name="includeReconciliation">Indicates whether the full reconciliation object should be included.</param>
-        /// <param name="includeProcess">Indicates whether the full process object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetProcessEventHttpResponse> ProcessEventsAsync(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, string id)
-        {
-            return ProcessEventsAsync(includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, includeReconciliation, includeProcess, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific ProcessEvent
@@ -6788,7 +6099,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeProcess">Indicates whether the full process object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetProcessEventHttpResponse> ProcessEventsAsync(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetProcessEventHttpResponse> ProcessEventsAsync(string id, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, bool? includeReconciliation = null, bool? includeProcess = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -6947,49 +6258,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of ProcessEvents
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 10. Maximum of 50. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="merchantId">Return only objects with this merchantId. Optional</param>
-        /// <param name="connectorId">Return only objects with this connectorId. Optional</param>
-        /// <param name="customerId">Return only objects with this customerId. Optional</param>
-        /// <param name="bankAccountId">Return only objects with this bankAccountId. Optional</param>
-        /// <param name="mandateId">Return only objects with this mandateId. Optional</param>
-        /// <param name="paymentId">Return only objects with this paymentId. Optional</param>
-        /// <param name="refundId">Return only objects with this refundId. Optional</param>
-        /// <param name="payoutId">Return only objects with this payoutId. Optional</param>
-        /// <param name="reconciliationId">Return only objects with this reconciliationId. Optional</param>
-        /// <param name="processId">Return only objects with this ProcessId. Optional</param>
-        /// <param name="type">Return only objects of this type. Optional</param>
-        /// <param name="origin">Return only objects with this origin. Optional</param>
-        /// <param name="cause">Return only objects with this cause. Optional</param>
-        /// <param name="reasonCode">Return only objects with this reason code. Optional</param>
-        /// <param name="trigger">Return only objects with this trigger. Optional</param>
-        /// <param name="token">Return only objects with this token. Optional</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <param name="includeReconciliation">Indicates whether the full reconciliation object should be included.</param>
-        /// <param name="includeProcess">Indicates whether the full process object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetProcessEventsHttpResponse> ProcessEvents2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string refundId, string payoutId, string reconciliationId, string processId, string type, string origin, string cause, string reasonCode, string trigger, string token, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess)
-        {
-            return ProcessEvents2Async(after, before, limit, createdFrom, createdUntil, merchantId, connectorId, customerId, bankAccountId, mandateId, paymentId, refundId, payoutId, reconciliationId, processId, type, origin, cause, reasonCode, trigger, token, includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, includeReconciliation, includeProcess, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of ProcessEvents
@@ -7029,7 +6297,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeProcess">Indicates whether the full process object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetProcessEventsHttpResponse> ProcessEvents2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string refundId, string payoutId, string reconciliationId, string processId, string type, string origin, string cause, string reasonCode, string trigger, string token, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetProcessEventsHttpResponse> ProcessEvents2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, string merchantId = null, string connectorId = null, string customerId = null, string bankAccountId = null, string mandateId = null, string paymentId = null, string refundId = null, string payoutId = null, string reconciliationId = null, string processId = null, string type = null, string origin = null, string cause = null, string reasonCode = null, string trigger = null, string token = null, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, bool? includeReconciliation = null, bool? includeProcess = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/ProcessEvents?");
@@ -7258,23 +6526,13 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific webhook
-        /// </summary>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetWebhookHttpResponse> WebhooksAsync(string id)
-        {
-            return WebhooksAsync(id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific webhook
         /// </summary>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetWebhookHttpResponse> WebhooksAsync(string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetWebhookHttpResponse> WebhooksAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -7392,28 +6650,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of webhooks
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="state">Return only objects with this state. Optional</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetWebhooksHttpResponse> Webhooks2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string url)
-        {
-            return Webhooks2Async(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, state, url, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of webhooks
@@ -7432,7 +6668,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="state">Return only objects with this state. Optional</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetWebhooksHttpResponse> Webhooks2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, string state, string url, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetWebhooksHttpResponse> Webhooks2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, string url = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Webhooks?");
@@ -7573,28 +6809,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific webhookEvent
-        /// </summary>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <param name="includeReconciliation">Indicates whether the full reconciliation object should be included.</param>
-        /// <param name="includeProcess">Indicates whether the full process object should be included.</param>
-        /// <param name="includeProcessEvent">Indicates whether the full processEvent object should be included.</param>
-        /// <param name="includeWebhook">Indicates whether the full Webhook object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetWebhookEventHttpResponse> WebhookEventsAsync(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, bool? includeProcessEvent, bool? includeWebhook, string id)
-        {
-            return WebhookEventsAsync(includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, includeReconciliation, includeProcess, includeProcessEvent, includeWebhook, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific webhookEvent
@@ -7613,7 +6827,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeWebhook">Indicates whether the full Webhook object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetWebhookEventHttpResponse> WebhookEventsAsync(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, bool? includeProcessEvent, bool? includeWebhook, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetWebhookEventHttpResponse> WebhookEventsAsync(string id, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, bool? includeReconciliation = null, bool? includeProcess = null, bool? includeProcessEvent = null, bool? includeWebhook = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -7780,53 +6994,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of webhookEvents
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 50. Maximum of 500. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="isSuccessfullyTransmitted">Is Webhook event Successfully Transmitted</param>
-        /// <param name="transmissionCount">count of transmissions</param>
-        /// <param name="merchantId">Return only objects with this merchantId. Optional</param>
-        /// <param name="connectorId">Return only objects with this connectorId. Optional</param>
-        /// <param name="customerId">Return only objects with this customerId. Optional</param>
-        /// <param name="bankAccountId">Return only objects with this bankAccountId. Optional</param>
-        /// <param name="mandateId">Return only objects with this mandateId. Optional</param>
-        /// <param name="paymentId">Return only objects with this paymentId. Optional</param>
-        /// <param name="refundId">Return only objects with this refundId. Optional</param>
-        /// <param name="payoutId">Return only objects with this payoutId. Optional</param>
-        /// <param name="reconciliationId">Return only objects with this reconciliationId. Optional</param>
-        /// <param name="processId">Return only objects with this processId. Optional</param>
-        /// <param name="processEventId">Return only objects with this processEventId. Optional</param>
-        /// <param name="webhookId">Return only objects with this webhookId. Optional</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <param name="includeReconciliation">Indicates whether the full reconciliation object should be included.</param>
-        /// <param name="includeProcess">Indicates whether the full process object should be included.</param>
-        /// <param name="includeProcessEvent">Indicates whether the full processEvent object should be included.</param>
-        /// <param name="includeWebhook">Indicates whether the full Webhook object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetWebhookEventsHttpResponse> WebhookEvents2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, bool? isSuccessfullyTransmitted, int? transmissionCount, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string refundId, string payoutId, string reconciliationId, string processId, string processEventId, string webhookId, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, bool? includeProcessEvent, bool? includeWebhook)
-        {
-            return WebhookEvents2Async(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, isSuccessfullyTransmitted, transmissionCount, merchantId, connectorId, customerId, bankAccountId, mandateId, paymentId, refundId, payoutId, reconciliationId, processId, processEventId, webhookId, includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, includeReconciliation, includeProcess, includeProcessEvent, includeWebhook, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of webhookEvents
@@ -7870,7 +7037,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeWebhook">Indicates whether the full Webhook object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetWebhookEventsHttpResponse> WebhookEvents2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, bool? isSuccessfullyTransmitted, int? transmissionCount, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string refundId, string payoutId, string reconciliationId, string processId, string processEventId, string webhookId, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, bool? includeProcessEvent, bool? includeWebhook, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetWebhookEventsHttpResponse> WebhookEvents2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, bool? isSuccessfullyTransmitted = null, int? transmissionCount = null, string merchantId = null, string connectorId = null, string customerId = null, string bankAccountId = null, string mandateId = null, string paymentId = null, string refundId = null, string payoutId = null, string reconciliationId = null, string processId = null, string processEventId = null, string webhookId = null, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, bool? includeReconciliation = null, bool? includeProcess = null, bool? includeProcessEvent = null, bool? includeWebhook = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/WebhookEvents?");
@@ -8107,29 +7274,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a specific webhookEventTransmission
-        /// </summary>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <param name="includeReconciliation">Indicates whether the full reconciliation object should be included.</param>
-        /// <param name="includeProcess">Indicates whether the full process object should be included.</param>
-        /// <param name="includeProcessEvent">Indicates whether the full processEvent object should be included.</param>
-        /// <param name="includeWebhook">Indicates whether the full Webhook object should be included.</param>
-        /// <param name="includeWebhookEvent">Indicates whether the full WebhookEvent object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetWebhookEventTransmissionHttpResponse> WebhookEventTransmissionsAsync(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, bool? includeProcessEvent, bool? includeWebhook, bool? includeWebhookEvent, string id)
-        {
-            return WebhookEventTransmissionsAsync(includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, includeReconciliation, includeProcess, includeProcessEvent, includeWebhook, includeWebhookEvent, id, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a specific webhookEventTransmission
@@ -8149,7 +7293,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeWebhookEvent">Indicates whether the full WebhookEvent object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetWebhookEventTransmissionHttpResponse> WebhookEventTransmissionsAsync(bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, bool? includeProcessEvent, bool? includeWebhook, bool? includeWebhookEvent, string id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetWebhookEventTransmissionHttpResponse> WebhookEventTransmissionsAsync(string id, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, bool? includeReconciliation = null, bool? includeProcess = null, bool? includeProcessEvent = null, bool? includeWebhook = null, bool? includeWebhookEvent = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -8320,54 +7464,6 @@ namespace B4Payment.SEPAexpress.Client.Api
             }
         }
 
-        /// <summary>
-        /// Returns a cursor paged list of webhookEventTransmissions
-        /// </summary>
-        /// <param name="after">Return only objects after this cursor id. Optional</param>
-        /// <param name="before">Return only objects before this cursor id. Optional</param>
-        /// <param name="limit">Upper bound for the number of objects to be returned. Defaults to 10. Maximum of 50. Optional</param>
-        /// <param name="createdFrom">Return only objects which were created from this timestamp on. Optional. Remark: Do not use timestamps for the
-        /// <br/>paging of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="createdUntil">Return only objects which were created until this timestamp. Optional. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedFrom">Return only objects which were last modified from this timestamp on. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="lastModifiedUntil">Return only objects which were last modified until this timestamp. Remark: Do not use timestamps for the paging
-        /// <br/>of search results as there can be multiple objects with the same timestamp.</param>
-        /// <param name="statusCode">Return only objects with this statusCode. Optional</param>
-        /// <param name="merchantId">Return only objects with this merchantId. Optional</param>
-        /// <param name="connectorId">Return only objects with this connectorId. Optional</param>
-        /// <param name="customerId">Return only objects with this customerId. Optional</param>
-        /// <param name="bankAccountId">Return only objects with this bankAccountId. Optional</param>
-        /// <param name="mandateId">Return only objects with this mandateId. Optional</param>
-        /// <param name="paymentId">Return only objects with this paymentId. Optional</param>
-        /// <param name="refundId">Return only objects with this refundId. Optional</param>
-        /// <param name="payoutId">Return only objects with this payoutId. Optional</param>
-        /// <param name="reconciliationId">Return only objects with this reconciliationId. Optional</param>
-        /// <param name="processId">Return only objects with this processId. Optional</param>
-        /// <param name="processEventId">Return only objects with this processEventId. Optional</param>
-        /// <param name="webhookId">Return only objects with this webhookId. Optional</param>
-        /// <param name="webhookEventId">Return only objects with this webhookEventId. Optional</param>
-        /// <param name="includeMerchant">Indicates whether the full merchant object should be included.</param>
-        /// <param name="includeConnector">Indicates whether the full connector object should be included.</param>
-        /// <param name="includeCustomer">Indicates whether the full customer object should be included.</param>
-        /// <param name="includeBankAccount">Indicates whether the full bankaccount object should be included.</param>
-        /// <param name="includeMandate">Indicates whether the full mandate object should be included.</param>
-        /// <param name="includePayment">Indicates whether the full Payment object should be included.</param>
-        /// <param name="includeRefund">Indicates whether the full refund object should be included.</param>
-        /// <param name="includePayout">Indicates whether the full payout object should be included.</param>
-        /// <param name="includeReconciliation">Indicates whether the full reconciliation object should be included.</param>
-        /// <param name="includeProcess">Indicates whether the full process object should be included.</param>
-        /// <param name="includeProcessEvent">Indicates whether the full processEvent object should be included.</param>
-        /// <param name="includeWebhook">Indicates whether the full Webhook object should be included.</param>
-        /// <param name="includeWebhookEvent">Indicates whether the full WebhookEvent object should be included.</param>
-        /// <returns>Ok. Standard response for successful HTTP requests.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetWebhookEventTransmissionsHttpResponse> WebhookEventTransmissions2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, int? statusCode, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string refundId, string payoutId, string reconciliationId, string processId, string processEventId, string webhookId, string webhookEventId, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, bool? includeProcessEvent, bool? includeWebhook, bool? includeWebhookEvent)
-        {
-            return WebhookEventTransmissions2Async(after, before, limit, createdFrom, createdUntil, lastModifiedFrom, lastModifiedUntil, statusCode, merchantId, connectorId, customerId, bankAccountId, mandateId, paymentId, refundId, payoutId, reconciliationId, processId, processEventId, webhookId, webhookEventId, includeMerchant, includeConnector, includeCustomer, includeBankAccount, includeMandate, includePayment, includeRefund, includePayout, includeReconciliation, includeProcess, includeProcessEvent, includeWebhook, includeWebhookEvent, System.Threading.CancellationToken.None);
-        }
-
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns a cursor paged list of webhookEventTransmissions
@@ -8412,7 +7508,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="includeWebhookEvent">Indicates whether the full WebhookEvent object should be included.</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetWebhookEventTransmissionsHttpResponse> WebhookEventTransmissions2Async(string after, string before, int? limit, System.DateTimeOffset? createdFrom, System.DateTimeOffset? createdUntil, System.DateTimeOffset? lastModifiedFrom, System.DateTimeOffset? lastModifiedUntil, int? statusCode, string merchantId, string connectorId, string customerId, string bankAccountId, string mandateId, string paymentId, string refundId, string payoutId, string reconciliationId, string processId, string processEventId, string webhookId, string webhookEventId, bool? includeMerchant, bool? includeConnector, bool? includeCustomer, bool? includeBankAccount, bool? includeMandate, bool? includePayment, bool? includeRefund, bool? includePayout, bool? includeReconciliation, bool? includeProcess, bool? includeProcessEvent, bool? includeWebhook, bool? includeWebhookEvent, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<GetWebhookEventTransmissionsHttpResponse> WebhookEventTransmissions2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, int? statusCode = null, string merchantId = null, string connectorId = null, string customerId = null, string bankAccountId = null, string mandateId = null, string paymentId = null, string refundId = null, string payoutId = null, string reconciliationId = null, string processId = null, string processEventId = null, string webhookId = null, string webhookEventId = null, bool? includeMerchant = null, bool? includeConnector = null, bool? includeCustomer = null, bool? includeBankAccount = null, bool? includeMandate = null, bool? includePayment = null, bool? includeRefund = null, bool? includePayout = null, bool? includeReconciliation = null, bool? includeProcess = null, bool? includeProcessEvent = null, bool? includeWebhook = null, bool? includeWebhookEvent = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/WebhookEventTransmissions?");

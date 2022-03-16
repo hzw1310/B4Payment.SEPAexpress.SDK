@@ -27,7 +27,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 ///// 3.1 create a new payment referencing on this mandate
                 ConsoleUtils.DisplayActionStart("Get payment data");
-                var paymentData = await client.PaymentsGET2Async(false, false, false, false, false, false, paymentId);
+                var paymentData = await client.PaymentsGET2Async(id: paymentId);
             }
             catch (ApiException apix)
             {

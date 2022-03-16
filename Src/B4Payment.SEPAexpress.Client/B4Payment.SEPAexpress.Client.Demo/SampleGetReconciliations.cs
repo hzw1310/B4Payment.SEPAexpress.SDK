@@ -27,28 +27,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 ///// 3.1 create a new payment referencing on this mandate
                 ConsoleUtils.DisplayActionStart("Get reconciliations data");
-                var reconciliationsData = await client.ReconciliationsAsync(
-                    includeMerchant: false,
-                    includeConnector: false,
-                    includeCustomer: false,
-                    includeBankAccount: false,
-                    includeMandate: false,
-                    includePayment: false,
-                    includeRefund: false,
-                    includePayout : false, 
-                    id: paymentId
-                    );
-
-                //var reconciliationsData = await client.Reconciliations2Async(
-                //    includeMerchant: false,
-                //    includeConnector: false,
-                //    includeCustomer: false,
-                //    includeBankAccount: false,
-                //    includeMandate: false,
-                //    includePayment: false,
-                //    includeRefund: false,
-                //    includePayout : false
-                //    );
+                var reconciliationsData = await client.Reconciliations2Async(paymentId: paymentId);
             }
             catch (ApiException apix)
             {
