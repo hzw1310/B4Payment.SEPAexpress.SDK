@@ -58,6 +58,14 @@ while (true)
             await sampleGetReconciliations.ExecuteAsync();
             break;
 
+        case '6':
+            /// <summary>
+            /// create refund
+            /// </summary>
+            var sampleCreateRefund = new SampleCreateRefund();
+            await sampleCreateRefund.ExecuteAsync();
+            break;
+
         case 'X' or 'x':
             return;
     }
