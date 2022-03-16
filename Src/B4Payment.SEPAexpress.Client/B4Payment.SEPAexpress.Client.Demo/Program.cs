@@ -7,7 +7,7 @@ ConsoleUtils.ShowTitle();
 while (true)
 {
     ConsoleUtils.ShowScenarios();
-    var selectedScenario = ConsoleUtils.ReadScenarioFromUser();
+    var selectedScenario = ConsoleUtils.ReadCharFromUser();
     Console.WriteLine();
 
     /// <summary>

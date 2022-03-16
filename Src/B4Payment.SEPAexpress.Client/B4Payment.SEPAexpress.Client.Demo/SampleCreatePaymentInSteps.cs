@@ -11,7 +11,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
         public async Task CreatePaymentInStepsAsync()
         {
             ConsoleUtils.StartStopScenario("Start scenario - create payment in steps");
-            
+
             var client = new SepaExpressClient(Globals.BaseUrl, Globals.HttpClient);
 
             client.PrepareRequestEvent += (object? sender, RequestEventArgs e) =>
@@ -19,6 +19,9 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
             client.PrepareResponseEvent += (object? sender, ResponseEventArgs e) =>
                 JsonClientUtil.ProcessResponse(e.Client, e.Response);
+
+            // optionally you can add your reference identifier
+            var referenceId = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
             try
             {
@@ -34,14 +37,13 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
                 ///// 1.3 create a new mandate for this bank account
                 ConsoleUtils.DisplayActionStart("Creating mandate");
-                var createMandateRequest = CreateMandateRequest(createBankAccountResponse.BankAccount.Id);
+                var createMandateRequest = CreateMandateRequest(createBankAccountResponse.BankAccount.Id, referenceId);
                 var createMandateResponse = await client.MandatesPOSTAsync(createMandateRequest);
 
                 ///// 1.4 create a new payment referencing on this mandate
                 ConsoleUtils.DisplayActionStart("Creating payment");
-                var createPaymentRequest = CreatePaymentRequest(createMandateResponse.Mandate.Id);
+                var createPaymentRequest = CreatePaymentRequest(createMandateResponse.Mandate.Id, referenceId);
                 var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
-
             }
             catch (ApiException apix)
             {
@@ -73,7 +75,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
                 Customer = null
             };
 
-        private CreateMandateHttpRequest CreateMandateRequest(string bankAccountId) =>
+        private CreateMandateHttpRequest CreateMandateRequest(string bankAccountId, string referenceId) =>
             new CreateMandateHttpRequest
             {
                 BankAccountId = bankAccountId,
@@ -83,15 +85,17 @@ namespace B4Payment.SEPAexpress.Client.Demo
                 Amount = 1900,
                 CurrencyCode = "EUR",
                 BankAccount = null,
+                Reference = referenceId
             };
 
-        private static CreatePaymentHttpRequest CreatePaymentRequest(string mandateId) => 
+        private static CreatePaymentHttpRequest CreatePaymentRequest(string mandateId, string referenceId) =>
             new CreatePaymentHttpRequest
             {
                 Amount = 10002,
                 MandateId = mandateId,
                 CurrencyCode = "EUR",
-                Mandate = null
+                Mandate = null,
+                Reference = referenceId
             };
     }
 }

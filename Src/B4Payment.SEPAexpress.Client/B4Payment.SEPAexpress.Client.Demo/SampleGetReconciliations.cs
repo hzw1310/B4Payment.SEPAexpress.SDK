@@ -12,9 +12,6 @@ namespace B4Payment.SEPAexpress.Client.Demo
         {
             ConsoleUtils.StartStopScenario("Start scenario - get reconciliations data");
 
-            // ask user for paymentId
-            var paymentId = ConsoleUtils.GetPaymentId();
-
             var client = new SepaExpressClient(Globals.BaseUrl, Globals.HttpClient);
 
             client.PrepareRequestEvent += (object? sender, RequestEventArgs e) =>
@@ -25,9 +22,27 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
             try
             {
-                ///// 3.1 create a new payment referencing on this mandate
-                ConsoleUtils.DisplayActionStart("Get reconciliations data");
-                var reconciliationsData = await client.Reconciliations2Async(paymentId: paymentId);
+                ConsoleUtils.ShowQuestion("Get reconciliations by payment [1] or by reference [2]");
+                var queryMethodSelection = ConsoleUtils.ReadCharFromUser();
+
+                if (queryMethodSelection == '1')
+                {
+                    // ask user for paymentId
+                    var paymentId = ConsoleUtils.GetPaymentId();
+                    ///// 3.1 create a new payment referencing on this mandate
+                    ConsoleUtils.DisplayActionStart("Get reconciliations data");
+                    var reconciliationsData1 = await client.Reconciliations2Async(paymentId: paymentId);
+                }
+                else if (queryMethodSelection == '2')
+                {
+                    // ask user for reference
+                    var referenceId = ConsoleUtils.GetReferenceId();
+                    ///// 3.1 create a new payment referencing on this mandate
+                    ConsoleUtils.DisplayActionStart("Get reconciliations data");
+                    var reconciliationsData2 = await client.Reconciliations2Async(reference: referenceId);
+                }
+
+
             }
             catch (ApiException apix)
             {
