@@ -1,57 +1,42 @@
 ﻿using B4Payment.SEPAexpress.Client.Api;
+using B4Payment.SEPAexpress.Client.Demo.SampleBase;
 using B4Payment.SEPAexpress.Client.Demo.Utils;
 
 namespace B4Payment.SEPAexpress.Client.Demo
 {
-    internal class SampleCreatePaymentInSteps
+    internal class SampleCreatePaymentInSteps : IScenario
     {
+        public string StartTitle => "Start scenario - create payment in steps";
+
+        public string StopTitle => "Scenario is done - payment is created";
+
         /// <summary>
         /// Scenario create payment <see href="https://sepaexpress-prod-fx.azurewebsites.net/redoc#tag/Quick-Start"/>
         /// </summary>
-        public async Task CreatePaymentInStepsAsync()
+        public async Task ExecuteAsync(SepaExpressClient sepaExpressClient)
         {
-            ConsoleUtils.StartStopScenario("Start scenario - create payment in steps");
-
-            var client = new SepaExpressClient(Globals.BaseUrl, Globals.HttpClient);
-
-            client.PrepareRequestEvent += (object? sender, RequestEventArgs e) =>
-                JsonClientUtil.PrepareRequest(e.Client, e.Request, e.Url);
-
-            client.PrepareResponseEvent += (object? sender, ResponseEventArgs e) =>
-                JsonClientUtil.ProcessResponse(e.Client, e.Response);
-
             // optionally you can add your reference identifier
             var referenceId = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
-            try
-            {
-                ///// 1.1 create a new customer
-                ConsoleUtils.DisplayActionStart("Creating customer");
-                var createCustomerHttpRequest = CreateCustomerHttpRequest();
-                var createCustomerResponse = await client.CustomersPOSTAsync(createCustomerHttpRequest);
+            ///// 1.1 create a new customer
+            ConsoleUtils.DisplayActionStart("Creating customer");
+            var createCustomerHttpRequest = CreateCustomerHttpRequest();
+            var createCustomerResponse = await sepaExpressClient.CustomersPOSTAsync(createCustomerHttpRequest);
 
-                ///// 1.2 create a new bank account for this customer
-                ConsoleUtils.DisplayActionStart("Creating bank account");
-                var createNewBankAccountRequest = CreateBankAccountRequest(createCustomerResponse.Customer.Id);
-                var createBankAccountResponse = await client.BankAccountsPOSTAsync(createNewBankAccountRequest);
+            ///// 1.2 create a new bank account for this customer
+            ConsoleUtils.DisplayActionStart("Creating bank account");
+            var createNewBankAccountRequest = CreateBankAccountRequest(createCustomerResponse.Customer.Id);
+            var createBankAccountResponse = await sepaExpressClient.BankAccountsPOSTAsync(createNewBankAccountRequest);
 
-                ///// 1.3 create a new mandate for this bank account
-                ConsoleUtils.DisplayActionStart("Creating mandate");
-                var createMandateRequest = CreateMandateRequest(createBankAccountResponse.BankAccount.Id, referenceId);
-                var createMandateResponse = await client.MandatesPOSTAsync(createMandateRequest);
+            ///// 1.3 create a new mandate for this bank account
+            ConsoleUtils.DisplayActionStart("Creating mandate");
+            var createMandateRequest = CreateMandateRequest(createBankAccountResponse.BankAccount.Id, referenceId);
+            var createMandateResponse = await sepaExpressClient.MandatesPOSTAsync(createMandateRequest);
 
-                ///// 1.4 create a new payment referencing on this mandate
-                ConsoleUtils.DisplayActionStart("Creating payment");
-                var createPaymentRequest = CreatePaymentRequest(createMandateResponse.Mandate.Id, referenceId);
-                var createPaymentResponse = await client.PaymentsPOSTAsync(createPaymentRequest);
-            }
-            catch (ApiException apix)
-            {
-                ConsoleUtils.DisplayException(apix);
-                throw;
-            }
-
-            ConsoleUtils.StartStopScenario("Scenario is done - payment is created");
+            ///// 1.4 create a new payment referencing on this mandate
+            ConsoleUtils.DisplayActionStart("Creating payment");
+            var createPaymentRequest = CreatePaymentRequest(createMandateResponse.Mandate.Id, referenceId);
+            var createPaymentResponse = await sepaExpressClient.PaymentsPOSTAsync(createPaymentRequest);
         }
 
         private CreateCustomerHttpRequest CreateCustomerHttpRequest() =>

@@ -1,4 +1,5 @@
 ﻿using B4Payment.SEPAexpress.Client.Api;
+using B4Payment.SEPAexpress.Client.Demo.SampleBase;
 using B4Payment.SEPAexpress.Client.Demo.Utils;
 
 namespace B4Payment.SEPAexpress.Client.Demo
@@ -6,41 +7,26 @@ namespace B4Payment.SEPAexpress.Client.Demo
     /// <summary>
     /// Scenario create payment <see href="https://sepaexpress-prod-fx.azurewebsites.net/redoc#tag/Payment"/>
     /// </summary>
-    internal class SampleCreateRecurringPayment
+    internal class SampleCreateRecurringPayment : IScenario
     {
-        internal async Task ExecuteAsync()
+        public string StartTitle => "Start scenario - create recurring payment";
+
+        public string StopTitle => "Scenario is done - payment is created";
+
+        public async Task ExecuteAsync(SepaExpressClient sepaExpressClient)
         {
-            ConsoleUtils.StartStopScenario("Start scenario - create recurring payment");
+            ///// 2.1 create a new payment referencing on this mandate
+            ConsoleUtils.DisplayActionStart("Creating first payment");
+            var createPaymentRequest = CreatePaymentRequest();
+            var createPaymentResponse = await sepaExpressClient.PaymentsPOSTAsync(createPaymentRequest);
 
-            var sepaExpressApiClient = new SepaExpressClient(Globals.BaseUrl, Globals.HttpClient);
-            sepaExpressApiClient.PrepareRequestEvent += (object? sender, RequestEventArgs e) =>
-                JsonClientUtil.PrepareRequest(e.Client, e.Request, e.Url); 
-
-            sepaExpressApiClient.PrepareResponseEvent += (object? sender, ResponseEventArgs e) =>
-                JsonClientUtil.ProcessResponse(e.Client, e.Response); 
-
-            try
+            for (int i = 0; i < 5; i++)
             {
-                ///// 2.1 create a new payment referencing on this mandate
-                ConsoleUtils.DisplayActionStart("Creating first payment");
-                var createPaymentRequest = CreatePaymentRequest();
-                var createPaymentResponse = await sepaExpressApiClient.PaymentsPOSTAsync(createPaymentRequest);
-
-                for (int i = 0; i < 5; i++)
-                {
-                    Thread.Sleep(1000);
-                    ConsoleUtils.DisplayActionStart($"Creating payment recurring payment: {i} ");
-                    var recurruingPaymentRequest = CreateRecurringPayment(createPaymentResponse.Payment.MandateId);
-                    var nextPayment = await sepaExpressApiClient.PaymentsPOSTAsync(recurruingPaymentRequest);
-                }
+                Thread.Sleep(1000);
+                ConsoleUtils.DisplayActionStart($"Creating payment recurring payment: {i} ");
+                var recurruingPaymentRequest = CreateRecurringPayment(createPaymentResponse.Payment.MandateId);
+                var nextPayment = await sepaExpressClient.PaymentsPOSTAsync(recurruingPaymentRequest);
             }
-            catch (ApiException apix)
-            {
-                ConsoleUtils.DisplayException(apix);
-                throw;
-            }
-
-            ConsoleUtils.StartStopScenario("Scenario is done - payment is created");
         }
 
         private CreatePaymentHttpRequest CreateRecurringPayment(string mandateId) =>
