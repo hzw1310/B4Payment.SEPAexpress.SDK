@@ -31,7 +31,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
             {
                 Amount = 12,
                 CurrencyCode = "EUR",
-                IdempotencyKey = "1234",
+                IdempotencyKey = Globals.GetUniqueString(),
                 Mandate = new CreateMandateHttpRequest
                 {
                     ConnectorId = Globals.ConnectorId,

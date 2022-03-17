@@ -30,7 +30,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.SampleBase
 
                 ConsoleUtils.StartStopScenario(_scenario.StopTitle);
             }
-            catch (ApiException apix)
+            catch (ApiException<ErrorResponse> apix)
             {
                 ConsoleUtils.DisplayException(apix);
             }

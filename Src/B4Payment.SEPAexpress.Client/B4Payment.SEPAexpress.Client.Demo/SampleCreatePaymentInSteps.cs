@@ -16,7 +16,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
         public async Task ExecuteAsync(SepaExpressClient sepaExpressClient)
         {
             // optionally you can add your reference identifier
-            var referenceId = Guid.NewGuid().ToString().Replace("-", string.Empty);
+            var referenceId = Globals.GetUniqueString();
 
             ///// 1.1 create a new customer
             ConsoleUtils.DisplayActionStart("Creating customer");

@@ -4,6 +4,13 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
 {
     internal static class ConsoleUtils
     {
+        private static JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
+        {
+            DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        };
+
         public static void ShowTitle()
         {
             var previousColor = Console.ForegroundColor;
@@ -18,7 +25,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.WriteLine(@"          | |                     | |                       ");
             Console.WriteLine(@"          |_|                     |_|                       ");
             Console.WriteLine(@"                                                            ");
-            Console.ForegroundColor=previousColor;
+            Console.ForegroundColor = previousColor;
         }
 
         internal static string GetPaymentId() => GetString("Please enter payment id and press Enter:");
@@ -52,10 +59,11 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.WriteLine();
         }
 
-        internal static void DisplayException(Exception apiex)
-        {
-            Console.WriteLine(apiex.Message);
-        }
+        internal static void DisplayException(Client.Identity.ApiException<Client.Identity.ErrorResponse> apiex) =>
+            SerializeAndDisplayException(apiex.Result);
+
+        internal static void DisplayException(Api.ApiException<Api.ErrorResponse> apiex) =>
+            SerializeAndDisplayException(apiex.Result);
 
         internal static void DisplayActionStart(string action)
         {
@@ -69,11 +77,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
 
         internal static void DisplayRequestObject(string uri, object requestObject)
         {
-            var json = JsonSerializer.Serialize(requestObject, new JsonSerializerOptions
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-                WriteIndented = true
-            });
+            var json = JsonSerializer.Serialize(requestObject, _jsonSerializerOptions);
             Console.WriteLine($"Request to: {uri}");
             Console.WriteLine(json);
             Console.WriteLine("");
@@ -81,11 +85,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
 
         internal static void DisplayResponseObject(string uri, object responseObject)
         {
-            var json = JsonSerializer.Serialize(responseObject, new JsonSerializerOptions
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-                WriteIndented = true
-            });
+            var json = JsonSerializer.Serialize(responseObject, _jsonSerializerOptions);
             Console.WriteLine($"Response from: {uri}");
             Console.WriteLine(json);
             Console.WriteLine("");
@@ -97,6 +97,18 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("");
             Console.WriteLine($"== {text} ==");
+            Console.WriteLine("");
+            Console.ForegroundColor = previousColor;
+        }
+
+        private static void SerializeAndDisplayException(object result)
+        {
+            var json = JsonSerializer.Serialize(result, _jsonSerializerOptions);
+
+            var previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Exception");
+            Console.WriteLine(json);
             Console.WriteLine("");
             Console.ForegroundColor = previousColor;
         }

@@ -35,7 +35,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Identity
                 Globals.HttpClient.DefaultRequestHeaders.Authorization =
                     new System.Net.Http.Headers.AuthenticationHeaderValue(SecurityTokenKey, authenticateResponse.AccessToken);
             }
-            catch (ApiException apix)
+            catch (ApiException<ErrorResponse> apix)
             {
                 ConsoleUtils.DisplayException(apix);
                 throw;
