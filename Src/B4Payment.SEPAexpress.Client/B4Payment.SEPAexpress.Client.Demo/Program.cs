@@ -30,6 +30,7 @@ while (true)
         '4' => new SampleCreateRecurringPayment(),
         '5' => new SampleGetReconciliations(),
         '6' => new SampleCreateRefund(),
+        '7' => new SampleUseIdempotentKeys(),
         _ => null
     };
 
