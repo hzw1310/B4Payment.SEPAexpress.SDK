@@ -31,6 +31,7 @@ while (true)
         '5' => new SampleGetReconciliations(),
         '6' => new SampleCreateRefund(),
         '7' => new SampleUseIdempotentKeys(),
+        '8' => new SampleGetData(),
         _ => null
     };
 
