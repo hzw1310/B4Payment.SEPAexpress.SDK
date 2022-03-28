@@ -1,21 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
-		<Company>b4payment GmbH</Company>
-		<Version>2.2.209.0</Version>
-		<PackageId>B4Payment.SEPAexpress.SDK</PackageId>
-		<Authors>development@b4payment.de</Authors>
-		<Product>B4Payment.SEPAexpress.SDK</Product>
-		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-		<Description>Library for an overview about implementing the SEPAexpress API</Description>
-		<PackageTags>SEPAexpress, DirectDebit, Credit Transfere, Payment, SDD, SCT, ICT, SEPA, BACS, PSD2, Credit Transfer, Direct Debit, Payment, Payout, Refund, AIS, PIS</PackageTags>
-		<Copyright>Copyright 2022 SEPAexpress powered by b4payment GmbH</Copyright>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>b4payment GmbH</Company>
+    <Version>2.2.209.0</Version>
+    <PackageId>B4Payment.SEPAexpress.SDK</PackageId>
+    <Authors>development@b4payment.de</Authors>
+    <Product>B4Payment.SEPAexpress.SDK</Product>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Description>Library for an overview about implementing the SEPAexpress API</Description>
+    <PackageTags>SEPAexpress, DirectDebit, Credit Transfere, Payment, SDD, SCT, ICT, SEPA, BACS, PSD2, Credit Transfer, Direct Debit, Payment, Payout, Refund, AIS, PIS</PackageTags>
+    <Copyright>Copyright 2022 SEPAexpress powered by b4payment GmbH</Copyright>
+    <PackageIcon>SEPAexpress_icon.png</PackageIcon>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-		<PackageReference Include="System.Text.Json" Version="6.0.2" />
-	</ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\SEPAexpress_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\SEPAexpress_icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.2" />
+  </ItemGroup>
 
 </Project>
