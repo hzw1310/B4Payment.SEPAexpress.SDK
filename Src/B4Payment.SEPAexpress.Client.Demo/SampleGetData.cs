@@ -1,10 +1,6 @@
 ﻿using B4Payment.SEPAexpress.Client.Api;
 using B4Payment.SEPAexpress.Client.Demo.SampleBase;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using B4Payment.SEPAexpress.Client.Demo.Utils;
 
 namespace B4Payment.SEPAexpress.Client.Demo
 {
@@ -19,9 +15,35 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
         public async Task ExecuteAsync(SepaExpressClient sepaExpressClient)
         {
-            // get bank accounts
+            ConsoleUtils.DisplayActionStart("Get customers list by criteria");
+            // get customer list
+            var customers = await sepaExpressClient.CustomersGETAsync(limit: 10);
 
-            var bankAccounts = await sepaExpressClient.BankAccountsGETAsync(currencyCode: "EUR");
+            if (customers != null)
+            {
+                ConsoleUtils.DisplayActionStart("Get customer by id");
+                var customerId = customers.Customers.First().Id;
+                var customer = await sepaExpressClient.CustomersGET2Async(customerId);
+            }
+
+            ConsoleUtils.DisplayActionStart("Get bank account list by criteria");
+            // get bank accounts
+            var bankAccounts = await sepaExpressClient.BankAccountsGETAsync(
+                currencyCode: "EUR", 
+                limit: 5);
+
+            if (bankAccounts != null)
+            {
+                ConsoleUtils.DisplayActionStart("Get bank account by id");
+                // get bank account by Id
+                var bankAccountId = bankAccounts.BankAccounts.First().Id;
+                var bankAccount = await sepaExpressClient.BankAccountsGET2Async(
+                    id: bankAccountId,
+                    includeCustomer: true,
+                    includeMerchant: false,
+                    cancellationToken: CancellationToken.None);
+                    
+            }
         }
     }
 }
