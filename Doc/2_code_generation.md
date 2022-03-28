@@ -25,7 +25,8 @@ You can adjust configured code to your needs. Some suggestions, are below.
 1. Select checkbox: *Generate optional parameters (reorder parameters (required first, optional at the end) and generate optional parameters)*
 1. Press the big button *Generate Outputs*
 1. In the *Output* window you can select generated code and paste it into you code
-1. Because there is a bug in NSwagStudio you need to fix the generated code.    Instead of improper statement ```return default(void);``` you need to write proper statement: ```return;```.
+1. Because there is a bug in NSwagStudio you need to fix the generated code.    Instead of improper statement ```return default(void);``` you need to write proper statement: ```return;```
+1. Remove class *TimeSpan" from the generated code and add ```	using System;``` statement, so System.TimeSpan will be used
 
 You need to repeat steps above for Authorization API.
 
