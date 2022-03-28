@@ -15,7 +15,8 @@
 
 namespace B4Payment.SEPAexpress.Client.Api
 {
-    using System = global::System;
+	using System;
+	using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class SepaExpressClient
@@ -10046,54 +10047,6 @@ namespace B4Payment.SEPAexpress.Client.Api
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentMaxCountPerPeriod")]
         public System.Collections.Generic.ICollection<CountPerTimeSpan> PaymentMaxCountPerPeriod { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-
-        [System.Text.Json.Serialization.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class TimeSpan
-    {
-
-        [System.Text.Json.Serialization.JsonPropertyName("ticks")]
-        public long? Ticks { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("days")]
-        public int? Days { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("hours")]
-        public int? Hours { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("milliseconds")]
-        public int? Milliseconds { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("minutes")]
-        public int? Minutes { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("seconds")]
-        public int? Seconds { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("totalDays")]
-        public double? TotalDays { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("totalHours")]
-        public double? TotalHours { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("totalMilliseconds")]
-        public double? TotalMilliseconds { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("totalMinutes")]
-        public double? TotalMinutes { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("totalSeconds")]
-        public double? TotalSeconds { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
