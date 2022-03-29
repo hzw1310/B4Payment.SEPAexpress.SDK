@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.gitignore = ..\.gitignore
 		..\.versionize = ..\.versionize
 		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\.github\workflows\github-actions-demo.yml = ..\.github\workflows\github-actions-demo.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B4Payment.SEPAexpress.Client.Demo", "B4Payment.SEPAexpress.Client.Demo\B4Payment.SEPAexpress.Client.Demo.csproj", "{76E6CF68-8DEA-4D1B-A443-AE8067B324D9}"

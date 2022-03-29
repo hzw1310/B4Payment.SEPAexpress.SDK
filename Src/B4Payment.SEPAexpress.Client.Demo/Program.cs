@@ -32,6 +32,7 @@ while (true)
         '6' => new SampleCreateRefund(),
         '7' => new SampleUseIdempotentKeys(),
         '8' => new SampleGetData(),
+        '9' => new SampleHostedPages(),
         _ => null
     };
 

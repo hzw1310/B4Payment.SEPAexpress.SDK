@@ -49,6 +49,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.WriteLine("6. Create refund");
             Console.WriteLine("7. Use idempotent keys");
             Console.WriteLine("8. Get data");
+            Console.WriteLine("9. Hosted pages");
             Console.WriteLine("");
             Console.WriteLine("X. Exit");
         }
