@@ -25,6 +25,7 @@ jobs:
         run: dotnet sln remove B4Payment.SEPAexpress.Client.Demo*/*.csproj
       - name: Install dependencies
         run: dotnet restore
+        
       - name: Publish
         run: |
           mkdir __out
