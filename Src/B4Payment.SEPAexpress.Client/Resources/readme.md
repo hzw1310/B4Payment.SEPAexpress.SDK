@@ -1,0 +1,1 @@
+﻿This library helps to connect to [SEPAexpress Services](https://sepaexpress-prod-fx.azurewebsites.net/redoc).

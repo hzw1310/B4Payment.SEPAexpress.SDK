@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>b4payment GmbH</Company>
-    <Version>2.2.209.0</Version>
+    <Version>2.2.209.0-alpha</Version>
     <PackageId>B4Payment.SEPAexpress.SDK</PackageId>
     <Authors>development@b4payment.de</Authors>
     <Product>B4Payment.SEPAexpress.SDK</Product>
@@ -12,13 +12,19 @@
     <PackageTags>SEPAexpress, DirectDebit, Credit Transfere, Payment, SDD, SCT, ICT, SEPA, BACS, PSD2, Credit Transfer, Direct Debit, Payment, Payout, Refund, AIS, PIS</PackageTags>
     <Copyright>Copyright 2022 SEPAexpress powered by b4payment GmbH</Copyright>
     <PackageIcon>SEPAexpress_icon.png</PackageIcon>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\readme.md" />
     <None Remove="Resources\SEPAexpress_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </Content>
     <Content Include="Resources\SEPAexpress_icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
