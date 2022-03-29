@@ -26,9 +26,9 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
         
-      - name: Publish
-        run: |
-          mkdir __out
-          dotnet pack -c Release -o __out --no-restore
+#      - name: Publish
+#        run: |
+#          mkdir __out
+#          dotnet pack -c Release -o __out --no-restore
 #          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
+#          rm -rf __out
