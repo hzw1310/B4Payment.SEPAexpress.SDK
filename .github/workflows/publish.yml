@@ -1,0 +1,33 @@
+# from https://tehgm.net/blog/nuget-github-actions/
+name: publish to nuget
+on:
+  push:
+#    branches:
+#      - master # Default release branch
+jobs:
+  nuget-publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Src     # https://stackoverflow.com/questions/58139175/running-actions-in-another-directory/63122434#63122434
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          source-url: https://api.nuget.org/v3/index.json
+          dotnet-version: 6.x
+#        env:
+#          NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
+      - name: Exclude example projects
+        run: dotnet sln remove B4Payment.SEPAexpress.Client.Demo*/*.csproj
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Publish
+        run: |
+          mkdir __out
+          dotnet pack -c Release -o __out --no-restore
+#          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
+          rm -rf __out
