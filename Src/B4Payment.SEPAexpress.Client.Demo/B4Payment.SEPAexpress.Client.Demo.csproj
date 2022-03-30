@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PuppeteerSharp" Version="6.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\B4Payment.SEPAexpress.Client\B4Payment.SEPAexpress.Client.csproj" />
   </ItemGroup>
 

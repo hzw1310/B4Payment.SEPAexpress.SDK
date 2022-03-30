@@ -1,7 +1,6 @@
 ﻿using B4Payment.SEPAexpress.Client.Api;
 using B4Payment.SEPAexpress.Client.Demo.SampleBase;
 using B4Payment.SEPAexpress.Client.Demo.Utils;
-using PuppeteerSharp;
 
 namespace B4Payment.SEPAexpress.Client.Demo
 {
@@ -28,20 +27,11 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
         private async Task ViewHostedPageAsync(string hostedPageId)
         {
-            using var browserFetcher = new BrowserFetcher();
-            await browserFetcher.DownloadAsync();
-            await using var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true });
-            await using var page = await browser.NewPageAsync();
             var pageUrl = $"{Globals.BaseUrl}/api/services/v2/HostedPages/{hostedPageId}/sample";
-            await page.GoToAsync(pageUrl);
-            var pageHtml = await page.GetContentAsync();
+            var pageResponse = await Globals.HttpClient.GetAsync(pageUrl);
+            var pageHtml = await pageResponse.Content.ReadAsStringAsync();
 
-            Console.WriteLine("----- Hosted page: -----");
             Console.WriteLine(pageHtml);
-            
-            Console.WriteLine();
-            Console.WriteLine("----- Simulate user confirmation: -----");
-            await page.ClickAsync("#sepaExpressButton");
         }
 
         private CreateHostedPageHttpRequest GetCreateHostedPageHttpRequest() =>
