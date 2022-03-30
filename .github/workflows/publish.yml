@@ -19,16 +19,16 @@ jobs:
         with:
           source-url: https://api.nuget.org/v3/index.json
           dotnet-version: 6.x
-#        env:
-#          NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
       - name: Exclude example projects
         run: dotnet sln remove B4Payment.SEPAexpress.Client.Demo*/*.csproj
       - name: Install dependencies
         run: dotnet restore
         
-#      - name: Publish
-#        run: |
-#          mkdir __out
-#          dotnet pack -c Release -o __out --no-restore
+      - name: Publish
+        run: |
+          mkdir __out
+          dotnet pack -c Release -o __out --no-restore
 #          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
-#          rm -rf __out
+          rm -rf __out
