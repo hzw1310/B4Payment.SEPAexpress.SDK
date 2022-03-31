@@ -33,6 +33,7 @@ while (true)
         '7' => new SampleUseIdempotentKeys(),
         '8' => new SampleGetData(),
         '9' => new SampleHostedPages(),
+        't' => new SampleGetLocalizationText(),
         _ => null
     };
 

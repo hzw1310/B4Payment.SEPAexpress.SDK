@@ -18,6 +18,28 @@ namespace B4Payment.SEPAexpress.Client.Demo
 			await GetCustomerData(sepaExpressClient);
 			await GetConnectorData(sepaExpressClient);
 			await GetBankAccountData(sepaExpressClient);
+			await GetHostedPageData(sepaExpressClient);
+		}
+
+		private static async Task GetHostedPageData(SepaExpressClient sepaExpressClient)
+		{
+			ConsoleUtils.DisplayActionStart("Get hosted pages list by criteria");
+			// get hosted pages
+			var hostedPages = await sepaExpressClient.HostedPagesGETAsync(
+					createdUntil: DateTime.UtcNow,
+					limit: 5);
+
+			if (hostedPages != null)
+			{
+				ConsoleUtils.DisplayActionStart("Get hosted page by id");
+				// get hosted page by Id
+				var hostedPageId = hostedPages.HostedPages.First().Id;
+				var hostedPage = await sepaExpressClient.HostedPagesGET2Async(
+						id: hostedPageId,
+						includeCustomer: true,
+						includeMerchant: false,
+						cancellationToken: CancellationToken.None);
+			}
 		}
 
 		private static async Task GetBankAccountData(SepaExpressClient sepaExpressClient)

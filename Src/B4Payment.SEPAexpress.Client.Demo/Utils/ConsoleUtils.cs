@@ -50,6 +50,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.WriteLine("7. Use idempotent keys");
             Console.WriteLine("8. Get data");
             Console.WriteLine("9. Hosted pages");
+            Console.WriteLine("t. Get locatization text");
             Console.WriteLine("");
             Console.WriteLine("X. Exit");
         }
