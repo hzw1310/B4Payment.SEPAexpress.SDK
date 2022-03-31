@@ -15,8 +15,8 @@
 
 namespace B4Payment.SEPAexpress.Client.Api
 {
-	using System;
-	using System = global::System;
+    using System;
+    using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class SepaExpressClient
@@ -3328,7 +3328,7 @@ namespace B4Payment.SEPAexpress.Client.Api
         /// <param name="state">Return only objects with this state. Optional</param>
         /// <returns>Ok. Standard response for successful HTTP requests.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetMerchantHttpResponse> Merchants2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<GetMerchantsHttpResponse> Merchants2Async(string after = null, string before = null, int? limit = null, System.DateTimeOffset? createdFrom = null, System.DateTimeOffset? createdUntil = null, System.DateTimeOffset? lastModifiedFrom = null, System.DateTimeOffset? lastModifiedUntil = null, string state = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/services/v2/Merchants?");
@@ -3398,7 +3398,7 @@ namespace B4Payment.SEPAexpress.Client.Api
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<GetMerchantHttpResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<GetMerchantsHttpResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -10059,6 +10059,7 @@ namespace B4Payment.SEPAexpress.Client.Api
 
     }
 
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class CountPerTimeSpan
     {
@@ -11380,6 +11381,34 @@ namespace B4Payment.SEPAexpress.Client.Api
         [System.Text.Json.Serialization.JsonPropertyName("merchant")]
         [System.ComponentModel.DataAnnotations.Required]
         public Merchant Merchant { get; set; } = new Merchant();
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    /// <summary>
+    /// The response model for cursor-based paged merchant list.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))")]
+    public partial class GetMerchantsHttpResponse
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("meta")]
+        public CursorPagedMeta Meta { get; set; }
+
+        /// <summary>
+        /// List of merchants.
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("merchants")]
+        public System.Collections.Generic.ICollection<Merchant> Merchants { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 

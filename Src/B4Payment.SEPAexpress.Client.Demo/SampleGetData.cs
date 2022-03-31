@@ -19,6 +19,48 @@ namespace B4Payment.SEPAexpress.Client.Demo
 			await GetConnectorData(sepaExpressClient);
 			await GetBankAccountData(sepaExpressClient);
 			await GetHostedPageData(sepaExpressClient);
+			await GetMandatesData(sepaExpressClient);
+			await GetMerchantsData(sepaExpressClient);
+		}
+
+		private static async Task GetMerchantsData(SepaExpressClient sepaExpressClient)
+		{
+			ConsoleUtils.DisplayActionStart("Get merchant list by criteria");
+			// get merchants
+			var merchants = await sepaExpressClient.Merchants2Async(
+					createdUntil: DateTime.UtcNow,
+					limit: 5);
+
+			if (merchants != null)
+			{
+				ConsoleUtils.DisplayActionStart("Get merchant by id");
+				// get merchant
+				var merchantId = merchants.Merchants.First().Id;
+				var merchant = await sepaExpressClient.MerchantsAsync(
+						id: merchantId
+				);
+			}
+		}
+
+		private static async Task GetMandatesData(SepaExpressClient sepaExpressClient)
+		{
+			ConsoleUtils.DisplayActionStart("Get mandate list by criteria");
+			// get mandates
+			var mandates = await sepaExpressClient.MandatesGETAsync(
+					createdUntil: DateTime.UtcNow,
+					limit: 5);
+
+			if (mandates != null)
+			{
+				ConsoleUtils.DisplayActionStart("Get mandate by id");
+				// get hosted page by Id
+				var mandateId = mandates.Mandates.First().Id;
+				var mandate = await sepaExpressClient.MandatesGET2Async(
+						id: mandateId,
+						includeCustomer: true,
+						includeMerchant: false,
+						cancellationToken: CancellationToken.None);
+			}
 		}
 
 		private static async Task GetHostedPageData(SepaExpressClient sepaExpressClient)
@@ -96,3 +138,4 @@ namespace B4Payment.SEPAexpress.Client.Demo
 		}
 	}
 }
+

@@ -34,6 +34,7 @@ while (true)
         '8' => new SampleGetData(),
         '9' => new SampleHostedPages(),
         't' => new SampleGetLocalizationText(),
+        'm' => new SampleMandates(),
         _ => null
     };
 
