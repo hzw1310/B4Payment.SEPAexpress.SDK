@@ -52,6 +52,7 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.WriteLine("9. Hosted pages");
             Console.WriteLine("t. Get localization text");
             Console.WriteLine("m. Approve / discard mandate");
+            Console.WriteLine("p. Payout");
             Console.WriteLine("");
             Console.WriteLine("X. Exit");
         }

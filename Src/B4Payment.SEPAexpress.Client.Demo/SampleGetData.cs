@@ -22,6 +22,28 @@ namespace B4Payment.SEPAexpress.Client.Demo
 			await GetMandatesData(sepaExpressClient);
 			await GetMerchantsData(sepaExpressClient);
 			await GetPayments(sepaExpressClient);
+			await GetPayouts(sepaExpressClient);
+		}
+
+		private static async Task GetPayouts(SepaExpressClient sepaExpressClient)
+		{
+			ConsoleUtils.DisplayActionStart("Get payout list by criteria");
+			// get payouts
+			var payouts = await sepaExpressClient.PayoutsGETAsync(
+					createdUntil: DateTime.UtcNow,
+					limit: 5);
+
+			if (payouts != null)
+			{
+				ConsoleUtils.DisplayActionStart("Get payout by id");
+				// get payout by Id
+				var payoutId = payouts.Payouts.First().Id;
+				var payout = await sepaExpressClient.PayoutsGET2Async(
+						id: payoutId,
+						includeCustomer: true,
+						includeMerchant: false,
+						cancellationToken: CancellationToken.None);
+			}
 		}
 
 		private static async Task GetPayments(SepaExpressClient sepaExpressClient)
@@ -35,7 +57,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
 			if (payments != null)
 			{
 				ConsoleUtils.DisplayActionStart("Get payment by id");
-				// get hosted page by Id
+				// get payment by Id
 				var paymentId = payments.Payments.First().Id;
 				var payment = await sepaExpressClient.PaymentsGET2Async(
 						id: paymentId,
@@ -75,7 +97,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
 			if (mandates != null)
 			{
 				ConsoleUtils.DisplayActionStart("Get mandate by id");
-				// get hosted page by Id
+				// get mandate by Id
 				var mandateId = mandates.Mandates.First().Id;
 				var mandate = await sepaExpressClient.MandatesGET2Async(
 						id: mandateId,

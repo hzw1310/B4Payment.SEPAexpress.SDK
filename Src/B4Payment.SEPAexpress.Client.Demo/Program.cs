@@ -35,6 +35,7 @@ while (true)
         '9' => new SampleHostedPages(),
         't' => new SampleGetLocalizationText(),
         'm' => new SampleMandates(),
+        'p' => new SamplePayout(),
         _ => null
     };
 
