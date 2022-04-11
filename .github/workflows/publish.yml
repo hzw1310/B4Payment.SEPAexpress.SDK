@@ -2,8 +2,8 @@
 name: publish to nuget
 on:
   push:
-#    branches:
-#      - master # Default release branch
+    branches:
+      - master # Default release branch
 jobs:
   nuget-publish:
     runs-on: ubuntu-latest
