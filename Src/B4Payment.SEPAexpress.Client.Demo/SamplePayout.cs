@@ -12,7 +12,7 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
         public async Task ExecuteAsync(SepaExpressClient sepaExpressClient)
         {
-            ConsoleUtils.DisplayActionStart("Create payout incline");
+            ConsoleUtils.DisplayActionStart("Create payout in-line");
             var createPayoutRequest = CreatePayoutRequest();
             var createPayoutResponse = sepaExpressClient.PayoutsPOSTAsync(createPayoutRequest);
         }
