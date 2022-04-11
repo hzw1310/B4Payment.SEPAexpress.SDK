@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B4Payment.SEPAexpress.Clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B4Payment.SEPAexpress.Client.Demo.NETFramework", "B4Payment.SEPAexpress.Client.Demo.NETFramework\B4Payment.SEPAexpress.Client.Demo.NETFramework.csproj", "{A81988C2-B4C0-41D8-8FB2-292D9B459947}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B4Payment.SEPAexpress.Client.TestIntegration", "B4Payment.SEPAexpress.Client.TestIntegration\B4Payment.SEPAexpress.Client.TestIntegration.csproj", "{97C5E90E-51AA-4B64-AA04-506C6D295C6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{A81988C2-B4C0-41D8-8FB2-292D9B459947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A81988C2-B4C0-41D8-8FB2-292D9B459947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A81988C2-B4C0-41D8-8FB2-292D9B459947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97C5E90E-51AA-4B64-AA04-506C6D295C6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97C5E90E-51AA-4B64-AA04-506C6D295C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97C5E90E-51AA-4B64-AA04-506C6D295C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97C5E90E-51AA-4B64-AA04-506C6D295C6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

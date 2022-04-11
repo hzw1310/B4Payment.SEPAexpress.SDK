@@ -28,10 +28,6 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.ForegroundColor = previousColor;
         }
 
-        internal static string GetPaymentId() => GetString("Please enter payment id and press Enter:");
-
-        internal static string GetReferenceId() => GetString("Please enter reference id and press Enter:");
-
         internal static char ReadCharFromUser()
         {
             var consoleKeyInfo = Console.ReadKey(true);
@@ -116,18 +112,6 @@ namespace B4Payment.SEPAexpress.Client.Demo.Utils
             Console.WriteLine(json);
             Console.WriteLine("");
             Console.ForegroundColor = previousColor;
-        }
-
-        private static string GetString(string prompt)
-        {
-            string? userGivenString;
-            do
-            {
-                Console.WriteLine(prompt);
-                userGivenString = Console.ReadLine();
-            } while (string.IsNullOrWhiteSpace(userGivenString));
-
-            return userGivenString;
         }
     }
 }

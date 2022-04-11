@@ -15,8 +15,10 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
         public async Task ExecuteAsync(SepaExpressClient sepaExpressClient)
         {
-            // ask user for paymentId
-            var paymentId = ConsoleUtils.GetPaymentId();
+            // create payment
+            var createPaymentSample = new SampleCreatePaymentInline();
+            var payment = await createPaymentSample.CreatePaymentAsync(sepaExpressClient);
+            var paymentId = payment.Payment.Id;
 
             ///// 6.1 create a new refund
             ConsoleUtils.DisplayActionStart("Create refund");
