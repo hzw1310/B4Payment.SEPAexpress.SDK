@@ -1,30 +1,32 @@
 ﻿using B4Payment.SEPAexpress.Client.Demo;
-using B4Payment.SEPAexpress.Client.Demo.Identity;
 using B4Payment.SEPAexpress.Client.Demo.SampleBase;
-using System;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace B4Payment.SEPAexpress.Client.TestIntegration
 {
-    public class RunAllCodesTest
+    public class RunAllCodesTest : IClassFixture<LoginContext>
     {
-        [Fact]
-        public async Task RunTestAsync()
+        [Theory]
+        [InlineData('1')]
+        [InlineData('2')]
+        [InlineData('3')]
+        [InlineData('4')]
+        [InlineData('5')]
+        [InlineData('6')]
+        [InlineData('7')]
+        [InlineData('8')]
+        [InlineData('9')]
+        [InlineData('t')]
+        [InlineData('m')]
+        [InlineData('p')]
+        public async Task RunTestAsync(char selectedScenario)
         {
-            var authenticationAction = new SampleUserAuthentication();
-            await authenticationAction.GetAccessTokenAsync();
-
-            var keys = "123456789tmp";
-
-            foreach (var selectedScenario in keys)
+            var scenario = SamplesFactory.CreateSample(selectedScenario);
+            if (scenario != null)
             {
-                var scenario = SamplesFactory.CreateSample(selectedScenario);
-                if (scenario != null)
-                {
-                    var executor = new SampleScenarioExecutor(scenario);
-                    await executor.ExecuteAsync();
-                }
+                var executor = new SampleScenarioExecutor(scenario);
+                await executor.ExecuteAsync();
             }
         }
     }
