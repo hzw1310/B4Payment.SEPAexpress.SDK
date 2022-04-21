@@ -23,6 +23,8 @@ namespace B4Payment.SEPAexpress.Client.Demo
             //// view a hosted page
             ConsoleUtils.DisplayActionStart("Get hosted page HTML");
             await ViewHostedPageAsync(hostedPage.HostedPage.Id);
+
+            await ViewHostedPage1Async(sepaExpressClient, hostedPage.HostedPage.Id);
         }
 
         private async Task ViewHostedPageAsync(string hostedPageId)
@@ -32,6 +34,20 @@ namespace B4Payment.SEPAexpress.Client.Demo
             var pageHtml = await pageResponse.Content.ReadAsStringAsync();
 
             Console.WriteLine(pageHtml);
+        }
+
+        private async Task ViewHostedPage1Async(SepaExpressClient sepaExpressClient, string hostedPageId)
+        {
+            const string successUrl = "https://succesUrl.com";
+            const string failureUrl = "https://failedUrl.com";
+            try
+            {
+                await sepaExpressClient.ViewAsync(hostedPageId, successUrl, failureUrl);
+            }
+            catch (ApiException apix) when (apix.Message == "HTTP redirect.")
+            {
+                Console.WriteLine($"Redirect {apix.Response}");
+            }
         }
 
         private CreateHostedPageHttpRequest GetCreateHostedPageHttpRequest() =>

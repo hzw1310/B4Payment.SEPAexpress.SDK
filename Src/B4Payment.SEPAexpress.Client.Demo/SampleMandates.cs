@@ -21,6 +21,30 @@ namespace B4Payment.SEPAexpress.Client.Demo
 
             ConsoleUtils.DisplayActionStart("Discard mandate");
             var discardedMandate = await sepaExpressClient.DiscardAsync(createMandateResponse.Mandate.Id);
+
+            ConsoleUtils.DisplayActionStart("Reinstate mandate");
+            var reinstatedMandate = await sepaExpressClient.ReinstateAsync(createMandateResponse.Mandate.Id);
+
+            ConsoleUtils.DisplayActionStart("Resend approval tan");
+            var resendResponse = await sepaExpressClient.ResendAsync(createMandateResponse.Mandate.Id);
+
+            ConsoleUtils.DisplayActionStart("Approve mandate");
+            string tan = "x";
+            var approvedMandate = await sepaExpressClient.ApproveAsync(
+                createMandateResponse.Mandate.Id,
+                new ApproveMandateHttpRequest
+                {
+                    Tan = tan,
+                    Memo = "memo note"
+                });
+
+            ConsoleUtils.DisplayActionStart("Accept or reject mandate");
+            var mandateReview = await sepaExpressClient.ReviewAsync(
+                createMandateResponse.Mandate.Id,
+                new ReviewMandateHttpRequest
+                {
+                    Action = "accept" // or "reject"
+                });
         }
 
         private static CreateMandateHttpRequest CreateMandateRequest() =>
